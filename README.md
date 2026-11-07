@@ -2,7 +2,9 @@
 
 Staattinen, suomenkielinen sivu. Ei taustajärjestelmää eikä rakennusvaihetta. Sivusto sopii myöhempään GitHub Pages -julkaisuun, mutta julkaisua ei ole kytketty päälle.
 
-Etusivun hahmo on oma tyylitelmä Oulun kauppatorin Toripolliisi-patsaasta. Se ei ole kaupungin virallinen tunnus eikä valokuva patsaasta.
+Etusivun hahmo on oma vektoripiirros Oulun kauppatorin Toripolliisi-patsaasta. Valokuvaa ei ole upotettu. Havainnon lähde on [Wikipedian tiedosto](https://fi.wikipedia.org/wiki/Tiedosto:Toripolliisi.jpg) (patsas Kaarlo Mikkonen, valokuva Tve4, CC BY-SA 2.5). Hahmo ei ole kaupungin virallinen tunnus.
+
+Osio Toiminnanohjaus on scrolliin sidottu havainnollistus. Se ei väitä, että jokin tietty ERP-järjestelmä olisi tehty tai käyttöönotettu tällä sivulla.
 
 Sisältö perustuu Joakim Rydenfeltin julkiseen esittelyyn: nimi, otsikko, Oulu, työkokemuksen vastuut, käynnissä olevat opinnot ja kaksi profiililinkkiä. [LinkedIn](https://www.linkedin.com/in/joakim-rydenfelt) ja [GitHub](https://github.com/jokkewedsf) ovat ainoat yhteyslinkit. Sähköpostia ei ole lisätty.
 

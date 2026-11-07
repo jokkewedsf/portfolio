@@ -40,9 +40,10 @@ window.SIVUN_SISALTO = {
   navigointi: [
     { id: "tietoa", numero: "01", teksti: "Tietoa" },
     { id: "osaaminen", numero: "02", teksti: "Osaaminen" },
-    { id: "tyot", numero: "03", teksti: "Työt" },
-    { id: "taustat", numero: "04", teksti: "Tausta" },
-    { id: "yhteys", numero: "05", teksti: "Yhteys" },
+    { id: "erp", numero: "03", teksti: "Polku" },
+    { id: "tyot", numero: "04", teksti: "Työt" },
+    { id: "taustat", numero: "05", teksti: "Tausta" },
+    { id: "yhteys", numero: "06", teksti: "Yhteys" },
   ],
 
   tietoa: {
@@ -88,9 +89,30 @@ window.SIVUN_SISALTO = {
     ],
   },
 
+  erp: {
+    otsikko: "Toiminnanohjaus",
+    numero: "03",
+    johdanto:
+      "Havainnollistus ketjusta, jossa asiakas, tarjous ja toimitus kulkevat samassa polussa. ERP- ja CRM-työkalut ovat olleet osa myynnin ja prosessien työtä. Kuvio ei ole väite tietystä käyttöönotetusta järjestelmästä, asiakkaista tai tuloksista.",
+    vaiheet: [
+      { nimi: "Asiakkaat" },
+      { nimi: "Dokumentit" },
+      { nimi: "Tarjouspyynnöt" },
+      { nimi: "Myynti" },
+      { nimi: "CRM" },
+      { nimi: "Projektit" },
+      { nimi: "Tilaukset" },
+      { nimi: "Varasto" },
+      { nimi: "Hallinta" },
+      { nimi: "Integraatiot" },
+      { nimi: "Laskutus" },
+      { nimi: "Raportointi" },
+    ],
+  },
+
   tyot: {
     otsikko: "Työt",
-    numero: "03",
+    numero: "04",
     merkinta: "",
     johdanto:
       "Valikoima rooleja Webmanilta, JCADilta ja Fissionilta. Kortit kuvaavat vastuita, eivät erillisiä asiakasprojekteja.",
@@ -190,7 +212,7 @@ window.SIVUN_SISALTO = {
 
   tausta: {
     otsikko: "Tausta",
-    numero: "04",
+    numero: "05",
     johdanto: "Opinnot, kurssit ja roolit, jotka kulkevat kaupallisen työn rinnalla.",
     kohdat: [
       {
@@ -237,7 +259,7 @@ window.SIVUN_SISALTO = {
 
   yhteys: {
     otsikko: "Yhteys",
-    numero: "05",
+    numero: "06",
     merkinta: "",
     johdanto: "Oulu. LinkedIn on suorin kanava. GitHub on mukana. Sähköpostiosoitetta ei ole julkaistu.",
     linkedin: {

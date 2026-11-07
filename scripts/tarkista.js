@@ -23,7 +23,7 @@ function lue(rel) {
   return fs.readFileSync(tiedosto, "utf8");
 }
 
-["js/sisalto.js", "js/main.js", "js/tausta.js"].forEach(function (tiedosto) {
+["js/sisalto.js", "js/main.js", "js/tausta.js", "js/tori.js", "js/erp.js"].forEach(function (tiedosto) {
   const tulos = spawnSync(process.execPath, ["--check", path.join(juuri, tiedosto)], { encoding: "utf8" });
   if (tulos.status !== 0) fail(tiedosto + " ei ole kelvollista JavaScriptiä:\n" + (tulos.stderr || tulos.stdout));
 });
@@ -72,7 +72,10 @@ if (!data) {
     if (projekti.linkki) fail("Työkorteissa ei ole vahvistettuja projektisivuja");
     if (!["kaari", "viiva", "piste"].includes(projekti.motiivi)) fail("Tuntematon motiivi projektissa " + indeksi);
   });
-  const osiot = ["tietoa", "osaaminen", "tyot", "taustat", "yhteys"];
+  const jarjestys = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
+  const nimet = (data.erp && data.erp.vaiheet || []).map(function (v) { return v.nimi; });
+  if (nimet.join("|") !== jarjestys.join("|")) fail("ERP-vaiheet puuttuvat tai ovat väärässä järjestyksessä");
+  const osiot = ["tietoa", "osaaminen", "erp", "tyot", "taustat", "yhteys"];
   (data.navigointi || []).forEach(function (kohta) {
     if (!osiot.includes(kohta.id)) fail("Navigointi viittaa osioon, jota sivupohja ei piirrä: " + kohta.id);
   });
@@ -82,7 +85,14 @@ const html = lue("index.html");
 const css = lue("css/styles.css");
 const main = lue("js/main.js");
 const tausta = lue("js/tausta.js");
-const lahde = [html, css, main, tausta].join("\n");
+const lahde = [html, css, main, tausta, lue("js/erp.js"), lue("js/tori.js")].join("\n");
+const erpJarjestys = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
+let edellinen = -1;
+erpJarjestys.forEach(function (nimi) {
+  const kohta = html.indexOf("<li>" + nimi + "</li>");
+  if (kohta < 0 || kohta < edellinen) fail("noscript-listasta puuttuu tai järjestys on väärä: " + nimi);
+  edellinen = kohta;
+});
 
 if (!html.includes('lang="fi"')) fail('html-kielisyys puuttuu');
 if (!html.includes("https://github.com/jokkewedsf")) fail("noscript-varasta puuttuu vahvistettu GitHub-osoite");

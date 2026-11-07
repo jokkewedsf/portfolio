@@ -60,63 +60,7 @@
   }
 
   function tori() {
-    const muoto =
-      '<rect x="86" y="196" width="38" height="96" rx="18"/>' +
-      '<rect x="212" y="196" width="38" height="96" rx="18"/>' +
-      '<ellipse cx="102" cy="296" rx="15" ry="13"/>' +
-      '<ellipse cx="234" cy="296" rx="15" ry="13"/>' +
-      '<rect x="122" y="318" width="38" height="56" rx="12"/>' +
-      '<rect x="176" y="318" width="38" height="56" rx="12"/>' +
-      '<ellipse cx="136" cy="374" rx="26" ry="14"/>' +
-      '<ellipse cx="200" cy="374" rx="26" ry="14"/>' +
-      '<path d="M118 176 C78 198 68 244 86 286 C100 332 126 344 168 346 C210 344 236 332 250 286 C268 244 258 198 218 176 Q168 158 118 176 Z"/>' +
-      '<rect x="104" y="252" width="128" height="18" rx="4"/>' +
-      '<path d="M126 184 L214 256" fill="none"/>' +
-      '<ellipse cx="168" cy="136" rx="42" ry="36"/>' +
-      '<ellipse cx="126" cy="140" rx="8" ry="11"/>' +
-      '<ellipse cx="210" cy="140" rx="8" ry="11"/>' +
-      '<path d="M126 118 L128 92 Q128 78 146 76 L190 76 Q208 78 208 92 L210 118 Z"/>' +
-      '<path d="M132 116 Q168 142 204 116 L196 122 Q168 136 140 122 Z"/>';
-    return (
-      '<figure class="tori-kehys">' +
-      '<svg class="tori-kuva" viewBox="0 0 336 460" role="img" aria-labelledby="tori-nimi tori-selite" tabindex="0">' +
-      "<title id=\"tori-nimi\">Toripolliisi</title>" +
-      "<desc id=\"tori-selite\">Tyylitelty muistuma Kaarlo Mikkosen pronssipatsaasta Oulun kauppatorilla. Ei Oulun kaupungin virallinen tunnus.</desc>" +
-      "<defs>" +
-      '<radialGradient id="tori-halo" cx="50%" cy="46%" r="50%">' +
-      '<stop offset="0%" stop-color="#e2b56a" stop-opacity="0.28"/>' +
-      '<stop offset="55%" stop-color="#9af0d0" stop-opacity="0.08"/>' +
-      '<stop offset="100%" stop-color="#9af0d0" stop-opacity="0"/>' +
-      "</radialGradient>" +
-      '<linearGradient id="tori-pronssi" x1="0" y1="0" x2="0" y2="1">' +
-      '<stop offset="0%" stop-color="#8a6844"/>' +
-      '<stop offset="42%" stop-color="#4a3424"/>' +
-      '<stop offset="100%" stop-color="#241910"/>' +
-      "</linearGradient>" +
-      '<linearGradient id="tori-valo" x1="0" y1="0" x2="1" y2="0">' +
-      '<stop offset="0%" stop-color="#fff6e4" stop-opacity="0"/>' +
-      '<stop offset="45%" stop-color="#f3efe4" stop-opacity="0.55"/>' +
-      '<stop offset="100%" stop-color="#9af0d0" stop-opacity="0"/>' +
-      "</linearGradient>" +
-      '<mask id="tori-mask"><g fill="#fff">' + muoto + "</g></mask>" +
-      "</defs>" +
-      '<ellipse class="tori-halo" cx="168" cy="230" rx="132" ry="168" fill="url(#tori-halo)"/>' +
-      '<g class="tori-muoto" fill="url(#tori-pronssi)">' + muoto +
-      '<circle cx="168" cy="92" r="5" fill="#e2b56a"/>' +
-      '<circle cx="168" cy="196" r="3.2" fill="#e2b56a"/>' +
-      '<circle cx="168" cy="214" r="3.2" fill="#e2b56a"/>' +
-      '<circle cx="168" cy="232" r="3.2" fill="#e2b56a"/>' +
-      '<path d="M148 142 h8 M180 142 h8 M154 162 h28" fill="none" stroke="#1b140c" stroke-width="2" stroke-linecap="round"/>' +
-      "</g>" +
-      '<g class="tori-piirto" fill="none" stroke="#e2b56a" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">' +
-      muoto + "</g>" +
-      '<rect class="tori-pyyhka" mask="url(#tori-mask)" x="-40" y="50" width="64" height="360" fill="url(#tori-valo)"/>' +
-      '<rect x="78" y="392" width="180" height="18" rx="3" fill="#1b1612"/>' +
-      '<rect x="96" y="378" width="144" height="16" rx="2" fill="#3a2c22"/>' +
-      "</svg>" +
-      "<figcaption>Toripolliisi, Oulun tori</figcaption>" +
-      "</figure>"
-    );
+    return window.piirraToripolliisi();
   }
 
   function ulkoinenLinkki(luokka, href, teksti, selite) {
@@ -512,10 +456,14 @@
     const valikkoTeksti = nappi && nappi.querySelector(".valikko-teksti");
     if (valikkoTeksti) valikkoTeksti.textContent = data.ui.avaaValikko;
 
-    main.innerHTML = '<div class="kehys">' + hero() + tietoa() + osaaminen() + projektit() + tausta() + yhteys() + "</div>";
+    main.innerHTML =
+      '<div class="kehys">' + hero() + tietoa() + osaaminen() + "</div>" +
+      (window.piirraErp ? window.piirraErp(data.erp) : "") +
+      '<div class="kehys">' + projektit() + tausta() + yhteys() + "</div>";
     rakennaNavigointi();
     alatunniste();
     lisaaRakenteinenData();
+    if (window.alustaErp) window.alustaErp();
   }
 
   function lisaaRakenteinenData() {
