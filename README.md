@@ -2,21 +2,21 @@
 
 Staattinen, suomenkielinen sivu. Ei taustajärjestelmää eikä rakennusvaihetta. Sivusto sopii myöhempään GitHub Pages -julkaisuun, mutta julkaisua ei ole kytketty päälle.
 
-Vahvistettuja tietoja sivulla ovat nimi **Joakim Rydenfelt** ja GitHub-profiili [github.com/jokkewedsf](https://github.com/jokkewedsf). Esittely, osaaminen, projektit ja muut yhteystiedot ovat paikkamerkkejä tai selvästi merkittyjä esimerkkejä, kunnes ne korvataan omalla sisällöllä.
+Sisältö perustuu Joakim Rydenfeltin julkiseen esittelyyn: nimi, otsikko, Oulu, työkokemuksen vastuut, käynnissä olevat opinnot ja kaksi profiililinkkiä. [LinkedIn](https://www.linkedin.com/in/joakim-rydenfelt) ja [GitHub](https://github.com/jokkewedsf) ovat ainoat yhteyslinkit. Sähköpostia ei ole lisätty.
+
+Centria-opinnot 2026–2029 ja Oamkin Construction Management -jaksot on merkitty opinnoiksi, ei valmiiksi tutkinnoiksi. Työkorteissa ei ole keksittyjä mittareita, asiakkaita tai tuloksia.
 
 ## Sisällön muokkaus
 
-Kaikki näkyvä teksti, esimerkkiprojektit ja yhteystiedot ovat tiedostossa [`js/sisalto.js`](js/sisalto.js).
+Kaikki näkyvä teksti ja yhteystiedot ovat tiedostossa [`js/sisalto.js`](js/sisalto.js).
 
-- Tyhjä merkkijono `""` näkyy paikkamerkkinä. Siitä ei tehdä linkkiä.
-- Projekti, jonka `onEsimerkki` ei ole täsmälleen `false`, näytetään esimerkkinä. Merkintä “Esimerkki · ei oikea projekti” pysyy näkyvissä.
-- Aseta `onEsimerkki` arvoksi `false` vasta, kun nimi, kuvaus ja mahdollinen linkki ovat omiasi.
-- Sähköposti lisätään kenttään `yhteys.sahkoposti`. Tyhjänä kenttä ei ole linkki eikä sivulla ole lomaketta.
-- Muut kanavat lisätään listaan `yhteys.muut`. Jokaisella kohteella on `nimi`, `osoite`, `teksti` ja halutessa `selite`. Tyhjä osoite jää paikkamerkiksi.
-- Linkkien on alettava `https://` tai `http://`. Muut osoitteet jätetään näyttämättä.
-- Älä lisää tietoja, joita et halua julkaista. Tiedostossa ei ole keksittyä ammattinimikettä, asiakkaita, tilastoja tai some-tilejä.
+- Tyhjä merkkijono `""` ei piirrä linkkiä eikä tyhjää yhteysriviä.
+- Jos `onEsimerkki` ei ole täsmälleen `false`, kortti näytetään esimerkkinä. Nykyiset kortit ovat oikeita rooleja ja kenttä on `false`.
+- Sähköposti lisätään kenttään `yhteys.sahkoposti` vasta, kun osoite on oikea. Tyhjänä sitä ei näytetä, eikä sivulla ole lomaketta.
+- Muut kanavat lisätään listaan `yhteys.muut`. Linkkien on alettava `https://` tai `http://`.
+- Älä täydennä puuttuvia lukuja, valmistumisvuosia tai asiakasnimiä arvauksella.
 
-Ilman JavaScriptiä näkyvä lyhyt varateksti ja GitHub-osoite ovat [`index.html`](index.html)-tiedoston `noscript`-lohkossa. Päivitä osoite sinnekin, jos profiilin osoite muuttuu.
+Ilman JavaScriptiä näkyvä tiivistelmä ja molemmat profiiliosoitteet ovat [`index.html`](index.html)-tiedoston `noscript`-lohkossa. Päivitä osoitteet sinnekin, jos ne muuttuvat.
 
 ## Tiedostot
 
@@ -46,7 +46,7 @@ Sisällön ja tiedostoviittausten tarkistus:
 node scripts/tarkista.js
 ```
 
-Komento ei lataa ulkoisia palveluita. Se tarkistaa, että JavaScript on ehjää, pakolliset tiedostot löytyvät, linkit eivät ole tyhjiä `#`-ankkureita ja värien kontrasti riittää. Se varmistaa myös nykyisen vahvistetun nimen ja GitHub-osoitteen. Jos ne myöhemmin vaihtuvat oikeasti, päivitä vastaavat odotukset tarkistimessa.
+Komento ei lataa ulkoisia palveluita. Se tarkistaa, että JavaScript on ehjää, pakolliset tiedostot löytyvät, linkit eivät ole tyhjiä `#`-ankkureita ja värien kontrasti riittää. Se varmistaa myös nimen, LinkedIn- ja GitHub-osoitteet sekä sen, etteivät opinnot ole merkitty valmiiksi tutkinnoiksi. Jos tiedot myöhemmin vaihtuvat oikeasti, päivitä vastaavat odotukset tarkistimessa.
 
 ## GitHub Pages myöhemmin
 

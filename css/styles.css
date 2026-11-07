@@ -428,6 +428,17 @@ main {
   color: var(--leipa);
 }
 
+.ammattiotsikko {
+  margin: 0 0 1rem;
+  max-width: 36rem;
+  font-family: var(--font-naytto);
+  font-weight: 460;
+  font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+  color: var(--teksti);
+}
+
 .huomautus {
   margin-top: 1.1rem;
   max-width: 38rem;
@@ -708,7 +719,7 @@ main {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -797,6 +808,12 @@ main {
 .kortti-runko h3 {
   margin: 0;
   font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.kortti-meta {
+  margin: 0;
+  color: var(--himmea);
+  font-size: 0.98rem;
 }
 
 .kortti-runko p {
@@ -1095,10 +1112,19 @@ main,
   .osaaminen-lista {
     grid-template-columns: 1fr 1fr;
   }
+}
 
-  .osa-kortti:last-child {
-    grid-column: 1 / -1;
-  }
+.tausta-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.tausta-kohta h3 {
+  margin: 0.15rem 0 0.45rem;
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {

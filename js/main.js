@@ -130,17 +130,12 @@
           "</a>"
         );
       });
-    const github = httpUrl(data.yhteys && data.yhteys.github && data.yhteys.github.osoite);
-    if (github) {
-      osiot.push(
-        ulkoinenLinkki(
-          "nav-ulkoinen",
-          github,
-          (data.yhteys.github && data.yhteys.github.navTeksti) || "GitHub",
-          data.yhteys.github.selite || ""
-        )
-      );
-    }
+    ["linkedin", "github"].forEach(function (avain) {
+      const kanava = data.yhteys && data.yhteys[avain];
+      const osoite = httpUrl(kanava && kanava.osoite);
+      if (!osoite) return;
+      osiot.push(ulkoinenLinkki("nav-ulkoinen", osoite, kanava.navTeksti || avain, kanava.selite || ""));
+    });
     nav.innerHTML = osiot.join("");
   }
 
@@ -165,13 +160,19 @@
   }
 
   function hero() {
-    const github = data.yhteys && data.yhteys.github ? data.yhteys.github : {};
-    const githubNappi = ulkoinenLinkki(
+    const linkedin = data.yhteys && data.yhteys.linkedin ? data.yhteys.linkedin : {};
+    const linkedinNappi = ulkoinenLinkki(
       "nappi nappi-ensisijainen",
-      github.osoite,
-      data.hero.githubNappi || "GitHub",
-      github.selite || ""
+      linkedin.osoite,
+      data.hero.linkedinNappi || "LinkedIn",
+      linkedin.selite || ""
     );
+    const otsikko = data.hero.otsikko
+      ? '<p class="ammattiotsikko">' + esc(data.hero.otsikko) + "</p>"
+      : "";
+    const huomautus = data.hero.huomautus
+      ? '<p class="huomautus">' + esc(data.hero.huomautus) + "</p>"
+      : "";
     return (
       '<section class="hero" id="alku" aria-labelledby="nimi-otsikko">' +
       '<div class="hero-teksti paljasta">' +
@@ -185,17 +186,16 @@
       '</span><span class="nimi-suku" aria-hidden="true">' +
       esc(data.sukunimi) +
       "</span></h1>" +
+      otsikko +
       '<p class="ingressi">' +
       esc(data.hero.ingressi) +
       "</p>" +
       '<div class="toiminnot">' +
-      githubNappi +
+      linkedinNappi +
       '<a class="nappi nappi-toissijainen" href="#tyot">' +
       esc(data.hero.selaaNappi) +
       "</a></div>" +
-      '<p class="huomautus">' +
-      esc(data.hero.huomautus) +
-      "</p>" +
+      huomautus +
       sisallysLista() +
       "</div>" +
       keha() +
@@ -223,13 +223,13 @@
       '<p class="suuri-lause paljasta">' +
       esc(osio.avaus) +
       "</p>" +
-      '<div class="paikka-kortti paljasta"><p class="merkinta merkinta-paikka">' +
-      esc(osio.merkinta) +
-      "</p>" +
+      '<div class="paikka-kortti paljasta">' +
+      (osio.merkinta
+        ? '<p class="merkinta merkinta-paikka">' + esc(osio.merkinta) + "</p>"
+        : "") +
       kappaleet +
-      '<p class="muokkaus">' +
-      esc(osio.muokkaus) +
-      "</p></div></div></section>"
+      (osio.muokkaus ? '<p class="muokkaus">' + esc(osio.muokkaus) + "</p>" : "") +
+      "</div></div></section>"
     );
   }
 
@@ -238,9 +238,11 @@
     const kortit = (osio.kohdat || [])
       .map(function (kohta, indeksi) {
         return (
-          '<li class="osa-kortti paljasta"><p class="merkinta merkinta-paikka">' +
-          esc(osio.merkinta) +
-          '</p><h3>' +
+          '<li class="osa-kortti paljasta">' +
+          (osio.merkinta
+            ? '<p class="merkinta merkinta-paikka">' + esc(osio.merkinta) + "</p>"
+            : "") +
+          "<h3>" +
           esc(kohta.nimi) +
           "</h3><p>" +
           esc(kohta.kuvaus) +
@@ -287,10 +289,14 @@
           .join("");
         const linkkiHtml = linkki
           ? ulkoinenLinkki("tekstilinkki", linkki, linkinTeksti, "")
-          : '<p class="ei-linkkia">' + esc(osio.eiLinkkia) + "</p>";
+          : esimerkki
+            ? '<p class="ei-linkkia">' + esc(osio.eiLinkkia) + "</p>"
+            : "";
         const merkkiHtml = esimerkki
           ? '<p class="merkinta merkinta-esimerkki">' + esc(osio.esimerkkiMerkinta) + "</p>"
           : "";
+        const meta = [projekti.organisaatio, projekti.rooli].filter(Boolean).join(" · ");
+        const ala = [projekti.aika, projekti.paikka].filter(Boolean).join(" · ");
         return (
           '<article class="kortti paljasta" style="--savy-a:' + a + ";--savy-b:" + b + '">' +
           '<div class="kortti-motiivi motiivi-' + motiivi + '" aria-hidden="true"></div>' +
@@ -299,6 +305,8 @@
           "<h3 id=\"" + id + '-otsikko">' +
           esc(projekti.nimi) +
           "</h3>" +
+          (meta ? '<p class="kortti-meta">' + esc(meta) + "</p>" : "") +
+          (ala ? '<p class="kortti-meta">' + esc(ala) + "</p>" : "") +
           "<p>" +
           esc(projekti.tiivis) +
           "</p>" +
@@ -351,29 +359,57 @@
     );
   }
 
+  function kanavaLinkki(otsikko, kanava) {
+    const url = httpUrl(kanava && kanava.osoite);
+    if (!url) return "";
+    const nimiTeksti = [otsikko, kanava.teksti || url, kanava.selite || ""].filter(Boolean).join(". ");
+    return (
+      '<a class="kanava kanava-linkki" aria-label="' + esc(nimiTeksti) + '" href="' +
+      esc(url) +
+      '" target="_blank" rel="me noopener noreferrer">' +
+      '<span class="kanava-otsikko">' + esc(otsikko) + "</span>" +
+      '<svg class="nuoli" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M9 6h9v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
+      '<span class="kanava-arvo">' + esc(kanava.teksti || url) + "</span>" +
+      '<span class="kanava-selite">' + esc(kanava.selite || "") +
+      '<span class="sr-only"> ' + esc(data.ui.uusiValilehti) + "</span></span></a>"
+    );
+  }
+
+  function tausta() {
+    const osio = data.tausta;
+    if (!osio || !Array.isArray(osio.kohdat) || !osio.kohdat.length) return "";
+    const kohdat = osio.kohdat
+      .map(function (kohta) {
+        return (
+          '<li class="tausta-kohta paikka-kortti paljasta">' +
+          (kohta.meta ? '<p class="kanava-otsikko">' + esc(kohta.meta) + "</p>" : "") +
+          "<h3>" + esc(kohta.nimi) + "</h3>" +
+          (kohta.teksti ? "<p>" + esc(kohta.teksti) + "</p>" : "") +
+          "</li>"
+        );
+      })
+      .join("");
+    return (
+      '<section class="osio" id="taustat" aria-labelledby="tausta-otsikko">' +
+      '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
+      '<div class="osio-otsake paljasta"><p class="silma">' +
+      esc(osio.numero) +
+      '</p><h2 id="tausta-otsikko">' +
+      esc(osio.otsikko) +
+      '</h2><p class="johdanto">' +
+      esc(osio.johdanto) +
+      "</p></div>" +
+      '<ul class="tausta-lista">' +
+      kohdat +
+      "</ul></section>"
+    );
+  }
+
   function yhteys() {
     const osio = data.yhteys;
-    const github = osio.github || {};
-    const url = httpUrl(github.osoite);
     const posti = sahkoposti(osio.sahkoposti);
-    let githubHtml = "";
-    if (url) {
-      const githubNimi = ["GitHub", github.teksti || url, github.selite || ""].filter(Boolean).join(". ");
-      githubHtml =
-        '<a class="kanava kanava-linkki" aria-label="' + esc(githubNimi) + '" href="' +
-        esc(url) +
-        '" target="_blank" rel="me noopener noreferrer">' +
-        '<span class="kanava-otsikko">GitHub</span>' +
-        '<svg class="nuoli" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M9 6h9v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
-        '<span class="kanava-arvo">' +
-        esc(github.teksti || url) +
-        "</span>" +
-        '<span class="kanava-selite">' +
-        esc(github.selite || "") +
-        '<span class="sr-only"> ' +
-        esc(data.ui.uusiValilehti) +
-        "</span></span></a>";
-    }
+    const linkedinHtml = kanavaLinkki("LinkedIn", osio.linkedin);
+    const githubHtml = kanavaLinkki("GitHub", osio.github);
     const postiHtml = posti
       ? '<a class="kanava kanava-linkki" href="mailto:' +
         esc(posti) +
@@ -382,11 +418,13 @@
         '</span><svg class="nuoli" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M9 6h9v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="kanava-arvo">' +
         esc(posti) +
         '</span><span class="kanava-selite">mailto</span></a>'
-      : kanavaPaikka(osio.sahkopostiOtsikko, osio.sahkopostiTyhja, osio.sahkopostiSelite);
+      : osio.sahkopostiTyhja
+        ? kanavaPaikka(osio.sahkopostiOtsikko, osio.sahkopostiTyhja, osio.sahkopostiSelite)
+        : "";
 
     const muut = Array.isArray(osio.muut) ? osio.muut : [];
     let muutHtml = "";
-    if (!muut.length) {
+    if (!muut.length && osio.muutTyhja) {
       muutHtml = kanavaPaikka(osio.muutOtsikko, osio.muutTyhja, "");
     } else {
       muutHtml = muut
@@ -421,6 +459,7 @@
       esc(osio.johdanto) +
       "</p></div>" +
       '<div class="yhteys-lista paljasta">' +
+      linkedinHtml +
       githubHtml +
       postiHtml +
       muutHtml +
@@ -434,9 +473,11 @@
       esc(nimi) +
       '</p><p>' +
       esc(data.alatunniste.kuvaus) +
-      '</p><p class="muokkaus">' +
-      esc(data.alatunniste.muokkaus) +
-      '</p><a class="tekstilinkki" href="#alku">' +
+      "</p>" +
+      (data.alatunniste.muokkaus
+        ? '<p class="muokkaus">' + esc(data.alatunniste.muokkaus) + "</p>"
+        : "") +
+      '<a class="tekstilinkki" href="#alku">' +
       esc(data.alatunniste.ylos) +
       "</a></div>";
   }
@@ -450,20 +491,27 @@
     const valikkoTeksti = nappi && nappi.querySelector(".valikko-teksti");
     if (valikkoTeksti) valikkoTeksti.textContent = data.ui.avaaValikko;
 
-    main.innerHTML = '<div class="kehys">' + hero() + tietoa() + osaaminen() + projektit() + yhteys() + "</div>";
+    main.innerHTML = '<div class="kehys">' + hero() + tietoa() + osaaminen() + projektit() + tausta() + yhteys() + "</div>";
     rakennaNavigointi();
     alatunniste();
     lisaaRakenteinenData();
   }
 
   function lisaaRakenteinenData() {
-    const github = httpUrl(data.yhteys && data.yhteys.github && data.yhteys.github.osoite);
+    const sameAs = ["linkedin", "github"]
+      .map(function (avain) {
+        return httpUrl(data.yhteys && data.yhteys[avain] && data.yhteys[avain].osoite);
+      })
+      .filter(Boolean);
     const kuvaus = {
       "@context": "https://schema.org",
       "@type": "Person",
       name: nimi,
     };
-    if (github) kuvaus.sameAs = [github];
+    if (sameAs.length) kuvaus.sameAs = sameAs;
+    if (data.paikka) kuvaus.homeLocation = { "@type": "Place", name: data.paikka };
+    if (data.nykyinenRooli) kuvaus.jobTitle = data.nykyinenRooli;
+    if (data.tyonantaja) kuvaus.worksFor = { "@type": "Organization", name: data.tyonantaja };
     let solmu = document.getElementById("rakenteinen-data");
     if (!solmu) {
       solmu = document.createElement("script");

@@ -44,25 +44,35 @@ if (!data) {
     fail("Nimen on pysyttävä vahvistettuna, kunnes sitä muokataan tietoisesti: Joakim Rydenfelt");
   }
   const github = data.yhteys && data.yhteys.github && data.yhteys.github.osoite;
+  const linkedin = data.yhteys && data.yhteys.linkedin && data.yhteys.linkedin.osoite;
   if (github !== "https://github.com/jokkewedsf") {
     fail("Vahvistettu GitHub-osoite puuttuu tai on muuttunut: " + github);
   }
-  const posti = data.yhteys.sahkoposti;
-  if (posti !== "" && !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(posti)) {
-    fail("Sähköposti on täytetty, mutta se ei ole kelvollinen osoite");
+  if (linkedin !== "https://www.linkedin.com/in/joakim-rydenfelt") {
+    fail("Vahvistettu LinkedIn-osoite puuttuu tai on muuttunut: " + linkedin);
+  }
+  if (data.yhteys.sahkoposti !== "") fail("Sähköpostia ei ole vahvistettu, kentän on oltava tyhjä");
+  const teksti = JSON.stringify(data);
+  ["Paikkamerkki", "Esimerkkiprojekti", "seuraajaa", "Open to work"].forEach(function (kielletty) {
+    if (teksti.includes(kielletty)) fail("Sisältö sisältää kielletyn tai paikkamerkkitekstin: " + kielletty);
+  });
+  if (!/opinnot käynnissä/i.test(teksti)) fail("Centrian opinnot eivät näy käynnissä olevina");
+  if (!/ei ole ilmoitettu/i.test(teksti)) fail("Oamkin jakso pitää merkitä ilman suoritettua tutkintoa");
+  if (/valmistunut|tutkinto on valmis|suorittanut tutkinnon/i.test(teksti)) {
+    fail("Sisältö väittää tutkinnon valmistuneen");
   }
   if (!Array.isArray(data.tyot.projektit) || !data.tyot.projektit.length) {
     fail("Työt-osiosta puuttuvat projektit");
   }
   data.tyot.projektit.forEach(function (projekti, indeksi) {
-    if (typeof projekti.onEsimerkki !== "boolean") fail("Projektilla " + indeksi + " on oltava boolean onEsimerkki");
-    if (!projekti.nimi) fail("Projektilla " + indeksi + " ei ole nimeä");
-    if (projekti.linkki && !/^https?:\/\//.test(projekti.linkki)) {
-      fail("Projektin " + indeksi + " linkki ei ole http(s)-osoite");
+    if (projekti.onEsimerkki !== false) fail("Työkortti " + indeksi + " on yhä merkitty esimerkiksi");
+    if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) {
+      fail("Työkortilta " + indeksi + " puuttuu nimi, organisaatio tai rooli");
     }
+    if (projekti.linkki) fail("Työkorteissa ei ole vahvistettuja projektisivuja");
     if (!["kaari", "viiva", "piste"].includes(projekti.motiivi)) fail("Tuntematon motiivi projektissa " + indeksi);
   });
-  const osiot = ["tietoa", "osaaminen", "tyot", "yhteys"];
+  const osiot = ["tietoa", "osaaminen", "tyot", "taustat", "yhteys"];
   (data.navigointi || []).forEach(function (kohta) {
     if (!osiot.includes(kohta.id)) fail("Navigointi viittaa osioon, jota sivupohja ei piirrä: " + kohta.id);
   });
@@ -76,6 +86,9 @@ const lahde = [html, css, main, tausta].join("\n");
 
 if (!html.includes('lang="fi"')) fail('html-kielisyys puuttuu');
 if (!html.includes("https://github.com/jokkewedsf")) fail("noscript-varasta puuttuu vahvistettu GitHub-osoite");
+if (!html.includes("https://www.linkedin.com/in/joakim-rydenfelt")) {
+  fail("noscript-varasta puuttuu vahvistettu LinkedIn-osoite");
+}
 if (!/prefers-reduced-motion/.test(css)) fail("CSS ei huomioi liikkeen vähentämistä");
 if (!/:focus-visible/.test(css)) fail("CSS:stä puuttuu näkyvä fokus");
 if (/href\s*=\s*"#"/.test(lahde) || /href\s*=\s*'#'/.test(lahde)) {
