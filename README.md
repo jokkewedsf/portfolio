@@ -2,6 +2,8 @@
 
 Staattinen, suomenkielinen sivu. Ei taustajärjestelmää eikä rakennusvaihetta. Sivusto sopii myöhempään GitHub Pages -julkaisuun, mutta julkaisua ei ole kytketty päälle.
 
+Etusivun hahmo on oma tyylitelmä Oulun kauppatorin Toripolliisi-patsaasta. Se ei ole kaupungin virallinen tunnus eikä valokuva patsaasta.
+
 Sisältö perustuu Joakim Rydenfeltin julkiseen esittelyyn: nimi, otsikko, Oulu, työkokemuksen vastuut, käynnissä olevat opinnot ja kaksi profiililinkkiä. [LinkedIn](https://www.linkedin.com/in/joakim-rydenfelt) ja [GitHub](https://github.com/jokkewedsf) ovat ainoat yhteyslinkit. Sähköpostia ei ole lisätty.
 
 Centria-opinnot 2026–2029 ja Oamkin Construction Management -jaksot on merkitty opinnoiksi, ei valmiiksi tutkinnoiksi. Työkorteissa ei ole keksittyjä mittareita, asiakkaita tai tuloksia.
