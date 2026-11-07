@@ -122,7 +122,7 @@
     if (annettu.ui && typeof annettu.ui === "object") {
       var ui = oletus().ui;
       Object.keys(ui).forEach(function (avain) {
-        if (annettu.ui[avain]) ui[avain] = teksti(annettu.ui[avain], 400) || ui[avain];
+        if (Object.prototype.hasOwnProperty.call(annettu.ui, avain)) ui[avain] = teksti(annettu.ui[avain], 400);
       });
       tulos.ui = ui;
     }
@@ -295,13 +295,11 @@
     yla.appendChild(elementti("h2", "aula-demo-otsikko", asetukset.ui.title));
     yla.appendChild(elementti("p", "aula-demo-merkki", asetukset.ui.demoLabel));
     juuri.appendChild(yla);
-    juuri.appendChild(elementti(
-      "p",
-      "aula-demo-ingressi",
-      asetukset.businessName + " · " + asetukset.industry + " · " + asetukset.city + ". " + asetukset.ui.sampleNote
-    ));
-    juuri.appendChild(elementti("p", "aula-demo-huomio", asetukset.ui.simulatedNote));
-    juuri.appendChild(elementti("p", "aula-demo-ingressi", asetukset.ui.privacy));
+    var ingressi = asetukset.businessName + " · " + asetukset.industry + " · " + asetukset.city;
+    if (asetukset.ui.sampleNote) ingressi += ". " + asetukset.ui.sampleNote;
+    juuri.appendChild(elementti("p", "aula-demo-ingressi", ingressi));
+    if (asetukset.ui.simulatedNote) juuri.appendChild(elementti("p", "aula-demo-huomio", asetukset.ui.simulatedNote));
+    if (asetukset.ui.privacy) juuri.appendChild(elementti("p", "aula-demo-ingressi", asetukset.ui.privacy));
 
     var loki = elementti("div", "aula-demo-loki");
     loki.setAttribute("role", "log");

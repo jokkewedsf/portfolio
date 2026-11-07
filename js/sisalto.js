@@ -115,14 +115,14 @@ window.SIVUN_SISALTO = {
         otsikko: "Simuloitu vastaanotto",
         numero: "04",
         johdanto:
-          "Aula on työnimi simuloidulle vastaanotolle. Esimerkkiyritys on kuvitteellinen, ei oma asiakas eikä toteutus. Vastaukset tulevat paikallisesta tietopohjasta. Älä kirjoita henkilötietoja.",
+          "Aula on työnimi simuloidulle vastaanotolle. Pohjolan Hammas on kuvitteellinen esimerkki, ei asiakas.",
         tuote: "Aula",
         huom: "työnimi",
         yritys: "Pohjolan Hammas",
         ala: "Hammaslääkäri",
         kaupunki: "Helsinki",
         tervehdys:
-          "Hei, olen Aula-esimerkin vastaanottoavustaja Pohjolan Hampaalla. Yritys on kuvitteellinen, ja vastaukset ovat simuloituja vain tämän tietopohjan perusteella. Viestiä ei lähetetä eikä tallenneta.",
+          "Hei, olen Pohjolan Hampaan esimerkkivastaanotto. Voin vastata vain tämän tietopohjan kysymyksiin.",
         profiili: {
           summary: "Pohjolan Hammas on kuvitteellinen hammaslääkäriasema Helsingissä. Tämä ei ole sivuston omistajan palvelu eikä asiakasreferenssi.",
           services: "Hammastarkastus, paikkaus ja särkyvastaanotto. Hammasimplantteja ei tehdä.",
@@ -142,9 +142,9 @@ window.SIVUN_SISALTO = {
         ui: {
           title: "Esimerkki asiakaspalvelusta",
           demoLabel: "Demo – simuloidut vastaukset",
-          sampleNote: "Kuvitteellinen esimerkkiaineisto, ei sivuston omistajan lupaus eikä asiakasreferenssi.",
-          simulatedNote: "Simuloitu vastaus. Ei live-tekoälyä, ei maksua, ei verkkolähetystä eikä tallennusta.",
-          privacy: "Älä kirjoita henkilötietoja, korttinumeroita tai salasanoja. Kysymys ei lähde tältä sivulta.",
+          sampleNote: "",
+          simulatedNote: "Simuloitu vastaus. Ei tekoälyä, verkkolähetystä eikä tallennusta. Älä kirjoita henkilötietoja.",
+          privacy: "",
           messageLabel: "Kysymys esimerkkiyritykselle",
           placeholder: "Kysy esimerkkiyritykseltä…",
           send: "Lähetä",
@@ -409,14 +409,14 @@ window.SIVUN_SISALTO = {
         otsikko: "Simulated front desk",
         numero: "04",
         johdanto:
-          "Aula is a working title for a simulated front desk. The sample business is fictional. It is not a client or a completed case. Answers come from a local knowledge base. Do not enter personal information.",
+          "Aula is a working title for a simulated front desk. Pohjolan Hammas is a fictional example, not a client.",
         tuote: "Aula",
         huom: "working title",
         yritys: "Pohjolan Hammas",
         ala: "Dental clinic",
         kaupunki: "Helsinki",
         tervehdys:
-          "Hello, I am the sample front desk for Pohjolan Hammas. The clinic is fictional, and every reply is simulated from this knowledge base only. Nothing is sent or stored.",
+          "Hello, I am the sample front desk for Pohjolan Hammas. I can answer only from this knowledge base.",
         profiili: {
           summary: "Pohjolan Hammas is a fictional dental clinic in Helsinki. This is sample material, not a service or client of the site owner.",
           services: "Check-up, filling and emergency visit. Implants are not offered.",
@@ -436,9 +436,9 @@ window.SIVUN_SISALTO = {
         ui: {
           title: "Sample customer service",
           demoLabel: "Demo – simulated responses",
-          sampleNote: "Fictional sample material. Not a promise or a client reference of the site owner.",
-          simulatedNote: "Simulated reply. No live AI, no payment, no network send and no storage.",
-          privacy: "Do not enter personal data, card numbers or passwords. The question never leaves this page.",
+          sampleNote: "",
+          simulatedNote: "Simulated reply. No AI, no network send and no storage. Do not enter personal data.",
+          privacy: "",
           messageLabel: "Question for the sample business",
           placeholder: "Ask the sample business…",
           send: "Send",

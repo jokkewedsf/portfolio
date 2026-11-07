@@ -1472,14 +1472,32 @@ main,
   margin-inline: auto;
 }
 
+.aula-asetelma {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
 .aula-osio h2 {
-  font-size: clamp(2.3rem, 5vw, 4rem);
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
   max-width: 12ch;
 }
 
+.aula-johdanto .johdanto {
+  max-width: 28rem;
+}
+
 #aula-demo-juuri {
-  max-width: 46rem;
-  margin-top: 1.25rem;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .aula-asetelma {
+    grid-template-columns: 1fr;
+  }
 }
 
 .erp-svg {

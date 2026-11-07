@@ -580,10 +580,11 @@
     if (!osio) return "";
     return (
       '<section class="osio aula-osio" id="aula-demo" aria-labelledby="aula-otsikko">' +
-      '<div class="osio-otsake"><p class="silma">' + esc(osio.numero) + "</p>" +
+      '<div class="aula-asetelma">' +
+      '<div class="aula-johdanto"><p class="silma">' + esc(osio.numero) + "</p>" +
       '<h2 id="aula-otsikko">' + esc(osio.otsikko) + "</h2>" +
       '<p class="johdanto">' + esc(osio.johdanto) + "</p></div>" +
-      '<div id="aula-demo-juuri"></div></section>'
+      '<div id="aula-demo-juuri"></div></div></section>'
     );
   }
 
