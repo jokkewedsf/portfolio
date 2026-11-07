@@ -42,9 +42,10 @@ window.SIVUN_SISALTO = {
         { id: "tietoa", numero: "01", teksti: "Tietoa" },
         { id: "osaaminen", numero: "02", teksti: "Osaaminen" },
         { id: "erp", numero: "03", teksti: "Polku" },
-        { id: "tyot", numero: "04", teksti: "Työ" },
-        { id: "taustat", numero: "05", teksti: "Tausta" },
-        { id: "yhteys", numero: "06", teksti: "Yhteys" },
+        { id: "aula-demo", numero: "04", teksti: "Demo" },
+        { id: "tyot", numero: "05", teksti: "Työ" },
+        { id: "taustat", numero: "06", teksti: "Tausta" },
+        { id: "yhteys", numero: "07", teksti: "Yhteys" },
       ],
 
       tietoa: {
@@ -110,9 +111,64 @@ window.SIVUN_SISALTO = {
         ],
       },
 
+      aula: {
+        otsikko: "Simuloitu vastaanotto",
+        numero: "04",
+        johdanto:
+          "Aula on työnimi simuloidulle vastaanotolle. Esimerkkiyritys on kuvitteellinen, ei oma asiakas eikä toteutus. Vastaukset tulevat paikallisesta tietopohjasta. Älä kirjoita henkilötietoja.",
+        tuote: "Aula",
+        huom: "työnimi",
+        yritys: "Pohjolan Hammas",
+        ala: "Hammaslääkäri",
+        kaupunki: "Helsinki",
+        tervehdys:
+          "Hei, olen Aula-esimerkin vastaanottoavustaja Pohjolan Hampaalla. Yritys on kuvitteellinen, ja vastaukset ovat simuloituja vain tämän tietopohjan perusteella. Viestiä ei lähetetä eikä tallenneta.",
+        profiili: {
+          summary: "Pohjolan Hammas on kuvitteellinen hammaslääkäriasema Helsingissä. Tämä ei ole sivuston omistajan palvelu eikä asiakasreferenssi.",
+          services: "Hammastarkastus, paikkaus ja särkyvastaanotto. Hammasimplantteja ei tehdä.",
+          address: "Esimerkkikatu 12, 00100 Helsinki"
+        },
+        ukk: [
+          { q: "Miten varaan ajan?", a: "Tässä esimerkissä ajanvaraus kuvataan puhelimitse. Demo ei tee varausta eikä yhdistä oikeaan vastaanottoon." },
+          { q: "Mitä tarkastus maksaa?", a: "Kuvitteellisessa hinnastossa hammastarkastus on 75 €. Summa on esimerkkiaineistoa, eikä sitä laskuteta." },
+          { q: "Missä vastaanotto sijaitsee?", a: "Esimerkkivastaanotto sijaitsee osoitteessa Esimerkkikatu 12, 00100 Helsinki." }
+        ],
+        yhteys: {
+          email: "vastaanotto@example.com",
+          phone: "puhelin vain tekstinä",
+          hours: "ma–to 8–18, pe 8–15",
+          fallback: "Tämä on simuloitu ohjaus. Demoon kirjoitettua viestiä ei lähetetä eikä tallenneta."
+        },
+        ui: {
+          title: "Esimerkki asiakaspalvelusta",
+          demoLabel: "Demo – simuloidut vastaukset",
+          sampleNote: "Kuvitteellinen esimerkkiaineisto, ei sivuston omistajan lupaus eikä asiakasreferenssi.",
+          simulatedNote: "Simuloitu vastaus. Ei live-tekoälyä, ei maksua, ei verkkolähetystä eikä tallennusta.",
+          privacy: "Älä kirjoita henkilötietoja, korttinumeroita tai salasanoja. Kysymys ei lähde tältä sivulta.",
+          messageLabel: "Kysymys esimerkkiyritykselle",
+          placeholder: "Kysy esimerkkiyritykseltä…",
+          send: "Lähetä",
+          visitor: "Vierailija",
+          greetingBadge: "Asetettu tervehdys",
+          answerBadge: "Simuloitu vastaus",
+          sourcePrefix: "Lähde: ",
+          notAi: "Ei tekoälyn tuottama",
+          empty: "Kirjoita viesti.",
+          humanLead: "Tämä on simuloitu ohjaus ihmiselle. Oikeaa yhteydenottoa ei tapahdu.",
+          fallbackLead: "En löydä tähän vastausta tämän esimerkin tietopohjasta.",
+          phone: "Puhelin: ",
+          email: "Sähköposti: ",
+          hours: "Aukiolo: ",
+          humanNote: "Viestiä ei lähetetä eikä tallenneta.",
+          greetingSource: "Asetettu tervehdys, ei tekoälyn tuottama",
+          humanSource: "Esimerkin yhteystiedot",
+          aria: "simuloitu asiakaspalveludemo"
+        }
+      },
+
       tyot: {
         otsikko: "Työ",
-        numero: "04",
+        numero: "05",
         merkinta: "",
         johdanto: "Missä kokonaisuuksia on rakennettu. Kortit kuvaavat vastuuta, eivät erillisiä asiakastoimeksiantoja.",
         nayta: "Näytä kuvaus",
@@ -190,7 +246,7 @@ window.SIVUN_SISALTO = {
 
       tausta: {
         otsikko: "Tausta",
-        numero: "05",
+        numero: "06",
         johdanto: "Valmennus, yrittäjyys ja opinnot kaupallisen työn rinnalla.",
         kohdat: [
           {
@@ -219,7 +275,7 @@ window.SIVUN_SISALTO = {
 
       yhteys: {
         otsikko: "Yhteys",
-        numero: "06",
+        numero: "07",
         merkinta: "",
         johdanto: "Oulu. LinkedIn on suorin kanava.",
         linkedin: {
@@ -280,9 +336,10 @@ window.SIVUN_SISALTO = {
         { id: "tietoa", numero: "01", teksti: "About" },
         { id: "osaaminen", numero: "02", teksti: "Capability" },
         { id: "erp", numero: "03", teksti: "Path" },
-        { id: "tyot", numero: "04", teksti: "Work" },
-        { id: "taustat", numero: "05", teksti: "Background" },
-        { id: "yhteys", numero: "06", teksti: "Contact" },
+        { id: "aula-demo", numero: "04", teksti: "Demo" },
+        { id: "tyot", numero: "05", teksti: "Work" },
+        { id: "taustat", numero: "06", teksti: "Background" },
+        { id: "yhteys", numero: "07", teksti: "Contact" },
       ],
 
       tietoa: {
@@ -348,9 +405,64 @@ window.SIVUN_SISALTO = {
         ],
       },
 
+      aula: {
+        otsikko: "Simulated front desk",
+        numero: "04",
+        johdanto:
+          "Aula is a working title for a simulated front desk. The sample business is fictional. It is not a client or a completed case. Answers come from a local knowledge base. Do not enter personal information.",
+        tuote: "Aula",
+        huom: "working title",
+        yritys: "Pohjolan Hammas",
+        ala: "Dental clinic",
+        kaupunki: "Helsinki",
+        tervehdys:
+          "Hello, I am the sample front desk for Pohjolan Hammas. The clinic is fictional, and every reply is simulated from this knowledge base only. Nothing is sent or stored.",
+        profiili: {
+          summary: "Pohjolan Hammas is a fictional dental clinic in Helsinki. This is sample material, not a service or client of the site owner.",
+          services: "Check-up, filling and emergency visit. Implants are not offered.",
+          address: "Example Street 12, 00100 Helsinki"
+        },
+        ukk: [
+          { q: "How do I book a time?", a: "In this example, booking is described as a phone conversation. The demo does not make a booking or reach a real clinic." },
+          { q: "What does a check-up cost?", a: "In the fictional price list a check-up is 75 €. The amount is sample data and is not charged." },
+          { q: "Where is the clinic?", a: "The sample clinic is at Example Street 12, 00100 Helsinki." }
+        ],
+        yhteys: {
+          email: "reception@example.com",
+          phone: "phone shown as text only",
+          hours: "Mon–Thu 8–18, Fri 8–15",
+          fallback: "This is a simulated handoff. A message typed here is not sent or stored."
+        },
+        ui: {
+          title: "Sample customer service",
+          demoLabel: "Demo – simulated responses",
+          sampleNote: "Fictional sample material. Not a promise or a client reference of the site owner.",
+          simulatedNote: "Simulated reply. No live AI, no payment, no network send and no storage.",
+          privacy: "Do not enter personal data, card numbers or passwords. The question never leaves this page.",
+          messageLabel: "Question for the sample business",
+          placeholder: "Ask the sample business…",
+          send: "Send",
+          visitor: "Visitor",
+          greetingBadge: "Set greeting",
+          answerBadge: "Simulated reply",
+          sourcePrefix: "Source: ",
+          notAi: "Not produced by AI",
+          empty: "Write a message.",
+          humanLead: "This is a simulated handoff to a person. No real contact is made.",
+          fallbackLead: "I cannot find an answer in this sample knowledge base.",
+          phone: "Phone: ",
+          email: "Email: ",
+          hours: "Hours: ",
+          humanNote: "The message is not sent or stored.",
+          greetingSource: "Set greeting, not produced by AI",
+          humanSource: "Sample contact details",
+          aria: "simulated customer-service demo"
+        }
+      },
+
       tyot: {
         otsikko: "Work",
-        numero: "04",
+        numero: "05",
         merkinta: "",
         johdanto: "Where the wholes have been built. The cards describe responsibility, not separate client engagements.",
         nayta: "Show description",
@@ -428,7 +540,7 @@ window.SIVUN_SISALTO = {
 
       tausta: {
         otsikko: "Background",
-        numero: "05",
+        numero: "06",
         johdanto: "Coaching, entrepreneurship and studies alongside the commercial work.",
         kohdat: [
           {
@@ -457,7 +569,7 @@ window.SIVUN_SISALTO = {
 
       yhteys: {
         otsikko: "Contact",
-        numero: "06",
+        numero: "07",
         merkinta: "",
         johdanto: "Oulu. LinkedIn is the direct channel.",
         linkedin: {

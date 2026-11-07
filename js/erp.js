@@ -71,23 +71,24 @@
       .join("");
     return (
       '<section class="erp" id="erp" aria-labelledby="erp-otsikko">' +
+      '<header class="erp-johdanto">' +
+      '<p class="silma">' + esc(osio.numero) + "</p>" +
+      '<h2 id="erp-otsikko">' + esc(osio.otsikko) + "</h2>" +
+      '<p class="johdanto">' + esc(osio.johdanto) + "</p>" +
+      "</header>" +
+      '<div class="erp-rata" id="erp-rata">' +
       '<div class="erp-sticky">' +
-      '<div class="erp-otsake">' +
-      '<p class="silma">' + osio.numero + "</p>" +
-      '<h2 id="erp-otsikko">' + osio.otsikko + "</h2>" +
-      '<p class="johdanto">' + osio.johdanto + "</p>" +
-      '<p class="erp-askel" aria-live="polite"><span id="erp-nyt">' + esc(osio.vaiheet[0].nimi) + '</span> <span class="erp-askel-nro" id="erp-nro">1 / ' +
-      osio.vaiheet.length +
-      "</span></p>" +
-      '<div class="erp-jana" aria-hidden="true"><span id="erp-jana"></span></div>' +
-      "</div>" +
       '<div class="erp-lava" id="erp-lava">' +
       '<div class="erp-seinat" aria-hidden="true"></div>' +
       portit +
       "</div>" +
+      '<p class="erp-askel" aria-live="polite"><span class="sr-only" id="erp-nyt">' + esc(osio.vaiheet[0].nimi) + '</span><span class="erp-askel-nro" id="erp-nro">1 / ' +
+      osio.vaiheet.length +
+      "</span></p>" +
+      '<div class="erp-jana" aria-hidden="true"><span id="erp-jana"></span></div>' +
       '<ol class="erp-indeksi">' + lista + "</ol>" +
       '<ol class="erp-lista">' + staattinen + "</ol>" +
-      "</div></section>"
+      "</div></div></section>"
     );
   };
 
@@ -115,24 +116,26 @@
       }
       osio.classList.remove("erp-hiljaa");
       if (!portit.length) return;
-      const alue = osio.getBoundingClientRect();
+      const rata = document.getElementById("erp-rata") || osio;
+      const alue = rata.getBoundingClientRect();
       if (alue.bottom < 0 || alue.top > window.innerHeight) return;
-      const alku = osio.getBoundingClientRect().top + window.scrollY;
-      const matka = Math.max(1, osio.offsetHeight - window.innerHeight);
+      const alku = alue.top + window.scrollY;
+      const matka = Math.max(1, rata.offsetHeight - window.innerHeight);
       const p = Math.min(1, Math.max(0, (window.scrollY - alku) / matka));
       const focus = p * (portit.length - 1);
       let aktiivinen = Math.round(focus);
       if (aktiivinen < 0) aktiivinen = 0;
       if (aktiivinen > portit.length - 1) aktiivinen = portit.length - 1;
-      const vali = window.innerWidth < 700 ? 460 : 620;
+      const vali = window.innerWidth < 700 ? 520 : 720;
       portit.forEach(function (el, i) {
         const d = i - focus;
         const z = (focus - i) * vali;
         let opacity = 0;
         if (i === aktiivinen) opacity = 1;
-        else if (d > 0.2 && d < 1.35) opacity = 0.16;
+        else if (d > 0.45 && d < 1.15) opacity = 0.14;
         el.style.transform = "translate3d(-50%,-50%," + z.toFixed(1) + "px)";
         el.style.opacity = opacity.toFixed(3);
+        el.style.zIndex = i === aktiivinen ? "5" : "1";
         const piiloon = opacity < 0.05;
         el.style.visibility = piiloon ? "hidden" : "visible";
         el.classList.toggle("on-aktiivinen", i === aktiivinen);
@@ -155,8 +158,9 @@
       const nappi = tapahtuma.target.closest(".erp-piste");
       if (!nappi || hiljaa()) return;
       const indeksi = Number(nappi.getAttribute("data-erp"));
-      const matka = Math.max(1, osio.offsetHeight - window.innerHeight);
-      const alku = osio.getBoundingClientRect().top + window.scrollY;
+      const rata = document.getElementById("erp-rata") || osio;
+      const matka = Math.max(1, rata.offsetHeight - window.innerHeight);
+      const alku = rata.getBoundingClientRect().top + window.scrollY;
       const y = alku + (indeksi / Math.max(1, portit.length - 1)) * matka;
       window.scrollTo({ top: y, behavior: "smooth" });
     }

@@ -64,7 +64,7 @@ if (!data) {
       if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
       if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
     });
-    const osiot = ["tietoa", "osaaminen", "erp", "tyot", "taustat", "yhteys"];
+    const osiot = ["tietoa", "osaaminen", "erp", "aula-demo", "tyot", "taustat", "yhteys"];
     (sivu.navigointi || []).forEach(function (kohta) {
       if (!osiot.includes(kohta.id)) fail(koodi + " navigointi viittaa tuntemattomaan osioon: " + kohta.id);
     });

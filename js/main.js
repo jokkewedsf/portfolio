@@ -119,18 +119,17 @@
       .map(function (kohta) {
         const otsikko = [kohta.numero, kohta.teksti || kohta.id].filter(Boolean).join(" ");
         return (
-          '<a href="#' + esc(kohta.id) + '" aria-label="' + esc(otsikko) + '"><span class="nav-nro">' +
-          esc(kohta.numero || "") +
-          "</span>" +
+          '<a href="#' + esc(kohta.id) + '" aria-label="' + esc(otsikko) + '">' +
           esc(kohta.teksti || kohta.id) +
           "</a>"
         );
       });
-    ["linkedin", "github"].forEach(function (avain) {
+    ["linkedin"].forEach(function (avain) {
       const kanava = data.yhteys && data.yhteys[avain];
       const osoite = httpUrl(kanava && kanava.osoite);
       if (!osoite) return;
-      osiot.push(ulkoinenLinkki("nav-ulkoinen", osoite, kanava.navTeksti || avain, kanava.selite || ""));
+      const luokka = avain === "linkedin" ? "nav-ulkoinen nav-yhteys" : "nav-ulkoinen";
+      osiot.push(ulkoinenLinkki(luokka, osoite, kanava.navTeksti || avain, kanava.selite || ""));
     });
     nav.innerHTML = osiot.join("");
     if (data.ui && data.ui.navAria) nav.setAttribute("aria-label", data.ui.navAria);
@@ -172,7 +171,7 @@
       : "";
     return (
       '<section class="hero" id="alku" aria-labelledby="nimi-otsikko">' +
-      '<div class="hero-teksti paljasta">' +
+      '<div class="hero-teksti">' +
       '<p class="ylateksti"><span class="piste" aria-hidden="true"></span>' +
       esc(data.hero.ylateksti) +
       "</p>" +
@@ -187,7 +186,6 @@
       esc(data.hero.selaaNappi) +
       "</a></div>" +
       huomautus +
-      sisallysLista() +
       "</div></section>"
     );
   }
@@ -568,11 +566,52 @@
     main.innerHTML =
       '<div class="kehys">' + hero() + tietoa() + osaaminen() + "</div>" +
       (window.piirraErp ? window.piirraErp(data.erp) : "") +
+      aulaOsio() +
       '<div class="kehys">' + projektit() + tausta() + yhteys() + "</div>";
     rakennaNavigointi();
     alatunniste();
     lisaaRakenteinenData();
     if (window.alustaErp) window.alustaErp();
+    alustaAula();
+  }
+
+  function aulaOsio() {
+    const osio = data.aula;
+    if (!osio) return "";
+    return (
+      '<section class="osio aula-osio" id="aula-demo" aria-labelledby="aula-otsikko">' +
+      '<div class="osio-otsake"><p class="silma">' + esc(osio.numero) + "</p>" +
+      '<h2 id="aula-otsikko">' + esc(osio.otsikko) + "</h2>" +
+      '<p class="johdanto">' + esc(osio.johdanto) + "</p></div>" +
+      '<div id="aula-demo-juuri"></div></section>'
+    );
+  }
+
+  function aulaAsetukset() {
+    const osio = data.aula;
+    if (!osio) return null;
+    return {
+      productName: osio.tuote,
+      nameNote: osio.huom,
+      businessName: osio.yritys,
+      industry: osio.ala,
+      city: osio.kaupunki,
+      greeting: osio.tervehdys,
+      profile: osio.profiili,
+      faqs: osio.ukk,
+      contact: osio.yhteys,
+      ui: osio.ui
+    };
+  }
+
+  function alustaAula() {
+    if (window.__aulaKahva && typeof window.__aulaKahva.destroy === "function") {
+      window.__aulaKahva.destroy();
+      window.__aulaKahva = null;
+    }
+    const juuri = document.getElementById("aula-demo-juuri");
+    if (!juuri || !window.AulaDemo) return;
+    window.__aulaKahva = window.AulaDemo.mount(juuri, aulaAsetukset());
   }
 
   function lisaaRakenteinenData() {

@@ -97,41 +97,15 @@
     ctx.clearRect(0, 0, leveys, korkeus);
 
     const tausta = ctx.createLinearGradient(0, 0, leveys * 0.2, korkeus);
-    tausta.addColorStop(0, "#080a12");
-    tausta.addColorStop(0.42, "#0b1220");
-    tausta.addColorStop(1, "#07080c");
+    tausta.addColorStop(0, "#12110e");
+    tausta.addColorStop(0.55, "#0c0d0b");
+    tausta.addColorStop(1, "#080907");
     ctx.fillStyle = tausta;
     ctx.fillRect(0, 0, leveys, korkeus);
 
     ctx.globalCompositeOperation = "lighter";
-    kukka(leveys * 0.82 + siirtoX, korkeus * 0.18 + siirtoY, leveys * 0.46, "rgba(120, 196, 255, 0.28)");
-    kukka(leveys * 0.68 - siirtoX * 0.4, korkeus * 0.78, leveys * 0.52, "rgba(110, 230, 190, 0.22)");
-    kukka(leveys * 0.18, korkeus * 0.92, leveys * 0.34, "rgba(214, 166, 92, 0.14)");
-
-    nauha(
-      korkeus * 0.22 + siirtoY,
-      korkeus * 0.07,
-      0.0042,
-      t * 0.18,
-      90,
-      ["rgba(159,212,255,0)", "rgba(159,212,255,0.28)", "rgba(154,240,208,0.1)", "rgba(159,212,255,0)"]
-    );
-    nauha(
-      korkeus * 0.48 + siirtoY * 0.5,
-      korkeus * 0.09,
-      0.0031,
-      t * 0.12 + 1.4,
-      130,
-      ["rgba(154,240,208,0)", "rgba(154,240,208,0.24)", "rgba(226,181,106,0.12)", "rgba(154,240,208,0)"]
-    );
-    nauha(
-      korkeus * 0.7,
-      korkeus * 0.05,
-      0.005,
-      t * 0.22 + 2.2,
-      80,
-      ["rgba(226,181,106,0)", "rgba(226,181,106,0.16)", "rgba(159,212,255,0.08)", "rgba(226,181,106,0)"]
-    );
+    kukka(leveys * 0.78 + siirtoX, korkeus * 0.12 + siirtoY, leveys * 0.42, "rgba(228, 194, 122, 0.09)");
+    kukka(leveys * 0.12, korkeus * 0.88, leveys * 0.28, "rgba(228, 194, 122, 0.05)");
     ctx.globalCompositeOperation = "source-over";
 
     hiukkaset.forEach(function (h) {
@@ -140,7 +114,7 @@
       const y = ((h.y - vaellus + 1) % 1) * korkeus;
       const syke = motion.matches ? 0.45 : 0.28 + Math.sin(t * 0.7 + h.vaihe) * 0.18;
       ctx.beginPath();
-      ctx.fillStyle = h.minttu ? "rgba(154,240,208," + syke + ")" : "rgba(243,239,228," + syke * 0.7 + ")";
+      ctx.fillStyle = h.minttu ? "rgba(228,194,122," + syke * 0.55 + ")" : "rgba(243,239,228," + syke * 0.45 + ")";
       ctx.arc(x, y, h.r, 0, Math.PI * 2);
       ctx.fill();
     });
