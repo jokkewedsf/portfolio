@@ -3,7 +3,20 @@
  * kortit, vierityksen ja näppäimistön. Ei lomaketta eikä keksittyjä linkkejä.
  */
 (function () {
-  const data = window.SIVUN_SISALTO;
+  const juuri = window.SIVUN_SISALTO;
+
+  function lueKieli() {
+    try {
+      const tallennettu = window.localStorage.getItem("kieli");
+      if (tallennettu === "en" || tallennettu === "fi") return tallennettu;
+    } catch (virhe) {
+      return "fi";
+    }
+    return "fi";
+  }
+
+  let kieli = lueKieli();
+  let data = (juuri && juuri.kielet && juuri.kielet[kieli]) || juuri;
   const main = document.getElementById("sisalto");
   const nav = document.getElementById("navigaatio");
   const footer = document.getElementById("alatunniste");
@@ -25,7 +38,8 @@
     return;
   }
 
-  const nimi = [data.etunimi, data.sukunimi].filter(Boolean).join(" ").trim();
+  const nimi = [juuri && juuri.etunimi, juuri && juuri.sukunimi].filter(Boolean).join(" ").trim();
+  let osioTarkkailija = null;
 
   function esc(arvo) {
     return String(arvo == null ? "" : arvo).replace(/[&<>"']/g, function (merkki) {
@@ -59,8 +73,25 @@
     return typeof arvo === "string" && /^#[0-9a-fA-F]{6}$/.test(arvo) ? arvo : oletus;
   }
 
-  function tori() {
-    return window.piirraToripolliisi();
+  function nimiAnimaatio() {
+    function rivi(sana, alku, luokka) {
+      const kirjaimet = String(sana)
+        .split("")
+        .map(function (merkki, indeksi) {
+          return '<span class="nimi-kirjain" style="--i:' + (alku + indeksi) + '">' + esc(merkki) + "</span>";
+        })
+        .join("");
+      return '<span class="nimi-rivi ' + luokka + '" aria-hidden="true">' + kirjaimet + "</span>";
+    }
+    const etunimi = (juuri && juuri.etunimi) || "";
+    const sukunimi = (juuri && juuri.sukunimi) || "";
+    return (
+      '<h1 id="nimi-otsikko" class="nimi-animaatio">' +
+      '<span class="sr-only">' + esc(nimi) + "</span>" +
+      rivi(etunimi, 0, "nimi-etu") +
+      rivi(sukunimi, etunimi.length, "nimi-suku") +
+      "</h1>"
+    );
   }
 
   function ulkoinenLinkki(luokka, href, teksti, selite) {
@@ -102,6 +133,7 @@
       osiot.push(ulkoinenLinkki("nav-ulkoinen", osoite, kanava.navTeksti || avain, kanava.selite || ""));
     });
     nav.innerHTML = osiot.join("");
+    if (data.ui && data.ui.navAria) nav.setAttribute("aria-label", data.ui.navAria);
   }
 
   function sisallysLista() {
@@ -144,13 +176,7 @@
       '<p class="ylateksti"><span class="piste" aria-hidden="true"></span>' +
       esc(data.hero.ylateksti) +
       "</p>" +
-      '<h1 id="nimi-otsikko"><span class="sr-only">' +
-      esc(nimi) +
-      '</span><span class="nimi-etu" aria-hidden="true">' +
-      esc(data.etunimi) +
-      '</span><span class="nimi-suku" aria-hidden="true">' +
-      esc(data.sukunimi) +
-      "</span></h1>" +
+      nimiAnimaatio() +
       otsikko +
       '<p class="ingressi">' +
       esc(data.hero.ingressi) +
@@ -162,9 +188,7 @@
       "</a></div>" +
       huomautus +
       sisallysLista() +
-      "</div>" +
-      tori() +
-      "</section>"
+      "</div></section>"
     );
   }
 
@@ -275,7 +299,7 @@
           "<p>" +
           esc(projekti.tiivis) +
           "</p>" +
-          '<button type="button" class="nappi-teksti" aria-expanded="false" aria-controls="' +
+          '<button type="button" class="nappi-teksti" id="' + id + '-nappi" aria-expanded="false" aria-controls="' +
           id +
           '-lisa">' +
           esc(osio.nayta) +
@@ -447,14 +471,99 @@
       "</a></div>";
   }
 
+  function paivitaKieli() {
+    document.documentElement.lang = kieli === "en" ? "en" : "fi";
+    const ryhma = document.getElementById("kieli");
+    if (ryhma && data.ui && data.ui.kieli) ryhma.setAttribute("aria-label", data.ui.kieli);
+    ["fi", "en"].forEach(function (koodi) {
+      const nappiKieli = document.getElementById("kieli-" + koodi);
+      if (nappiKieli) nappiKieli.setAttribute("aria-pressed", kieli === koodi ? "true" : "false");
+    });
+    const locale = document.querySelector('meta[property="og:locale"]');
+    if (locale) locale.setAttribute("content", kieli === "en" ? "en_US" : "fi_FI");
+  }
+
+  function fokusMerkki(el) {
+    if (!el || el === document.body) return "";
+    if (el.id) return "id:" + el.id;
+    const erp = el.closest && el.closest("[data-erp]");
+    if (erp) return "erp:" + erp.getAttribute("data-erp");
+    const href = el.getAttribute && el.getAttribute("href");
+    if (href) return "href:" + href;
+    return "";
+  }
+
+  function palautaFokus(merkkiFokus) {
+    let kohde = null;
+    if (merkkiFokus.indexOf("id:") === 0) kohde = document.getElementById(merkkiFokus.slice(3));
+    else if (merkkiFokus.indexOf("erp:") === 0) {
+      kohde = document.querySelector('.erp-piste[data-erp="' + merkkiFokus.slice(4) + '"]');
+    } else if (merkkiFokus.indexOf("href:") === 0) {
+      const href = merkkiFokus.slice(5);
+      kohde = document.querySelector('a[href="' + href.replace(/"/g, "") + '"]');
+    }
+    if (kohde && typeof kohde.focus === "function") kohde.focus({ preventScroll: true });
+  }
+
+  function vaihdaKieli(uusi) {
+    if (uusi !== "fi" && uusi !== "en") return;
+    if (!juuri.kielet || !juuri.kielet[uusi] || uusi === kieli) return;
+    const y = window.scrollY;
+    const avoimet = Array.prototype.map.call(
+      document.querySelectorAll('.nappi-teksti[aria-expanded="true"]'),
+      function (el) { return el.getAttribute("aria-controls"); }
+    );
+    const merkkiFokus = fokusMerkki(document.activeElement);
+    try {
+      window.localStorage.setItem("kieli", uusi);
+    } catch (virhe) {
+      /* tallennus ei ole välttämätön */
+    }
+    kieli = uusi;
+    data = juuri.kielet[kieli];
+    rakennaSivu();
+    alustaKortit();
+    alustaPaljastukset();
+    alustaNykyinenOsio();
+    avoimet.forEach(function (id) {
+      if (!id) return;
+      const paneeli = document.getElementById(id);
+      const painike = document.querySelector('[aria-controls="' + id + '"]');
+      if (!paneeli || !painike) return;
+      painike.setAttribute("aria-expanded", "true");
+      painike.textContent = data.tyot.piilota;
+      paneeli.hidden = false;
+    });
+    const juuriHtml = document.documentElement;
+    const aiempi = juuriHtml.style.scrollBehavior;
+    juuriHtml.style.scrollBehavior = "auto";
+    window.scrollTo(0, y);
+    juuriHtml.style.scrollBehavior = aiempi;
+    palautaFokus(merkkiFokus);
+  }
+
+  function alustaKieli() {
+    const ryhma = document.getElementById("kieli");
+    if (!ryhma) return;
+    ryhma.addEventListener("click", function (tapahtuma) {
+      const nappiKieli = tapahtuma.target.closest("button[data-kieli]");
+      if (!nappiKieli) return;
+      vaihdaKieli(nappiKieli.getAttribute("data-kieli"));
+    });
+  }
+
   function rakennaSivu() {
-    document.title = nimi || "Henkilökohtainen sivu";
+    document.title = nimi || "Joakim Rydenfelt";
     const kuvaus = document.querySelector('meta[name="description"]');
     if (kuvaus && data.kuvaus) kuvaus.setAttribute("content", data.kuvaus);
+    const og = document.querySelector('meta[property="og:description"]');
+    if (og && data.kuvaus) og.setAttribute("content", data.kuvaus);
     if (merkki) merkki.textContent = nimi;
     if (ohitus && data.ui.ohitus) ohitus.textContent = data.ui.ohitus;
     const valikkoTeksti = nappi && nappi.querySelector(".valikko-teksti");
-    if (valikkoTeksti) valikkoTeksti.textContent = data.ui.avaaValikko;
+    if (valikkoTeksti) valikkoTeksti.textContent = valikkoAuki ? data.ui.suljeValikko : data.ui.avaaValikko;
+    if (nappi) nappi.setAttribute("aria-label", valikkoAuki ? data.ui.suljeValikko : data.ui.avaaValikko);
+    paivitaKieli();
 
     main.innerHTML =
       '<div class="kehys">' + hero() + tietoa() + osaaminen() + "</div>" +
@@ -541,7 +650,8 @@
         suljeValikko(true);
       }
       if (tapahtuma.key !== "Tab" || !valikkoAuki || !valikkoMq.matches) return;
-      const kohteet = [nappi].concat(Array.from(nav.querySelectorAll("a")));
+      const kieliNapit = Array.from(document.querySelectorAll("#kieli button"));
+      const kohteet = kieliNapit.concat([nappi], Array.from(nav.querySelectorAll("a")));
       const ensimmäinen = kohteet[0];
       const viimeinen = kohteet[kohteet.length - 1];
       if (tapahtuma.shiftKey && document.activeElement === ensimmäinen) {
@@ -600,6 +710,10 @@
   }
 
   function alustaNykyinenOsio() {
+    if (osioTarkkailija) {
+      osioTarkkailija.disconnect();
+      osioTarkkailija = null;
+    }
     if (!("IntersectionObserver" in window)) return;
     const osiot = ["alku"]
       .concat((data.navigointi || []).map(function (kohta) { return kohta.id; }))
@@ -620,6 +734,7 @@
       { rootMargin: "-28% 0px -55% 0px", threshold: [0.15, 0.4, 0.7] }
     );
     osiot.forEach(function (osio) { tarkkailija.observe(osio); });
+    osioTarkkailija = tarkkailija;
   }
 
   function alustaVieritys() {
@@ -635,6 +750,7 @@
   }
 
   rakennaSivu();
+  alustaKieli();
   alustaValikko();
   alustaKortit();
   alustaPaljastukset();

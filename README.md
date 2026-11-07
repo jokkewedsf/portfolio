@@ -1,8 +1,10 @@
 # Joakim Rydenfelt — henkilökohtainen sivu
 
-Staattinen, suomenkielinen sivu. Ei taustajärjestelmää eikä rakennusvaihetta. Sivusto sopii myöhempään GitHub Pages -julkaisuun, mutta julkaisua ei ole kytketty päälle.
+Staattinen kaksikielinen sivu. Ei taustajärjestelmää eikä rakennusvaihetta. Sivusto sopii myöhempään GitHub Pages -julkaisuun, mutta julkaisua ei ole kytketty päälle.
 
-Etusivun hahmo on oma vektoripiirros Oulun kauppatorin Toripolliisi-patsaasta. Valokuvaa ei ole upotettu. Havainnon lähde on [Wikipedian tiedosto](https://fi.wikipedia.org/wiki/Tiedosto:Toripolliisi.jpg) (patsas Kaarlo Mikkonen, valokuva Tve4, CC BY-SA 2.5). Hahmo ei ole kaupungin virallinen tunnus.
+Tekstit ovat tiedostossa `js/sisalto.js`, kohdissa `kielet.fi` ja `kielet.en`. Kielivalinta muistaa tahallisen valinnan selaimen localStorageen. Oletus on suomi.
+
+Etusivun nimi on typografinen animaatio. Patsasta ei ole sivulla.
 
 Osio Toiminnanohjaus on scrolliin sidottu havainnollistus. Se ei väitä, että jokin tietty ERP-järjestelmä olisi tehty tai käyttöönotettu tällä sivulla.
 

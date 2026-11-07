@@ -23,7 +23,7 @@ function lue(rel) {
   return fs.readFileSync(tiedosto, "utf8");
 }
 
-["js/sisalto.js", "js/main.js", "js/tausta.js", "js/tori.js", "js/erp.js"].forEach(function (tiedosto) {
+["js/sisalto.js", "js/main.js", "js/tausta.js", "js/erp.js"].forEach(function (tiedosto) {
   const tulos = spawnSync(process.execPath, ["--check", path.join(juuri, tiedosto)], { encoding: "utf8" });
   if (tulos.status !== 0) fail(tiedosto + " ei ole kelvollista JavaScriptiä:\n" + (tulos.stderr || tulos.stdout));
 });
@@ -43,49 +43,59 @@ if (!data) {
   if (data.etunimi !== "Joakim" || data.sukunimi !== "Rydenfelt") {
     fail("Nimen on pysyttävä vahvistettuna, kunnes sitä muokataan tietoisesti: Joakim Rydenfelt");
   }
-  const github = data.yhteys && data.yhteys.github && data.yhteys.github.osoite;
-  const linkedin = data.yhteys && data.yhteys.linkedin && data.yhteys.linkedin.osoite;
-  if (github !== "https://github.com/jokkewedsf") {
-    fail("Vahvistettu GitHub-osoite puuttuu tai on muuttunut: " + github);
-  }
-  if (linkedin !== "https://www.linkedin.com/in/joakim-rydenfelt") {
-    fail("Vahvistettu LinkedIn-osoite puuttuu tai on muuttunut: " + linkedin);
-  }
-  if (data.yhteys.sahkoposti !== "") fail("Sähköpostia ei ole vahvistettu, kentän on oltava tyhjä");
-  const teksti = JSON.stringify(data);
-  ["Paikkamerkki", "Esimerkkiprojekti", "seuraajaa", "Open to work"].forEach(function (kielletty) {
-    if (teksti.includes(kielletty)) fail("Sisältö sisältää kielletyn tai paikkamerkkitekstin: " + kielletty);
+  const kielet = data.kielet || {};
+  ["fi", "en"].forEach(function (koodi) {
+    const sivu = kielet[koodi];
+    if (!sivu) {
+      fail("Kieli puuttuu: " + koodi);
+      return;
+    }
+    const github = sivu.yhteys && sivu.yhteys.github && sivu.yhteys.github.osoite;
+    const linkedin = sivu.yhteys && sivu.yhteys.linkedin && sivu.yhteys.linkedin.osoite;
+    if (github !== "https://github.com/jokkewedsf") fail(koodi + ": GitHub-osoite puuttuu");
+    if (linkedin !== "https://www.linkedin.com/in/joakim-rydenfelt") fail(koodi + ": LinkedIn-osoite puuttuu");
+    if (sivu.yhteys.sahkoposti !== "") fail(koodi + ": sähköpostia ei ole vahvistettu");
+    if (!sivu.osaaminen || !Array.isArray(sivu.osaaminen.kohdat) || sivu.osaaminen.kohdat.length < 4) {
+      fail(koodi + ": osaamiskokonaisuuksia pitää olla vähintään neljä");
+    }
+    if (!Array.isArray(sivu.tyot.projektit) || !sivu.tyot.projektit.length) fail(koodi + ": työt puuttuvat");
+    sivu.tyot.projektit.forEach(function (projekti, indeksi) {
+      if (projekti.onEsimerkki !== false) fail(koodi + " työkortti " + indeksi + " on esimerkki");
+      if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
+      if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
+    });
+    const osiot = ["tietoa", "osaaminen", "erp", "tyot", "taustat", "yhteys"];
+    (sivu.navigointi || []).forEach(function (kohta) {
+      if (!osiot.includes(kohta.id)) fail(koodi + " navigointi viittaa tuntemattomaan osioon: " + kohta.id);
+    });
   });
-  if (!/opinnot käynnissä/i.test(teksti)) fail("Centrian opinnot eivät näy käynnissä olevina");
-  if (!/ei ole ilmoitettu/i.test(teksti)) fail("Oamkin jakso pitää merkitä ilman suoritettua tutkintoa");
-  if (/valmistunut|tutkinto on valmis|suorittanut tutkinnon/i.test(teksti)) {
+  const fiNimet = (kielet.fi.erp.vaiheet || []).map(function (v) { return v.nimi; });
+  const enNimet = (kielet.en.erp.vaiheet || []).map(function (v) { return v.nimi; });
+  const fiOdotus = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
+  const enOdotus = ["Customers", "Documents", "Quote requests", "Sales", "CRM", "Projects", "Orders", "Inventory", "Management", "Integrations", "Invoicing", "Reporting"];
+  if (fiNimet.join("|") !== fiOdotus.join("|")) fail("Suomen ERP-vaiheet ovat väärin");
+  if (enNimet.join("|") !== enOdotus.join("|")) fail("Englannin ERP-vaiheet ovat väärin");
+  const tunnukset = (kielet.fi.erp.vaiheet || []).map(function (v) { return v.id; }).join("|");
+  const enTunnukset = (kielet.en.erp.vaiheet || []).map(function (v) { return v.id; }).join("|");
+  if (tunnukset !== enTunnukset) fail("ERP-tunnukset eivät täsmää kielien välillä");
+  const teksti = JSON.stringify(data);
+  ["Paikkamerkki", "Esimerkkiprojekti", "seuraajaa", "Open to work", "software engineer", "ohjelmistokehittäjä"].forEach(function (kielletty) {
+    if (teksti.toLowerCase().includes(kielletty.toLowerCase())) fail("Sisältö sisältää kielletyn tekstin: " + kielletty);
+  });
+  if (!/opinnot käynnissä/i.test(kielet.fi && JSON.stringify(kielet.fi))) fail("Centrian opinnot eivät näy käynnissä olevina");
+  if (!/studies in progress/i.test(JSON.stringify(kielet.en || {}))) fail("Englanninkielinen teksti ei kerro opintojen olevan kesken");
+  if (/valmistunut|tutkinto on valmis|suorittanut tutkinnon|graduated|degree completed/i.test(teksti)) {
     fail("Sisältö väittää tutkinnon valmistuneen");
   }
-  if (!Array.isArray(data.tyot.projektit) || !data.tyot.projektit.length) {
-    fail("Työt-osiosta puuttuvat projektit");
-  }
-  data.tyot.projektit.forEach(function (projekti, indeksi) {
-    if (projekti.onEsimerkki !== false) fail("Työkortti " + indeksi + " on yhä merkitty esimerkiksi");
-    if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) {
-      fail("Työkortilta " + indeksi + " puuttuu nimi, organisaatio tai rooli");
-    }
-    if (projekti.linkki) fail("Työkorteissa ei ole vahvistettuja projektisivuja");
-    if (!["kaari", "viiva", "piste"].includes(projekti.motiivi)) fail("Tuntematon motiivi projektissa " + indeksi);
-  });
-  const jarjestys = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
-  const nimet = (data.erp && data.erp.vaiheet || []).map(function (v) { return v.nimi; });
-  if (nimet.join("|") !== jarjestys.join("|")) fail("ERP-vaiheet puuttuvat tai ovat väärässä järjestyksessä");
-  const osiot = ["tietoa", "osaaminen", "erp", "tyot", "taustat", "yhteys"];
-  (data.navigointi || []).forEach(function (kohta) {
-    if (!osiot.includes(kohta.id)) fail("Navigointi viittaa osioon, jota sivupohja ei piirrä: " + kohta.id);
-  });
 }
 
 const html = lue("index.html");
 const css = lue("css/styles.css");
 const main = lue("js/main.js");
 const tausta = lue("js/tausta.js");
-const lahde = [html, css, main, tausta, lue("js/erp.js"), lue("js/tori.js")].join("\n");
+const lahde = [html, css, main, tausta, lue("js/erp.js")].join("\n");
+if (lahde.includes("piirraToripolliisi") || lahde.includes("Toripolliisi")) fail("Toripolliisi on yhä mukana");
+if (!html.includes('id="kieli"') || !main.includes("localStorage")) fail("Kielivalinta puuttuu");
 const erpJarjestys = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
 let edellinen = -1;
 erpJarjestys.forEach(function (nimi) {

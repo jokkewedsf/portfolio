@@ -25,11 +25,16 @@
   <header class="ylapalkki" id="ylapalkki">
     <div class="kehys ylapalkki-sisus">
       <a class="merkki" href="#alku">Joakim Rydenfelt</a>
+      <nav id="navigaatio" class="navigaatio" aria-label="Sivun osiot"></nav>
+      <div class="kieli" id="kieli" role="group" aria-label="Kieli">
+        <button type="button" id="kieli-fi" data-kieli="fi" lang="fi" aria-pressed="true">Suomi</button>
+        <span class="kieli-ero" aria-hidden="true">/</span>
+        <button type="button" id="kieli-en" data-kieli="en" lang="en" aria-pressed="false">English</button>
+      </div>
       <button type="button" class="valikko-nappi" id="valikko-nappi" aria-expanded="false" aria-controls="navigaatio">
         <span class="valikko-ikoni" aria-hidden="true"></span>
         <span class="valikko-teksti">Avaa valikko</span>
       </button>
-      <nav id="navigaatio" class="navigaatio" aria-label="Sivun osiot"></nav>
     </div>
   </header>
 
@@ -39,10 +44,11 @@
     <noscript>
       <div class="kehys ilman-js">
         <h1>Joakim Rydenfelt</h1>
-        <p>Liiketoiminnan kasvattaja Oulussa. Myynti, markkinointi, tiimien johtaminen ja digitaaliset ratkaisut.</p>
+        <p lang="fi">Kaupallinen kasvu, tiimit ja digitaaliset prosessit samassa kokonaisuudessa. Oulu.</p>
+        <p lang="en">Commercial growth, teams and digital processes as one operating whole. Oulu.</p>
         <p><a href="https://www.linkedin.com/in/joakim-rydenfelt">linkedin.com/in/joakim-rydenfelt</a></p>
         <p><a href="https://github.com/jokkewedsf">github.com/jokkewedsf</a></p>
-        <h2>Toiminnanohjauksen havainnollistus</h2>
+        <h2 lang="fi">Toiminnanohjauksen havainnollistus</h2>
         <ol>
           <li>Asiakkaat</li>
           <li>Dokumentit</li>
@@ -65,7 +71,6 @@
 
   <script src="js/sisalto.js"></script>
   <script src="js/tausta.js"></script>
-  <script src="js/tori.js"></script>
   <script src="js/erp.js"></script>
   <script src="js/main.js"></script>
 </body>
