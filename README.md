@@ -76,19 +76,22 @@ node scripts/tarkista.js
 
 Komento ei lataa ulkoisia palveluita. Se tarkistaa, että JavaScript on ehjää, pakolliset tiedostot löytyvät, linkit eivät ole tyhjiä `#`-ankkureita ja värien kontrasti riittää. Se varmistaa myös nimen, LinkedIn- ja GitHub-osoitteet sekä sen, etteivät opinnot ole merkitty valmiiksi tutkinnoiksi. Jos tiedot myöhemmin vaihtuvat oikeasti, päivitä vastaavat odotukset tarkistimessa.
 
-## GitHub Pages myöhemmin
+## Julkaisu
 
-Tätä julkaisua ei ole tehty. Repositorion näkyvyyttä ei ole muutettu eikä Pages-asetusta ole kytketty.
+Sivusto ei ole vielä julkinen. GitHub Pages ei ole kytketty: asetusten luku palauttaa 404, eikä tätä haaraa ole yhdistetty `main`-haaraan. `main` sisältää vain alkuperäisen README-tiedoston, joten sen julkaiseminen ei näytä tätä sivustoa.
 
-Kun haluat julkaista sivun itse:
+Valmis sivusto on haarassa `cursor/portfolio-sivu-e9b4`, kansiona `/` (root). Osoitteet on tehty projektisivulle `https://jokkewedsf.github.io/portfolio/`. Polut ovat suhteellisia, joten sama kansio toimii paikallisesti ja Pages-alikansiossa `/portfolio/`.
 
-1. Yhdistä haluamasi haara, yleensä `main`.
-2. Avaa GitHubissa **Settings → Pages**.
-3. Valitse **Deploy from a branch**.
-4. Valitse haara ja kansio **`/ (root)`**.
-5. Tallenna.
+Julkaisu vaatii repositorion omistajan. Yksi asetus riittää, eikä erillistä buildia tarvita:
 
-Projektisivun osoite on muotoa `https://jokkewedsf.github.io/portfolio/`. Erillistä build-komentoa ei tarvita, koska polut ovat suhteellisia.
+1. Avaa [https://github.com/jokkewedsf/portfolio/settings/pages](https://github.com/jokkewedsf/portfolio/settings/pages).
+2. Valitse **Deploy from a branch**.
+3. Lähteeksi haara `cursor/portfolio-sivu-e9b4` ja kansio **`/ (root)`**.
+4. Tallenna.
+
+Sen jälkeen pysyvä etusivu on `https://jokkewedsf.github.io/portfolio/` ja Aula on `https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/`. Tekstejä muokataan GitHubissa tiedostoon `js/sisalto.js`. Erillistä ylläpitokirjautumista ei ole.
+
+Puuttuva osoite näyttää `404.html`-sivun. Tuntemattoman polun alta linkit palaavat etusivulle ja Aulaan.
 
 ## Saavutettavuus
 

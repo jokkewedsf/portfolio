@@ -127,6 +127,18 @@ erpJarjestys.forEach(function (nimi) {
   edellinen = kohta;
 });
 
+const neljasataa = lue("404.html");
+const robotit = lue("robots.txt");
+const sivukartta = lue("sitemap.xml");
+if (!html.includes('rel="canonical" href="https://jokkewedsf.github.io/portfolio/"')) {
+  fail("Etusivulta puuttuu kanoninen osoite");
+}
+if (!tuoteSivu.includes('rel="canonical" href="https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/"')) {
+  fail("Tuotesivulta puuttuu kanoninen osoite");
+}
+if (!neljasataa.includes("Sivua ei löydy") || !robotit.includes("Sitemap:") || !sivukartta.includes("/ratkaisut/chatbot/")) {
+  fail("Julkaisutiedostot 404, robots tai sivukartta ovat puutteelliset");
+}
 if (!html.includes('lang="fi"')) fail('html-kielisyys puuttuu');
 if (!html.includes("https://github.com/jokkewedsf")) fail("noscript-varasta puuttuu vahvistettu GitHub-osoite");
 if (!html.includes("https://www.linkedin.com/in/joakim-rydenfelt")) {
