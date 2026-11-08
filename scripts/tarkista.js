@@ -64,7 +64,10 @@ if (!data) {
       if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
       if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
     });
-    const osiot = ["tietoa", "osaaminen", "erp", "ratkaisut", "tyot", "taustat", "yhteys"];
+    const osiot = ["tietoa", "osaaminen", "tyot", "ratkaisut", "erp", "taustat", "yhteys"];
+    if ((sivu.navigointi || []).map(function (kohta) { return kohta.id; }).join("|") !== osiot.join("|")) {
+      fail(koodi + ": sivun navigoinnin järjestys ei vastaa lukujärjestystä");
+    }
     if (!sivu.ratkaisut || !sivu.chatbot || !sivu.aula) fail(koodi + ": ratkaisu tai demo puuttuu");
     if (!/Interaktiivinen demo|Interactive demo/.test(sivu.aula.ui.demoLabel)) {
       fail(koodi + ": demon merkintä ei ole vaaditussa muodossa");

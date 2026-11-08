@@ -169,6 +169,12 @@
     const huomautus = data.hero.huomautus
       ? '<p class="huomautus">' + esc(data.hero.huomautus) + "</p>"
       : "";
+    const focus = (data.hero.focus || [])
+      .filter(Boolean)
+      .map(function (kohta) {
+        return "<li>" + esc(kohta) + "</li>";
+      })
+      .join("");
     return (
       '<section class="hero" id="alku" aria-labelledby="nimi-otsikko">' +
       '<div class="hero-teksti">' +
@@ -185,6 +191,12 @@
       '<a class="nappi nappi-toissijainen" href="#tyot">' +
       esc(data.hero.selaaNappi) +
       "</a></div>" +
+      '<aside class="hero-focus" aria-label="' + esc(data.hero.focusLabel) + '">' +
+      '<p class="silma">' + esc(data.hero.focusLabel) + "</p>" +
+      '<h2>' + esc(data.nykyinenRooli) + "</h2>" +
+      '<p class="hero-focus-meta">' + esc(data.tyonantaja) + " · " + esc(data.paikka) + "</p>" +
+      (focus ? '<ul>' + focus + "</ul>" : "") +
+      "</aside>" +
       huomautus +
       "</div></section>"
     );
@@ -565,9 +577,10 @@
 
     main.innerHTML =
       '<div class="kehys">' + hero() + tietoa() + osaaminen() + "</div>" +
-      (window.piirraErp ? window.piirraErp(data.erp) : "") +
+      '<div class="kehys">' + projektit() + "</div>" +
       aulaOsio() +
-      '<div class="kehys">' + projektit() + tausta() + yhteys() + "</div>";
+      (window.piirraErp ? window.piirraErp(data.erp) : "") +
+      '<div class="kehys">' + tausta() + yhteys() + "</div>";
     rakennaNavigointi();
     alatunniste();
     lisaaRakenteinenData();

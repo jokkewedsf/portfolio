@@ -1,6 +1,7 @@
 # Joakim Rydenfelt — henkilökohtainen sivu
 
-Staattinen kaksikielinen sivu. Ei taustajärjestelmää eikä rakennusvaihetta. Sivusto sopii myöhempään GitHub Pages -julkaisuun, mutta julkaisua ei ole kytketty päälle.
+Staattinen kaksikielinen portfolio. Ei taustajärjestelmää eikä rakennusvaihetta. Julkinen sivu on julkaistu GitHub Pagesissa:
+<https://jokkewedsf.github.io/portfolio/>.
 
 Tekstit ovat tiedostossa `js/sisalto.js`, kohdissa `kielet.fi` ja `kielet.en`. Kielivalinta muistaa tahallisen valinnan selaimen localStorageen. Oletus on suomi.
 
@@ -78,18 +79,7 @@ Komento ei lataa ulkoisia palveluita. Se tarkistaa, että JavaScript on ehjää,
 
 ## Julkaisu
 
-Sivusto ei ole vielä julkinen. GitHub Pages ei ole kytketty: asetusten luku palauttaa 404, eikä tätä haaraa ole yhdistetty `main`-haaraan. `main` sisältää vain alkuperäisen README-tiedoston, joten sen julkaiseminen ei näytä tätä sivustoa.
-
-Valmis sivusto on haarassa `cursor/portfolio-sivu-e9b4`, kansiona `/` (root). Osoitteet on tehty projektisivulle `https://jokkewedsf.github.io/portfolio/`. Polut ovat suhteellisia, joten sama kansio toimii paikallisesti ja Pages-alikansiossa `/portfolio/`.
-
-Julkaisu vaatii repositorion omistajan. Yksi asetus riittää, eikä erillistä buildia tarvita:
-
-1. Avaa [https://github.com/jokkewedsf/portfolio/settings/pages](https://github.com/jokkewedsf/portfolio/settings/pages).
-2. Valitse **Deploy from a branch**.
-3. Lähteeksi haara `cursor/portfolio-sivu-e9b4` ja kansio **`/ (root)`**.
-4. Tallenna.
-
-Sen jälkeen pysyvä etusivu on `https://jokkewedsf.github.io/portfolio/` ja Aula on `https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/`. Tekstejä muokataan GitHubissa tiedostoon `js/sisalto.js`. Erillistä ylläpitokirjautumista ei ole.
+GitHub Pages julkaisee haaran `cursor/portfolio-sivu-e9b4` juuren. Muutokset tulevat näkyviin Pages-rakennuksen valmistuttua. Etusivu on <https://jokkewedsf.github.io/portfolio/> ja Aula <https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/>. Tekstejä muokataan tiedostossa `js/sisalto.js`.
 
 Puuttuva osoite näyttää `404.html`-sivun. Tuntemattoman polun alta linkit palaavat etusivulle ja Aulaan.
 

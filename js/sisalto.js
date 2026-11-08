@@ -31,9 +31,11 @@ window.SIVUN_SISALTO = {
 
       hero: {
         ylateksti: "Oulu",
-        otsikko: "Kaupallinen kasvu, tiimit ja digitaaliset prosessit samassa kokonaisuudessa.",
+        otsikko: "Johdan kasvua myynnin, tiimien ja prosessien rajapinnassa.",
         ingressi:
-          "Johdan B2B-myyntiä ja asiakkuuden elinkaarta, rakennan tiimejä ja toimintamalleja sekä kytken markkinoinnin ja CRM- ja ERP-työn yhteen. Webman Oy, Sales Team Lead.",
+          "Johdan B2B-myyntiä ja asiakkuuden elinkaarta strategiasta käyttöönottoon. Yhdistän konsultatiivisen myynnin, tiimit ja toimivat toimintamallit.",
+        focusLabel: "Nykyinen rooli",
+        focus: ["SaaS-kasvu", "Tiimin rakentaminen", "Asiakkuuden elinkaari"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
         selaaNappi: "Katso työ",
@@ -42,9 +44,9 @@ window.SIVUN_SISALTO = {
       navigointi: [
         { id: "tietoa", numero: "01", teksti: "Tietoa" },
         { id: "osaaminen", numero: "02", teksti: "Osaaminen" },
-        { id: "erp", numero: "03", teksti: "Polku" },
+        { id: "tyot", numero: "03", teksti: "Työ" },
         { id: "ratkaisut", numero: "04", teksti: "Ratkaisut" },
-        { id: "tyot", numero: "05", teksti: "Työ" },
+        { id: "erp", numero: "05", teksti: "Polku" },
         { id: "taustat", numero: "06", teksti: "Tausta" },
         { id: "yhteys", numero: "07", teksti: "Yhteys" },
       ],
@@ -53,10 +55,9 @@ window.SIVUN_SISALTO = {
         otsikko: "Tietoa",
         numero: "01",
         merkinta: "",
-        avaus: "Yhdistän kasvun, tiimin ja digitaalisen työn yhdeksi kokonaisuudeksi.",
+        avaus: "Kasvu syntyy, kun myynnin lupaus ja asiakkaan arki kohtaavat.",
         kappaleet: [
-          "Johdan B2B-myyntiä ja asiakkuuden elinkaarta strategiasta käyttöönottoon ja asiakasmenestykseen. Tällä hetkellä rakennan Webman Oy:n Oulun toimipistettä ja SaaS-kasvua.",
-          "Markkinointi, myynti ja prosessit ovat sama ketju: kenelle myydään, miten työ toimitetaan ja miten tulos näkyy. Tuon kaupallisen ja teknisen puolen samaan pöytään.",
+          "Yhdistän markkinoinnin, myynnin ja prosessit samaan ketjuun: kenelle myydään, miten työ toimitetaan ja miten tulos näkyy. Tuon kaupallisen ja teknisen puolen samaan pöytään.",
           "Valmennus on kulkenut mukana vuodesta 2013 Kickboxing Team Oulussa. Se on tapa johtaa ihmisiä.",
         ],
         muokkaus: "",
@@ -93,7 +94,7 @@ window.SIVUN_SISALTO = {
 
       erp: {
         otsikko: "Toiminnanohjaus",
-        numero: "03",
+        numero: "05",
         johdanto:
           "Havainnollistus siitä, miten kaupallinen työ voi kulkea asiakkaasta raportointiin, kun CRM ja ERP ovat samassa ketjussa. Tämä ei ole kuvaus tietystä käyttöönotosta, asiakkaista tai tuloksista.",
         vaiheet: [
@@ -213,9 +214,9 @@ window.SIVUN_SISALTO = {
 
       tyot: {
         otsikko: "Työ",
-        numero: "05",
+        numero: "03",
         merkinta: "",
-        johdanto: "Missä kokonaisuuksia on rakennettu. Kortit kuvaavat vastuuta, eivät erillisiä asiakastoimeksiantoja.",
+        johdanto: "Konkreettisia vastuita myynnin, asiakkuuksien ja markkinoinnin parissa. Kortit kuvaavat rooleja, eivät erillisiä asiakastoimeksiantoja.",
         nayta: "Näytä kuvaus",
         piilota: "Piilota kuvaus",
         esimerkkiMerkinta: "Esimerkki · ei oikea projekti",
@@ -322,7 +323,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Yhteys",
         numero: "07",
         merkinta: "",
-        johdanto: "Oulu. LinkedIn on suorin kanava.",
+        johdanto: "Oulu. Ota yhteyttä LinkedInissä.",
         linkedin: {
           osoite: "https://www.linkedin.com/in/joakim-rydenfelt",
           teksti: "linkedin.com/in/joakim-rydenfelt",
@@ -369,9 +370,11 @@ window.SIVUN_SISALTO = {
 
       hero: {
         ylateksti: "Oulu",
-        otsikko: "Commercial growth, teams and digital processes as one operating whole.",
+        otsikko: "I lead growth where sales, teams and processes meet.",
         ingressi:
-          "I lead B2B sales and the customer lifecycle, build teams and operating models, and connect marketing with CRM and ERP work. Sales Team Lead at Webman Oy.",
+          "I lead B2B sales and the customer lifecycle from strategy through onboarding. My work connects consultative sales, teams and effective operating models.",
+        focusLabel: "Current role",
+        focus: ["SaaS growth", "Building a team", "Customer lifecycle"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
         selaaNappi: "See the work",
@@ -380,9 +383,9 @@ window.SIVUN_SISALTO = {
       navigointi: [
         { id: "tietoa", numero: "01", teksti: "About" },
         { id: "osaaminen", numero: "02", teksti: "Capability" },
-        { id: "erp", numero: "03", teksti: "Path" },
+        { id: "tyot", numero: "03", teksti: "Work" },
         { id: "ratkaisut", numero: "04", teksti: "Solutions" },
-        { id: "tyot", numero: "05", teksti: "Work" },
+        { id: "erp", numero: "05", teksti: "Path" },
         { id: "taustat", numero: "06", teksti: "Background" },
         { id: "yhteys", numero: "07", teksti: "Contact" },
       ],
@@ -391,10 +394,9 @@ window.SIVUN_SISALTO = {
         otsikko: "About",
         numero: "01",
         merkinta: "",
-        avaus: "I connect growth, the team and digital work into one whole.",
+        avaus: "Growth happens when the promise of a sale meets the customer's day-to-day reality.",
         kappaleet: [
-          "I lead B2B sales and the customer lifecycle from strategy through onboarding and customer success. I am currently building Webman Oy’s Oulu office and SaaS growth.",
-          "Marketing, sales and processes are one chain: who we sell to, how the work is delivered, and how the result shows up. I bring the commercial and technical sides to the same table.",
+          "I connect marketing, sales and processes into one chain: who we sell to, how the work is delivered, and how the result shows up. I bring the commercial and technical sides to the same table.",
           "Coaching has been part of this since 2013 at Kickboxing Team Oulu. It is a way of leading people.",
         ],
         muokkaus: "",
@@ -431,7 +433,7 @@ window.SIVUN_SISALTO = {
 
       erp: {
         otsikko: "Operations",
-        numero: "03",
+        numero: "05",
         johdanto:
           "An illustration of how commercial work can move from the customer to reporting when CRM and ERP sit in the same chain. This is not a claim about a specific implementation, clients or results.",
         vaiheet: [
@@ -551,9 +553,9 @@ window.SIVUN_SISALTO = {
 
       tyot: {
         otsikko: "Work",
-        numero: "05",
+        numero: "03",
         merkinta: "",
-        johdanto: "Where the wholes have been built. The cards describe responsibility, not separate client engagements.",
+        johdanto: "Concrete responsibilities across sales, customer success and marketing. These cards describe roles, not standalone client engagements.",
         nayta: "Show description",
         piilota: "Hide description",
         esimerkkiMerkinta: "Example · not a real project",
@@ -660,7 +662,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Contact",
         numero: "07",
         merkinta: "",
-        johdanto: "Oulu. LinkedIn is the direct channel.",
+        johdanto: "Oulu. Get in touch on LinkedIn.",
         linkedin: {
           osoite: "https://www.linkedin.com/in/joakim-rydenfelt",
           teksti: "linkedin.com/in/joakim-rydenfelt",
