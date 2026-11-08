@@ -1474,9 +1474,94 @@ main,
 
 .aula-asetelma {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(16rem, 0.9fr) minmax(18rem, 1.1fr);
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: start;
+}
+
+.ratkaisu-kortti h3,
+.ratkaisu-demo h3 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+}
+
+.ratkaisu-kortti p {
+  max-width: 36rem;
+}
+
+.tuote-asetelma {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(18rem, 1.08fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  margin-top: 2.5rem;
+}
+
+.tuote-asetelma h2 {
+  margin-top: 2rem;
+}
+
+.tuote-asetelma h2:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 800px) {
+  .tuote-asetelma {
+    grid-template-columns: 1fr;
+  }
+}
+
+#ratkaisu-takaisin {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .ylapalkki-sisus:has(#ratkaisu-takaisin) {
+    flex-wrap: wrap;
+    row-gap: 0.2rem;
+  }
+
+  #ratkaisu-takaisin {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.tuote-sivu {
+  width: min(1180px, calc(100% - 2 * var(--sivu)));
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4.5rem) 0 4rem;
+}
+
+.tuote-hero h1 {
+  margin: 0.4rem 0 0.8rem;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.9;
+}
+
+.tuote-lista {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tuote-lista li {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--viiva);
+}
+
+.tuote-lista h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+}
+
+.tuote-tila {
+  color: var(--messinki);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .aula-osio h2 {

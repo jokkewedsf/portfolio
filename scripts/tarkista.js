@@ -64,7 +64,14 @@ if (!data) {
       if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
       if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
     });
-    const osiot = ["tietoa", "osaaminen", "erp", "aula-demo", "tyot", "taustat", "yhteys"];
+    const osiot = ["tietoa", "osaaminen", "erp", "ratkaisut", "tyot", "taustat", "yhteys"];
+    if (!sivu.ratkaisut || !sivu.chatbot || !sivu.aula) fail(koodi + ": ratkaisu tai demo puuttuu");
+    if (!/Interaktiivinen demo|Interactive demo/.test(sivu.aula.ui.demoLabel)) {
+      fail(koodi + ": demon merkintä ei ole vaaditussa muodossa");
+    }
+    if (/€|\$|alk\.\s*\d/.test(JSON.stringify(sivu.chatbot || {}))) {
+      fail(koodi + ": tuotesivun markkinointi sisältää hinnan");
+    }
     (sivu.navigointi || []).forEach(function (kohta) {
       if (!osiot.includes(kohta.id)) fail(koodi + " navigointi viittaa tuntemattomaan osioon: " + kohta.id);
     });
@@ -78,6 +85,10 @@ if (!data) {
   const tunnukset = (kielet.fi.erp.vaiheet || []).map(function (v) { return v.id; }).join("|");
   const enTunnukset = (kielet.en.erp.vaiheet || []).map(function (v) { return v.id; }).join("|");
   if (tunnukset !== enTunnukset) fail("ERP-tunnukset eivät täsmää kielien välillä");
+  if (!Array.isArray(data.katalogi) || data.katalogi.length !== 1 || data.katalogi[0].id !== "chatbot") {
+    fail("Katalogissa saa toistaiseksi olla vain chatbot");
+  }
+  if (data.katalogi[0].polku !== "ratkaisut/chatbot/") fail("Chatbotin polku on väärä");
   const teksti = JSON.stringify(data);
   ["Paikkamerkki", "Esimerkkiprojekti", "seuraajaa", "Open to work", "software engineer", "ohjelmistokehittäjä"].forEach(function (kielletty) {
     if (teksti.toLowerCase().includes(kielletty.toLowerCase())) fail("Sisältö sisältää kielletyn tekstin: " + kielletty);
@@ -89,6 +100,18 @@ if (!data) {
   }
 }
 
+const tuoteSivu = lue("ratkaisut/chatbot/index.html");
+["../../css/styles.css", "../../js/sisalto.js", "../../js/aula-demo.js", "../../js/ratkaisu.js", 'href="../../"'].forEach(function (viite) {
+  if (!tuoteSivu.includes(viite)) fail("Tuotesivulta puuttuu suhteellinen viite: " + viite);
+});
+if (/href="\//.test(tuoteSivu)) fail("Tuotesivu käyttää juuripolkuja, jotka hajoavat alikansiossa");
+const tuoteOsoite = "https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/index.html";
+if (new URL("../../css/styles.css", tuoteOsoite).href !== "https://jokkewedsf.github.io/portfolio/css/styles.css") {
+  fail("Tuotesivun tyylit eivät ratkea Pages-alikansioon");
+}
+if (new URL("../../", tuoteOsoite).href !== "https://jokkewedsf.github.io/portfolio/") {
+  fail("Paluu portfolioon ei ratkea Pages-alikansioon");
+}
 const html = lue("index.html");
 const css = lue("css/styles.css");
 const main = lue("js/main.js");

@@ -24,12 +24,34 @@ Kaikki näkyvä teksti ja yhteystiedot ovat tiedostossa [`js/sisalto.js`](js/sis
 
 Ilman JavaScriptiä näkyvä tiivistelmä ja molemmat profiiliosoitteet ovat [`index.html`](index.html)-tiedoston `noscript`-lohkossa. Päivitä osoitteet sinnekin, jos ne muuttuvat.
 
+## Ratkaisut
+
+Myytävät ratkaisut ovat omia sivujaan kansiossa `ratkaisut/`. Toistaiseksi mukana on yksi tuote, asiakaspalvelun chatbot Aula:
+
+- Etusivun osio Ratkaisut ja kortin linkki `ratkaisut/chatbot/`
+- Sivu `ratkaisut/chatbot/index.html`
+- Lista `katalogi` tiedostossa `js/sisalto.js`
+
+Uusi ratkaisu lisätään näin:
+
+1. Lisää kohde listaan `katalogi`, esimerkiksi `{ id: "nimi", polku: "ratkaisut/nimi/" }`.
+2. Kirjoita suomen- ja englanninkielinen esittely kohtiin `kielet.fi` ja `kielet.en`.
+3. Tee kansio `ratkaisut/nimi/index.html`. Viittaa tiedostoihin suhteellisesti (`../../css/styles.css`), älä juuripolulla `/css/...`. Sama polku toimii paikallisessa juuressa ja myöhemmin osoitteessa `https://jokkewedsf.github.io/portfolio/`.
+4. Jos tuotteella on demo, käytä samaa tietopohjaa molemmilla sivuilla. Älä kopioi vastauksia kahteen paikkaan.
+
+Aulan demo vastaa vain paikallisesta tietopohjasta. Esimerkkiyritys on kuvitteellinen. Viestiä ei lähetetä eikä tallenneta. Demon merkintä on Interaktiivinen demo – simuloidut vastaukset. Live-malli, yrityksen oma aineisto ja CRM-kytkentä eivät ole demossa. Ne kuuluvat erikseen sovittavaan toteutukseen. Hintaa ei ilmoiteta.
+
+Demon kysymykset ja vastaukset ovat kielikohtaisesti kentässä `aula`. Tuotesivun tekstit ovat kentässä `chatbot`.
+
 ## Tiedostot
 
 - `index.html` — sivun runko
 - `css/styles.css` — ulkoasu
 - `js/sisalto.js` — muokattava sisältö
 - `js/main.js` — sivun kokoaminen, valikko ja kortit
+- `js/aula-demo.js` — simuloitu asiakaspalveludemo
+- `js/ratkaisu.js` — yhden ratkaisusivun kokoaminen
+- `ratkaisut/chatbot/` — Aulan oma sivu
 - `js/tausta.js` — taustan valo
 - `fonts/` — Fraunces ja Outfit, SIL Open Font License
 - `assets/` — kuvake ja rakeisuus

@@ -576,15 +576,28 @@
   }
 
   function aulaOsio() {
-    const osio = data.aula;
-    if (!osio) return "";
+    const osio = data.ratkaisut;
+    const demo = data.aula;
+    const tuote = data.chatbot;
+    const kohta = (juuri.katalogi || [])[0];
+    if (!osio || !demo || !tuote || !kohta) return "";
     return (
-      '<section class="osio aula-osio" id="aula-demo" aria-labelledby="aula-otsikko">' +
+      '<section class="osio aula-osio" id="ratkaisut" aria-labelledby="aula-otsikko">' +
       '<div class="aula-asetelma">' +
       '<div class="aula-johdanto"><p class="silma">' + esc(osio.numero) + "</p>" +
       '<h2 id="aula-otsikko">' + esc(osio.otsikko) + "</h2>" +
-      '<p class="johdanto">' + esc(osio.johdanto) + "</p></div>" +
-      '<div id="aula-demo-juuri"></div></div></section>'
+      '<p class="johdanto">' + esc(osio.johdanto) + "</p>" +
+      '<article class="ratkaisu-kortti">' +
+      '<p class="silma">' + esc(demo.tuote) + " · " + esc(demo.huom) + "</p>" +
+      "<h3>" + esc(tuote.ylateksti) + "</h3>" +
+      "<p>" + esc(tuote.arvo) + "</p>" +
+      '<div class="toiminnot">' +
+      '<a class="nappi nappi-ensisijainen" href="' + esc(kohta.polku) + '">' + esc(osio.tutustu) + "</a>" +
+      '<a class="nappi nappi-toissijainen" href="#aula-demo">' + esc(osio.kokeile) + "</a>" +
+      "</div></article></div>" +
+      '<div class="ratkaisu-demo" id="aula-demo">' +
+      "<h3>" + esc(osio.demoOtsikko) + "</h3>" +
+      '<div id="aula-demo-juuri"></div></div></div></section>'
     );
   }
 

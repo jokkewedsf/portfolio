@@ -52,7 +52,8 @@
       },
       ui: {
         title: "Esimerkki asiakaspalvelusta",
-        demoLabel: "Demo – simuloidut vastaukset",
+        demoLabel: "Interaktiivinen demo – simuloidut vastaukset",
+        reset: "Tyhjennä",
         sampleNote: "Kuvitteellinen esimerkkiaineisto, ei sivuston omistajan lupaus eikä asiakasreferenssi.",
         simulatedNote: "Simuloitu vastaus. Ei live-tekoälyä, ei maksua, ei verkkolähetystä eikä tallennusta.",
         privacy: "Älä kirjoita henkilötietoja, korttinumeroita tai salasanoja. Kysymys ei lähde tältä sivulta.",
@@ -328,9 +329,12 @@
     syote.setAttribute("enterkeyhint", "send");
     var nappi = elementti("button", "aula-demo-nappi", asetukset.ui.send);
     nappi.type = "submit";
+    var nollaa = asetukset.ui.reset ? elementti("button", "aula-demo-ehdotus", asetukset.ui.reset) : null;
+    if (nollaa) nollaa.type = "button";
     lomake.appendChild(kentta);
     lomake.appendChild(syote);
     lomake.appendChild(nappi);
+    if (nollaa) lomake.appendChild(nollaa);
     juuri.appendChild(lomake);
     shadow.appendChild(juuri);
 
@@ -344,7 +348,19 @@
       loki.scrollTop = loki.scrollHeight;
     }
 
-    piirra("assistant", asetukset.ui.greetingBadge, asetukset.greeting, asetukset.ui.notAi, null);
+    function tervehdi() {
+      while (loki.firstChild) loki.removeChild(loki.firstChild);
+      piirra("assistant", asetukset.ui.greetingBadge, asetukset.greeting, asetukset.ui.notAi, null);
+    }
+
+    tervehdi();
+    if (nollaa) {
+      nollaa.addEventListener("click", function () {
+        syote.value = "";
+        virhe.hidden = true;
+        tervehdi();
+      });
+    }
 
     function kysy(tekstiArvo) {
       var siisti = teksti(tekstiArvo, 1000);

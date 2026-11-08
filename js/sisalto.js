@@ -10,6 +10,7 @@
 window.SIVUN_SISALTO = {
   etunimi: "Joakim",
   sukunimi: "Rydenfelt",
+  katalogi: [{ id: "chatbot", polku: "ratkaisut/chatbot/" }],
 
   kielet: {
     fi: {
@@ -42,7 +43,7 @@ window.SIVUN_SISALTO = {
         { id: "tietoa", numero: "01", teksti: "Tietoa" },
         { id: "osaaminen", numero: "02", teksti: "Osaaminen" },
         { id: "erp", numero: "03", teksti: "Polku" },
-        { id: "aula-demo", numero: "04", teksti: "Demo" },
+        { id: "ratkaisut", numero: "04", teksti: "Ratkaisut" },
         { id: "tyot", numero: "05", teksti: "Työ" },
         { id: "taustat", numero: "06", teksti: "Tausta" },
         { id: "yhteys", numero: "07", teksti: "Yhteys" },
@@ -111,6 +112,49 @@ window.SIVUN_SISALTO = {
         ],
       },
 
+      ratkaisut: {
+        otsikko: "Ratkaisut",
+        numero: "04",
+        johdanto: "Myytävä ratkaisu omalla sivullaan. Demoa voi kokeilla tässä. Mukana on toistaiseksi yksi tuote.",
+        tutustu: "Tutustu ratkaisuun",
+        kokeile: "Kokeile demoa",
+        demoOtsikko: "Kokeile demoa",
+      },
+
+      chatbot: {
+        ylateksti: "Asiakaspalvelu",
+        ingressi: "Vastaanotto, joka vastaa yrityksen omiin kysymyksiin ja sanoo suoraan, kun tietopohja ei riitä.",
+        arvo: "Kävijä saa vastauksen yleisiin asioihin heti. Ihminen tarvitaan vasta, kun sovittu aineisto ei ratkaise kysymystä.",
+        ongelmaOtsikko: "Mihin tämä vastaa",
+        ongelmat: [
+          { nimi: "Samat kysymykset toistuvat", teksti: "Aukiolo, sijainti ja palvelut kysytään uudelleen. Vastaus voi olla sivulla ilman, että jokainen viesti jää jonoon." },
+          { nimi: "Raja pidetään näkyvänä", teksti: "Kun vastausta ei ole, se sanotaan. Ihmisen koppi on osa ratkaisua, ei piilotettu lupaus." }
+        ],
+        kykyOtsikko: "Mitä siihen kuuluu",
+        kyvyt: [
+          { nimi: "Tietopohja", teksti: "Vastaukset tulevat sovituista kysymyksistä ja vastauksista. Tässä demossa pohja on kuvitteellinen.", tila: "Näkyy demossa" },
+          { nimi: "Kokeiltava upotus", teksti: "Kävijä voi kysyä sivulla ja nähdä osuman, tuntemattoman kysymyksen ja simuloidun ohjauksen.", tila: "Näkyy demossa" },
+          { nimi: "Oma aineisto ja live-malli", teksti: "Yrityksen tietojen tuonti ja elävä kielimalli kuuluvat sovittuun toteutukseen. Ne eivät ole tässä demossa.", tila: "Sovitaan toteutuksessa" },
+          { nimi: "Ihmisen kanava ja CRM", teksti: "Ohjaus oikealle ihmiselle tai CRM-järjestelmään tehdään vain, jos se sovitaan. Demo ei lähetä viestiä.", tila: "Sovitaan toteutuksessa" }
+        ],
+        toimintaOtsikko: "Miten se toimii",
+        toiminta: [
+          "Kävijä kirjoittaa kysymyksen sivulla.",
+          "Jos kysymys osuu tietopohjaan, vastaus näytetään siitä.",
+          "Jos ei osu tai kävijä pyytää ihmistä, näytetään simuloidut yhteystiedot. Viestiä ei lähetetä."
+        ],
+        rajaOtsikko: "Mitä demo ei ole",
+        rajat: [
+          "Ei live-tekoälyä eikä jatkuvaa palvelua.",
+          "Ei tallennusta, maksua eikä varausta.",
+          "Pohjolan Hammas ei ole asiakas eikä referenssi.",
+          "Hintaa tai tuloksia ei ilmoiteta, koska niitä ei ole."
+        ],
+        ctaOtsikko: "Keskustellaan toteutuksesta",
+        cta: "Jos tällainen vastaanotto sopii, jatketaan LinkedInissä. Sivulla ei ole lomaketta eikä tilausta.",
+        takaisin: "Takaisin portfolioon"
+      },
+
       aula: {
         otsikko: "Simuloitu vastaanotto",
         numero: "04",
@@ -141,7 +185,8 @@ window.SIVUN_SISALTO = {
         },
         ui: {
           title: "Esimerkki asiakaspalvelusta",
-          demoLabel: "Demo – simuloidut vastaukset",
+          demoLabel: "Interaktiivinen demo – simuloidut vastaukset",
+          reset: "Tyhjennä",
           sampleNote: "",
           simulatedNote: "Simuloitu vastaus. Ei tekoälyä, verkkolähetystä eikä tallennusta. Älä kirjoita henkilötietoja.",
           privacy: "",
@@ -336,7 +381,7 @@ window.SIVUN_SISALTO = {
         { id: "tietoa", numero: "01", teksti: "About" },
         { id: "osaaminen", numero: "02", teksti: "Capability" },
         { id: "erp", numero: "03", teksti: "Path" },
-        { id: "aula-demo", numero: "04", teksti: "Demo" },
+        { id: "ratkaisut", numero: "04", teksti: "Solutions" },
         { id: "tyot", numero: "05", teksti: "Work" },
         { id: "taustat", numero: "06", teksti: "Background" },
         { id: "yhteys", numero: "07", teksti: "Contact" },
@@ -405,6 +450,49 @@ window.SIVUN_SISALTO = {
         ],
       },
 
+      ratkaisut: {
+        otsikko: "Solutions",
+        numero: "04",
+        johdanto: "A solution you can buy, on its own page. The demo can be tried here. There is one product so far.",
+        tutustu: "Explore solution",
+        kokeile: "Try demo",
+        demoOtsikko: "Try the demo",
+      },
+
+      chatbot: {
+        ylateksti: "Customer service",
+        ingressi: "A front desk that answers a company’s own questions and says plainly when the knowledge base is not enough.",
+        arvo: "A visitor gets an answer to common questions immediately. A person is needed only when the agreed material does not resolve the question.",
+        ongelmaOtsikko: "What this is for",
+        ongelmat: [
+          { nimi: "The same questions repeat", teksti: "Hours, location and services get asked again. The answer can sit on the page instead of every message waiting in a queue." },
+          { nimi: "The limit stays visible", teksti: "When there is no answer, the page says so. A handoff to a person is part of the solution, not a hidden promise." }
+        ],
+        kykyOtsikko: "What it includes",
+        kyvyt: [
+          { nimi: "Knowledge base", teksti: "Answers come from agreed questions and replies. In this demo the base is fictional.", tila: "In this demo" },
+          { nimi: "Tryable embed", teksti: "A visitor can ask on the page and see a match, an unknown question and a simulated handoff.", tila: "In this demo" },
+          { nimi: "Own material and a live model", teksti: "Bringing in a company’s material and a live language model belong to an agreed implementation. They are not in this demo.", tila: "Agreed in implementation" },
+          { nimi: "A human channel and CRM", teksti: "Routing to a person or a CRM is built only if it is agreed. The demo does not send the message.", tila: "Agreed in implementation" }
+        ],
+        toimintaOtsikko: "How it works",
+        toiminta: [
+          "The visitor types a question on the page.",
+          "If it matches the knowledge base, the answer is shown from there.",
+          "If it does not match, or the visitor asks for a person, sample contact details are shown. The message is not sent."
+        ],
+        rajaOtsikko: "What the demo is not",
+        rajat: [
+          "Not live AI and not an always-on service.",
+          "No storage, payment or booking.",
+          "Pohjolan Hammas is not a client or a reference.",
+          "No price or results are stated, because there are none."
+        ],
+        ctaOtsikko: "Talk about an implementation",
+        cta: "If this kind of front desk fits, the conversation continues on LinkedIn. There is no form and no order on this page.",
+        takaisin: "Back to the portfolio"
+      },
+
       aula: {
         otsikko: "Simulated front desk",
         numero: "04",
@@ -435,7 +523,8 @@ window.SIVUN_SISALTO = {
         },
         ui: {
           title: "Sample customer service",
-          demoLabel: "Demo – simulated responses",
+          demoLabel: "Interactive demo – simulated responses",
+          reset: "Reset",
           sampleNote: "",
           simulatedNote: "Simulated reply. No AI, no network send and no storage. Do not enter personal data.",
           privacy: "",
