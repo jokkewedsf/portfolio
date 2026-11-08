@@ -31,11 +31,11 @@ window.SIVUN_SISALTO = {
 
       hero: {
         ylateksti: "Oulu",
-        otsikko: "Johdan kasvua myynnin, tiimien ja prosessien rajapinnassa.",
+        otsikko: "Johdan kaupallista kasvua ohjelmistojen, tiimien ja asiakkuuksien rajapinnassa.",
         ingressi:
-          "Johdan B2B-myyntiä ja asiakkuuden elinkaarta strategiasta käyttöönottoon. Yhdistän konsultatiivisen myynnin, tiimit ja toimivat toimintamallit.",
+          "Webman Oy:llä johdan B2B-myyntiä ja rakennan SaaS-liiketoimintaa. Yhdistän asiakkuuden elinkaaren, ohjelmiston käyttöönoton ja tiimien toimintamallit kaupalliseksi kokonaisuudeksi.",
         focusLabel: "Nykyinen rooli",
-        focus: ["SaaS-kasvu", "Tiimin rakentaminen", "Asiakkuuden elinkaari"],
+        focus: ["SaaS-liiketoiminta", "CRM- ja ERP-prosessit", "Tiimien johtaminen"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
         selaaNappi: "Katso työ",
@@ -55,9 +55,9 @@ window.SIVUN_SISALTO = {
         otsikko: "Tietoa",
         numero: "01",
         merkinta: "",
-        avaus: "Kasvu syntyy, kun myynnin lupaus ja asiakkaan arki kohtaavat.",
+        avaus: "Ohjelmiston arvo syntyy, kun se tukee ihmisten työtä ja asiakkaalle annettua lupausta.",
         kappaleet: [
-          "Yhdistän markkinoinnin, myynnin ja prosessit samaan ketjuun: kenelle myydään, miten työ toimitetaan ja miten tulos näkyy. Tuon kaupallisen ja teknisen puolen samaan pöytään.",
+          "Yhdistän markkinoinnin, myynnin ja ohjelmistot samaan ketjuun: asiakastarpeesta selkeisiin työnkulkuihin ja käyttöönottoon. CRM- ja ERP-prosessien tuntemus auttaa minua tuomaan liiketoiminnan ja tekniset tiimit saman pöydän ääreen.",
           "Valmennus on kulkenut mukana vuodesta 2013 Kickboxing Team Oulussa. Se on tapa johtaa ihmisiä.",
         ],
         muokkaus: "",
@@ -67,7 +67,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Osaaminen",
         numero: "02",
         merkinta: "",
-        johdanto: "Neljä kokonaisuutta, joissa voin johtaa tai olla mukana rakentamassa. Kokemus ja ehdotettu laajuus on erotettu toisistaan.",
+        johdanto: "Kaupallinen johtaminen, tiimit ja ohjelmistot liiketoiminnan näkökulmasta.",
         kohdat: [
           {
             nimi: "Kaupallinen kasvu",
@@ -80,9 +80,9 @@ window.SIVUN_SISALTO = {
               "Toimipisteen käynnistäminen, rekrytointi sekä myynnin ja asiakasmenestyksen johtaminen. Kokemus siitä, miten paikallinen tiimi ja yhteinen tapa tehdä työtä syntyvät.",
           },
           {
-            nimi: "Digitaaliset prosessit",
+            nimi: "Yritysohjelmistot ja prosessit",
             kuvaus:
-              "CRM, ERP ja myynnin työkalut osana kaupallista työtä: tarjous, projekti, tunnit ja laskutus samassa ketjussa. En rakenna järjestelmää kehittäjänä. Kehitän sitä, miten työ kulkee järjestelmissä ja kaupallisen sekä teknisen tiimin välillä.",
+              "Ymmärrän, miten CRM- ja ERP-järjestelmät tukevat myynnin, projektien, tuntien ja laskutuksen kokonaisuutta. Vien käyttäjien ja liiketoiminnan tarpeet selkeiksi työnkuluiksi ja teen yhteistyötä teknisten tiimien kanssa. Painopisteeni on prosessien ja ohjelmistojen käytön kehittämisessä, ei ohjelmistokehityksessä.",
           },
           {
             nimi: "Brändi ja markkinointi",
@@ -370,11 +370,11 @@ window.SIVUN_SISALTO = {
 
       hero: {
         ylateksti: "Oulu",
-        otsikko: "I lead growth where sales, teams and processes meet.",
+        otsikko: "I lead commercial growth across software, teams and customer relationships.",
         ingressi:
-          "I lead B2B sales and the customer lifecycle from strategy through onboarding. My work connects consultative sales, teams and effective operating models.",
+          "At Webman Oy, I lead B2B sales and help build the SaaS business. I connect the customer lifecycle, software onboarding and team operating models into one commercial whole.",
         focusLabel: "Current role",
-        focus: ["SaaS growth", "Building a team", "Customer lifecycle"],
+        focus: ["SaaS business", "CRM and ERP workflows", "Team leadership"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
         selaaNappi: "See the work",
@@ -394,9 +394,9 @@ window.SIVUN_SISALTO = {
         otsikko: "About",
         numero: "01",
         merkinta: "",
-        avaus: "Growth happens when the promise of a sale meets the customer's day-to-day reality.",
+        avaus: "Software creates value when it supports people's work and the promise made to customers.",
         kappaleet: [
-          "I connect marketing, sales and processes into one chain: who we sell to, how the work is delivered, and how the result shows up. I bring the commercial and technical sides to the same table.",
+          "I connect marketing, sales and software into one chain: from customer needs to clear workflows and onboarding. My familiarity with CRM and ERP processes helps me bring business and technical teams to the same table.",
           "Coaching has been part of this since 2013 at Kickboxing Team Oulu. It is a way of leading people.",
         ],
         muokkaus: "",
@@ -406,7 +406,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Capability",
         numero: "02",
         merkinta: "",
-        johdanto: "Four areas I can lead or help build. Hands-on experience is kept separate from the wider scope.",
+        johdanto: "Commercial leadership, teams and software from a business perspective.",
         kohdat: [
           {
             nimi: "Commercial growth",
@@ -419,9 +419,9 @@ window.SIVUN_SISALTO = {
               "Opening an office, hiring, and leading sales and customer success. Experience in how a local team and a shared way of working take shape.",
           },
           {
-            nimi: "Connected digital processes",
+            nimi: "Business software and workflows",
             kuvaus:
-              "CRM, ERP and sales tools inside commercial work: quote, project, hours and invoicing in one chain. I do not build the system as a developer. I shape how the work moves through the tools, and between commercial and technical teams.",
+              "I understand how CRM and ERP systems support sales, projects, time tracking and invoicing. I translate business and user needs into clear workflows and collaborate with technical teams. My focus is improving processes and software adoption, not software development.",
           },
           {
             nimi: "Brand and marketing systems",

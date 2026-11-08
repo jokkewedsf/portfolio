@@ -58,6 +58,13 @@ if (!data) {
     if (!sivu.osaaminen || !Array.isArray(sivu.osaaminen.kohdat) || sivu.osaaminen.kohdat.length < 4) {
       fail(koodi + ": osaamiskokonaisuuksia pitää olla vähintään neljä");
     }
+    const ohjelmistoOsaaminen = (sivu.osaaminen.kohdat || []).find(function (kohta) {
+      return /ohjelmistot|software/i.test(kohta.nimi);
+    });
+    const ohjelmistoTeksti = ohjelmistoOsaaminen && ohjelmistoOsaaminen.kuvaus;
+    if (!ohjelmistoTeksti || !/CRM/i.test(ohjelmistoTeksti) || !/ERP/i.test(ohjelmistoTeksti)) {
+      fail(koodi + ": yritysohjelmistojen osaamisesta pitää kertoa CRM- ja ERP-työskentely");
+    }
     if (!Array.isArray(sivu.tyot.projektit) || !sivu.tyot.projektit.length) fail(koodi + ": työt puuttuvat");
     sivu.tyot.projektit.forEach(function (projekti, indeksi) {
       if (projekti.onEsimerkki !== false) fail(koodi + " työkortti " + indeksi + " on esimerkki");
