@@ -18,7 +18,7 @@
         "Hei, olen Aula-esimerkin vastaanottoavustaja Pohjolan Hampaalla. Yritys on kuvitteellinen, ja vastaukset ovat simuloituja vain tämän tietopohjan perusteella. Viestiä ei lähetetä eikä tallenneta.",
       profile: {
         summary:
-          "Pohjolan Hammas on kuvitteellinen hammaslääkäriasema Helsingissä. Tämä on esimerkkiaineistoa, ei sivuston omistajan palvelu.",
+          "Pohjolan Hammas on kuvitteellinen hammaslääkäriasema Helsingissä. Tämä on esimerkkiaineistoa, ei sivuston omistajan palvelua.",
         services:
           "Hammastarkastus, paikkaus ja särkyvastaanotto. Hammasimplantteja ei tehdä.",
         address: "Kalevankatu 12, 00100 Helsinki"
@@ -26,11 +26,11 @@
       faqs: [
         {
           q: "Miten varaan ajan?",
-          a: "Ajanvaraus onnistuu puhelimitse numerosta 09 555 0144. Verkkoajanvarausta ei ole, eikä tämä demo tee varausta."
+          a: "Ajanvaraus onnistuu puhelimitse numerosta 09\u00A0555\u00A00144. Verkkoajanvarausta ei ole, eikä tämä demo tee varausta."
         },
         {
           q: "Mitä tarkastus maksaa?",
-          a: "Kuvitteellisessa hinnastossa hammastarkastus on 75 €. Summa on esimerkkivastaanoton aineistoa, ei Aulan hinta, eikä sitä laskuteta."
+          a: "Kuvitteellisessa hinnastossa hammastarkastus on 75\u00A0€. Summa on esimerkkivastaanoton aineistoa, ei Aulan hintaa, eikä sitä laskuteta."
         },
         {
           q: "Missä vastaanotto sijaitsee?",
@@ -49,7 +49,7 @@
         demoLabel: "Interaktiivinen demo – simuloidut vastaukset",
         reset: "Tyhjennä",
         sampleNote: "Kuvitteellinen esimerkkiaineisto, ei sivuston omistajan lupaus eikä asiakasreferenssi.",
-        simulatedNote: "Simuloitu vastaus. Ei live-tekoälyä, ei maksua, ei verkkolähetystä eikä tallennusta.",
+        simulatedNote: "Simuloitu vastaus. Ei live-tekoälyä, ei maksua, ei verkkopyyntöä eikä tallennusta.",
         privacy: "Älä kirjoita henkilötietoja, korttinumeroita tai salasanoja. Kysymys ei lähde tältä sivulta.",
         messageLabel: "Kysymys esimerkkiyritykselle",
         placeholder: "Kysy esimerkkiyritykseltä…",

@@ -515,15 +515,43 @@ main {
   font-size: 0.98rem;
 }
 
-.hero-luku span,
-.luku-rivi span {
+.hero-luku .luku-arvo,
+.luku-rivi .luku-arvo {
+  position: relative;
   display: block;
   margin-bottom: 0.15rem;
   color: var(--teksti);
   font-family: var(--font-naytto);
   font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-variant-numeric: tabular-nums;
   line-height: 1.05;
   letter-spacing: -0.04em;
+}
+
+.luku-elava {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.luku-arvo.on-laskee .luku-lopullinen {
+  visibility: hidden;
+}
+
+.luku-selite {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .luku-arvo.nousee .luku-elava {
+    animation: luku-nousee 1.8s cubic-bezier(0.16, 0.8, 0.24, 1) both;
+  }
+}
+
+@keyframes luku-nousee {
+  from { transform: translateY(0.35em); }
+  to { transform: none; }
 }
 
 .hero-opinnot {
@@ -1514,6 +1542,7 @@ main,
   .paljasta,
   .kortti,
   .tapaus h3,
+  .luku-elava,
   .navigaatio,
   .valikko-ikoni,
   .valikko-ikoni::before,

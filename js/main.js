@@ -65,6 +65,62 @@
     return siisti;
   }
 
+  function lukuMerkki(luokka) {
+    if (!data.hero || !data.hero.luku) return "";
+    const lause = [data.hero.luku, data.hero.lukuSelite].filter(Boolean).join(" ");
+    const summa = Number(data.hero.summa) || 0;
+    return (
+      '<p class="' + luokka + '" aria-label="' + esc(lause) + '">' +
+      '<span class="luku-arvo" data-summa="' + summa + '">' +
+      '<span class="luku-lopullinen">' + esc(data.hero.luku) + "</span>" +
+      '<span class="luku-elava" aria-hidden="true"></span></span>' +
+      (data.hero.lukuSelite ? '<span class="luku-selite">' + esc(data.hero.lukuSelite) + "</span>" : "") +
+      "</p>"
+    );
+  }
+
+  function muotoileSumma(arvo) {
+    const luku = Math.max(0, Math.round(arvo));
+    if (kieli === "en") return "Over €" + luku.toLocaleString("en-US");
+    const ryhmat = String(luku).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0");
+    return "Yli " + ryhmat + "\u00A0€";
+  }
+
+  let lukuTarkkailijat = [];
+
+  function alustaLuvut() {
+    lukuTarkkailijat.forEach(function (tarkkailija) { tarkkailija.disconnect(); });
+    lukuTarkkailijat = [];
+    const vahenna = liikeMq.matches;
+    document.querySelectorAll(".luku-arvo").forEach(function (el) {
+      const summa = Number(el.getAttribute("data-summa"));
+      const elava = el.querySelector(".luku-elava");
+      const loppu = el.querySelector(".luku-lopullinen");
+      if (!summa || !elava || !loppu || vahenna || !("IntersectionObserver" in window)) return;
+      const tarkkailija = new IntersectionObserver(function (kirjaukset) {
+        if (!kirjaukset.some(function (kirjaus) { return kirjaus.isIntersecting; })) return;
+        tarkkailija.disconnect();
+        el.classList.add("on-laskee", "nousee");
+        elava.textContent = muotoileSumma(0);
+        const alku = performance.now();
+        const kesto = 1800;
+        function askel(nyt) {
+          const t = Math.min(1, (nyt - alku) / kesto);
+          const eteneminen = 1 - Math.pow(1 - t, 3);
+          elava.textContent = muotoileSumma(summa * eteneminen);
+          if (t < 1) requestAnimationFrame(askel);
+          else {
+            elava.textContent = loppu.textContent;
+            el.classList.remove("on-laskee");
+          }
+        }
+        requestAnimationFrame(askel);
+      }, { threshold: 0.45 });
+      tarkkailija.observe(el);
+      lukuTarkkailijat.push(tarkkailija);
+    });
+  }
+
   function nimiAnimaatio() {
     function rivi(sana, alku, luokka) {
       const kirjaimet = String(sana)
@@ -148,9 +204,7 @@
       })
       .join("");
     const heroMeta = [data.tyonantaja, data.paikka].filter(Boolean).join(" · ");
-    const luku = data.hero.luku
-      ? '<p class="hero-luku"><span>' + esc(data.hero.luku) + "</span> " + esc(data.hero.lukuSelite || "") + "</p>"
-      : "";
+    const luku = lukuMerkki("hero-luku");
     const opinnot = data.hero.opinnotNimi
       ? '<p class="hero-opinnot">' + esc(data.hero.opinnotNimi) + "</p>" +
         (data.hero.opinnotRivi ? '<p class="hero-focus-meta">' + esc(data.hero.opinnotRivi) + "</p>" : "")
@@ -204,9 +258,7 @@
       '<p class="suuri-lause paljasta">' +
       esc(osio.avaus) +
       "</p>" +
-      (data.hero && data.hero.luku
-        ? '<p class="luku-rivi paljasta"><span>' + esc(data.hero.luku) + "</span> " + esc(data.hero.lukuSelite || "") + "</p>"
-        : "") +
+      lukuMerkki("luku-rivi paljasta") +
       '<div class="paikka-kortti paljasta">' +
       (osio.merkinta
         ? '<p class="merkinta merkinta-paikka">' + esc(osio.merkinta) + "</p>"
@@ -503,6 +555,7 @@
     kieli = uusi;
     data = juuri.kielet[kieli];
     rakennaSivu();
+    alustaLuvut();
     alustaPaljastukset();
     alustaNykyinenOsio();
     const juuriHtml = document.documentElement;
@@ -761,6 +814,7 @@
   }
 
   rakennaSivu();
+  alustaLuvut();
   alustaKieli();
   alustaValikko();
   alustaPaljastukset();

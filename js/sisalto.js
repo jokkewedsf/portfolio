@@ -25,7 +25,8 @@ window.SIVUN_SISALTO = {
         otsikko: "Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.",
         ingressi:
           "Johdan myyntiä ja tiimejä Webman Oy:ssä. Ohjelmointi näkyy sivuissa, jotka olen koonnut itse.",
-        luku: "Yli 250 000 €",
+        summa: 250000,
+        luku: "Yli 250\u00A0000\u00A0€",
         lukuSelite: "SaaS-myyntiä vuonna 2026 (tilanne 11/2026)",
         opinnotNimi: "Centria-ammattikorkeakoulu",
         opinnotRivi: "Tradenomi (AMK), tietojenkäsittely · opinnot käynnissä 2026–2029",
@@ -52,8 +53,8 @@ window.SIVUN_SISALTO = {
         merkinta: "",
         avaus: "Ohjelmisto-osaaminen rakentuu johtamisesta, myynnistä ja ohjelmoinnista.",
         kappaleet: [
-          "Centria-ammattikorkeakoulu, tradenomi (AMK), tietojenkäsittely. Opinnot käynnissä 2026–2029, eivät valmis tutkinto.",
-          "Johdan B2B-myyntiä ja SaaS-kasvua Webman Oy:ssä sekä toimipisteen käynnistystä. Aiemmin asiakasmenestys ja markkinointi JCADilla, ja myynnin sekä markkinoinnin konsultointi Fissionilla.",
+          "Centria-ammattikorkeakoulu, tradenomi (AMK), tietojenkäsittely. Opinnot käynnissä 2026–2029, ei valmista tutkintoa.",
+          "Johdan B2B-myyntiä ja SaaS-kasvua Webman Oy:ssä sekä toimipisteen käynnistystä. Aiemmin asiakasmenestystä ja markkinointia JCAD:llä sekä myynnin ja markkinoinnin konsultointia Fissionilla.",
           "Valmennus on kulkenut mukana vuodesta 2013: SM-tason vapaaottelu, brasilialaisen jujutsun purppuravyö ja valmennus. Ennen näitä rooleja tein asiakaspalvelua ja myyntiä opintojen ohessa.",
         ],
         muokkaus: "",
@@ -75,7 +76,7 @@ window.SIVUN_SISALTO = {
           },
           {
             nimi: "Ohjelmointi",
-            kuvaus: "HTML, CSS ja JavaScript omissa esimerkeissä. Adobe Creative Suite ilmeen työssä. Opinnot ovat käynnissä, eivät valmis tutkinto.",
+            kuvaus: "HTML, CSS ja JavaScript omissa esimerkeissä. Adobe Creative Suite ilmeen työssä. Opinnot ovat käynnissä, ei valmista tutkintoa.",
           },
           {
             nimi: "CRM, ERP ja työnkulku",
@@ -96,13 +97,13 @@ window.SIVUN_SISALTO = {
             nimi: "Tämä sivu",
             ongelma: "Profiilin pitää kertoa kaupallinen rooli ja näyttää, että sivut on tehty itse.",
             tein: "Kokosin sivun HTML:llä, CSS:llä ja JavaScriptillä. Suomi ja englanti, ei taustajärjestelmää.",
-            nayttaa: "Sivun, jota luet. Ei asiakasprojekti.",
+            nayttaa: "Sivu, jota luet. Ei asiakasprojekti.",
             linkki: "#alku",
             linkinTeksti: "Sivun alkuun",
           },
           {
             nimi: "Aula",
-            ongelma: "Vastaanoton samat kysymykset toistuvat, ja rajan pitää näkyä, kun vastausta ei ole.",
+            ongelma: "Samat kysymykset toistuvat vastaanotossa, ja rajan pitää näkyä, kun vastausta ei ole.",
             tein: "Tein tuotesivun ja paikallisen demon, joka vastaa vain mukana olevasta tietopohjasta.",
             nayttaa: "Miltä kokeiltava vastaanotto tuntuu. Simuloitu. Pohjolan Hammas ei ole asiakas.",
             linkki: "ratkaisut/chatbot/",
@@ -110,7 +111,7 @@ window.SIVUN_SISALTO = {
           },
           {
             nimi: "Toiminnanohjauksen kuvitus",
-            ongelma: "Myynti, projektit, laskutus ja raportointi puhutaan helposti erillään.",
+            ongelma: "Myynnistä, projekteista, laskutuksesta ja raportoinnista puhutaan helposti erillään.",
             tein: "Tein vieritettävän kuvituksen, jossa ketju kulkee kahdessatoista vaiheessa.",
             nayttaa: "Miten selitän ketjun. En ole rakentanut ERP:tä enkä ottanut sitä käyttöön.",
             linkki: "#erp",
@@ -123,7 +124,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Toiminnanohjaus",
         numero: "05",
         johdanto:
-          "Kuvitus kaupallisesta ketjusta, ei järjestelmä jonka olisin rakentanut tai ottanut käyttöön. Vieritys vain näyttää vaiheet.",
+          "Kuvitus kaupallisesta ketjusta, ei järjestelmä, jonka olisin rakentanut tai ottanut käyttöön. Vieritys vain näyttää vaiheet.",
         vaiheet: [
           { id: "asiakkaat", nimi: "Asiakkaat" },
           { id: "dokumentit", nimi: "Dokumentit" },
@@ -156,13 +157,13 @@ window.SIVUN_SISALTO = {
         ongelmaOtsikko: "Mihin tämä vastaa",
         ongelmat: [
           { nimi: "Samat kysymykset toistuvat", teksti: "Aukiolo, sijainti ja palvelut kysytään uudelleen. Vastaus voi olla sivulla ilman, että jokainen viesti jää jonoon." },
-          { nimi: "Raja pidetään näkyvänä", teksti: "Kun vastausta ei ole, se sanotaan. Ihmisen koppi on osa ratkaisua, ei piilotettu lupaus." }
+          { nimi: "Raja pidetään näkyvänä", teksti: "Kun vastausta ei ole, se sanotaan. Ohjaus ihmiselle on osa ratkaisua, ei piilotettu lupaus." }
         ],
         kykyOtsikko: "Mitä siihen kuuluu",
         kyvyt: [
           { nimi: "Tietopohja", teksti: "Vastaukset tulevat sovituista kysymyksistä ja vastauksista. Tässä demossa pohja on kuvitteellinen.", tila: "Näkyy demossa" },
           { nimi: "Kokeiltava upotus", teksti: "Kävijä voi kysyä sivulla ja nähdä osuman, tuntemattoman kysymyksen ja simuloidun ohjauksen.", tila: "Näkyy demossa" },
-          { nimi: "Oma aineisto ja live-malli", teksti: "Yrityksen tietojen tuonti ja elävä kielimalli kuuluvat sovittuun toteutukseen. Ne eivät ole tässä demossa.", tila: "Sovitaan toteutuksessa" },
+          { nimi: "Oma aineisto ja live-malli", teksti: "Yrityksen tietojen tuonti ja käytössä oleva kielimalli kuuluvat sovittuun toteutukseen. Ne eivät ole tässä demossa.", tila: "Sovitaan toteutuksessa" },
           { nimi: "Ihmisen kanava ja CRM", teksti: "Ohjaus oikealle ihmiselle tai CRM-järjestelmään tehdään vain, jos se sovitaan. Demo ei lähetä viestiä.", tila: "Sovitaan toteutuksessa" }
         ],
         toimintaOtsikko: "Miten se toimii",
@@ -187,7 +188,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Simuloitu vastaanotto",
         numero: "04",
         johdanto:
-          "Aula on työnimi simuloidulle vastaanotolle. Pohjolan Hammas on kuvitteellinen esimerkki, ei asiakas.",
+          "Aula on simuloidun vastaanoton työnimi. Pohjolan Hammas on kuvitteellinen esimerkki, ei asiakas.",
         tuote: "Aula",
         huom: "työnimi",
         yritys: "Pohjolan Hammas",
@@ -202,7 +203,7 @@ window.SIVUN_SISALTO = {
         },
         ukk: [
           { q: "Miten varaan ajan?", a: "Tässä esimerkissä ajanvaraus kuvataan puhelimitse. Demo ei tee varausta eikä yhdistä oikeaan vastaanottoon." },
-          { q: "Mitä tarkastus maksaa?", a: "Kuvitteellisessa hinnastossa hammastarkastus on 75 €. Summa on esimerkkiaineistoa, eikä sitä laskuteta." },
+          { q: "Mitä tarkastus maksaa?", a: "Kuvitteellisessa hinnastossa hammastarkastus on 75\u00A0€. Summa on esimerkkiaineistoa, eikä sitä laskuteta." },
           { q: "Missä vastaanotto sijaitsee?", a: "Esimerkkivastaanotto sijaitsee osoitteessa Esimerkkikatu 12, 00100 Helsinki." }
         ],
         yhteys: {
@@ -216,7 +217,7 @@ window.SIVUN_SISALTO = {
           demoLabel: "Interaktiivinen demo – simuloidut vastaukset",
           reset: "Tyhjennä",
           sampleNote: "",
-          simulatedNote: "Simuloitu vastaus. Ei tekoälyä, verkkolähetystä eikä tallennusta. Älä kirjoita henkilötietoja.",
+          simulatedNote: "Simuloitu vastaus. Ei tekoälyä, verkkopyyntöä eikä tallennusta. Älä kirjoita henkilötietoja.",
           privacy: "",
           messageLabel: "Kysymys esimerkkiyritykselle",
           placeholder: "Kysy esimerkkiyritykseltä…",
@@ -243,7 +244,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Kokemus",
         numero: "03",
         merkinta: "",
-        johdanto: "Roolit, eivät erillisiä asiakastoimeksiantoja. Lukuja on mukana vain silloin, kun ne ovat omiani.",
+        johdanto: "Nämä ovat rooleja, eivät erillisiä asiakastoimeksiantoja. Luku on mukana vain silloin, kun se on oma.",
         nayta: "Näytä kuvaus",
         piilota: "Piilota kuvaus",
         esimerkkiMerkinta: "Esimerkki · ei oikea projekti",
@@ -351,7 +352,7 @@ window.SIVUN_SISALTO = {
             nimi: "Opinnot",
             meta: "Centria-ammattikorkeakoulu · opinnot käynnissä 2026–2029",
             teksti:
-              "Tradenomi (AMK), tietojenkäsittely. Opinnot käynnissä 2026–2029. Rakennusmestariopinnot (AMK) 2022–2023, ei valmis tutkinto. Yhteiskuntatieteiden opinnot Lapin yliopistossa 2020–2021. Elements of AI, Helsingin yliopisto ja MinnaLearn.",
+              "Tradenomi (AMK), tietojenkäsittely. Opinnot käynnissä 2026–2029. Rakennusmestariopinnot (AMK) 2022–2023, ei valmista tutkintoa. Yhteiskuntatieteiden opinnot Lapin yliopistossa 2020–2021. Elements of AI, Helsingin yliopisto ja MinnaLearn.",
           },
           {
             nimi: "Kriisinhallinta",
@@ -415,8 +416,9 @@ window.SIVUN_SISALTO = {
         otsikko: "Software expertise from the combination of leadership, sales and programming.",
         ingressi:
           "I lead sales and teams at Webman Oy. The programming shows up in the pages I assembled myself.",
+        summa: 250000,
         luku: "Over €250,000",
-        lukuSelite: "in SaaS sales in 2026 (as of Nov 2026)",
+        lukuSelite: "in SaaS sales in 2026 (as of November 2026)",
         opinnotNimi: "Centria University of Applied Sciences",
         opinnotRivi: "BBA in Business Information Technology · studies in progress, 2026–2029",
         focusLabel: "Three pillars",
@@ -440,11 +442,11 @@ window.SIVUN_SISALTO = {
         otsikko: "About",
         numero: "01",
         merkinta: "",
-        avaus: "The software skill is built from leadership, sales and programming.",
+        avaus: "Software expertise comes from leadership, sales and programming.",
         kappaleet: [
           "Centria University of Applied Sciences, BBA in Business Information Technology. Studies in progress, 2026–2029, not a completed degree.",
           "At Webman Oy I lead B2B sales, SaaS growth and the opening of an office. Before that, customer success and marketing coordination at JCAD, and sales and marketing consulting at Fission.",
-          "Coaching has been part of this since 2013: national-level MMA, a Brazilian jiu-jitsu purple belt, and coaching. Before these roles I did customer service and sales alongside studies.",
+          "Coaching has been part of this since 2013: national-level MMA, a Brazilian jiu-jitsu purple belt, and coaching. Before these roles I did customer service and sales while studying.",
         ],
         muokkaus: "",
       },
@@ -494,7 +496,7 @@ window.SIVUN_SISALTO = {
             nimi: "Aula",
             ongelma: "The same front-desk questions repeat, and the limit has to stay visible when there is no answer.",
             tein: "I built a product page and a local demo that answers only from the included knowledge base.",
-            nayttaa: "What a tryable front desk feels like. Simulated. Pohjolan Hammas is not a client.",
+            nayttaa: "What a front desk you can try feels like. Simulated. Pohjolan Hammas is not a client.",
             linkki: "ratkaisut/chatbot/",
             linkinTeksti: "Open the Aula page",
           },
@@ -534,14 +536,14 @@ window.SIVUN_SISALTO = {
         otsikko: "Solutions",
         numero: "04",
         johdanto: "Aula is a working title. Try the demo here. The replies are simulated.",
-        tutustu: "Explore solution",
-        kokeile: "Try demo",
+        tutustu: "Explore the solution",
+        kokeile: "Try the demo",
         demoOtsikko: "Try the demo",
       },
 
       chatbot: {
         ylateksti: "Customer service",
-        ingressi: "A front desk that answers a company’s own questions and says plainly when the knowledge base is not enough.",
+        ingressi: "A front desk that answers a company's own questions and says plainly when the knowledge base is not enough.",
         arvo: "A visitor gets an answer to common questions immediately. A person is needed only when the agreed material does not resolve the question.",
         ongelmaOtsikko: "What this is for",
         ongelmat: [
@@ -551,9 +553,9 @@ window.SIVUN_SISALTO = {
         kykyOtsikko: "What it includes",
         kyvyt: [
           { nimi: "Knowledge base", teksti: "Answers come from agreed questions and replies. In this demo the base is fictional.", tila: "In this demo" },
-          { nimi: "Tryable embed", teksti: "A visitor can ask on the page and see a match, an unknown question and a simulated handoff.", tila: "In this demo" },
-          { nimi: "Own material and a live model", teksti: "Bringing in a company’s material and a live language model belong to an agreed implementation. They are not in this demo.", tila: "Agreed in implementation" },
-          { nimi: "A human channel and CRM", teksti: "Routing to a person or a CRM is built only if it is agreed. The demo does not send the message.", tila: "Agreed in implementation" }
+          { nimi: "Embed you can try", teksti: "A visitor can ask on the page and see a match, an unknown question and a simulated handoff.", tila: "In this demo" },
+          { nimi: "Own material and a live model", teksti: "Bringing in a company's material and a live language model belongs to an agreed implementation. They are not in this demo.", tila: "Agreed for the build" },
+          { nimi: "A human channel and CRM", teksti: "Routing to a person or a CRM is built only if it is agreed. The demo does not send the message.", tila: "Agreed for the build" }
         ],
         toimintaOtsikko: "How it works",
         toiminta: [
@@ -591,8 +593,8 @@ window.SIVUN_SISALTO = {
           address: "Example Street 12, 00100 Helsinki"
         },
         ukk: [
-          { q: "How do I book a time?", a: "In this example, booking is described as a phone conversation. The demo does not make a booking or reach a real clinic." },
-          { q: "What does a check-up cost?", a: "In the fictional price list a check-up is 75 €. The amount is sample data and is not charged." },
+          { q: "How do I book an appointment?", a: "In this example, booking is described as a phone call. The demo does not make a booking or reach a real clinic." },
+          { q: "What does a check-up cost?", a: "In the fictional price list a check-up is €75. The amount is sample data and is not charged." },
           { q: "Where is the clinic?", a: "The sample clinic is at Example Street 12, 00100 Helsinki." }
         ],
         yhteys: {
@@ -665,7 +667,7 @@ window.SIVUN_SISALTO = {
             paikka: "Remote",
             tiivis: "Consultative sales and onboarding for field-service companies.",
             kuvaus:
-              "Jobi is Webman’s application for projects, hours and invoicing. I owned the customer journey from sale to onboarding for companies in construction, HVAC, property maintenance and technical services.",
+              "Jobi is Webman's application for projects, hours and invoicing. I owned the customer journey from sale to onboarding for companies in construction, HVAC, property maintenance and technical services.",
             tunnisteet: ["Customers", "Onboarding", "Process"],
             linkki: "",
             linkinTeksti: "",
@@ -711,7 +713,7 @@ window.SIVUN_SISALTO = {
             rooli: "SaaS sales",
             aika: "2019–2020",
             paikka: "",
-            tiivis: "Communication services sold to companies.",
+            tiivis: "Communication services for companies.",
             kuvaus: "Needs analysis and solution selling.",
             tunnisteet: ["B2B", "SaaS"],
             linkki: "",
