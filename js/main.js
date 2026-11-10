@@ -188,7 +188,7 @@
       "</p>" +
       '<div class="toiminnot">' +
       linkedinNappi +
-      '<a class="nappi nappi-toissijainen" href="#tyot">' +
+      '<a class="nappi nappi-toissijainen" href="#ratkaisut">' +
       esc(data.hero.selaaNappi) +
       "</a></div>" +
       '<aside class="hero-focus" aria-label="' + esc(data.hero.focusLabel) + '">' +

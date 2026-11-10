@@ -14,11 +14,11 @@ window.SIVUN_SISALTO = {
 
   kielet: {
     fi: {
-      paikka: "Oulu",
+      paikka: "",
       nykyinenRooli: "Sales Team Lead",
       tyonantaja: "Webman Oy",
       kuvaus:
-        "Joakim Rydenfelt, Oulu. Kaupallinen kasvu, tiimit ja digitaaliset prosessit samassa kokonaisuudessa.",
+        "Joakim Rydenfelt. B2B-myynti, asiakkuudet ja tiimit. HTML-sivut ja demot on tehty itse.",
 
       ui: {
         ohitus: "Siirry sisältöön",
@@ -30,15 +30,15 @@ window.SIVUN_SISALTO = {
       },
 
       hero: {
-        ylateksti: "Oulu",
-        otsikko: "Johdan kaupallista kasvua ohjelmistojen, tiimien ja asiakkuuksien rajapinnassa.",
+        ylateksti: "Webman Oy · Sales Team Lead",
+        otsikko: "Johdan myyntiä ja asiakkuuksia. Sivut rakennan itse.",
         ingressi:
-          "Webman Oy:llä johdan B2B-myyntiä ja rakennan SaaS-liiketoimintaa. Yhdistän asiakkuuden elinkaaren, ohjelmiston käyttöönoton ja tiimien toimintamallit kaupalliseksi kokonaisuudeksi.",
-        focusLabel: "Nykyinen rooli",
-        focus: ["SaaS-liiketoiminta", "CRM- ja ERP-prosessit", "Tiimien johtaminen"],
+          "B2B-myynti, käyttöönotto ja tiimin tapa toimia. Tämän sivuston, Aulan sivun ja chatbot-demon olen koonnut HTML:llä, CSS:llä ja JavaScriptillä. Ne ovat omia esimerkkejä, eivät asiakastoimituksia.",
+        focusLabel: "Mitä tästä näkee",
+        focus: ["B2B-myynti ja asiakkuus", "Tiimin käynnistys", "HTML-sivut ja demot"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
-        selaaNappi: "Katso työ",
+        selaaNappi: "Katso ratkaisut",
       },
 
       navigointi: [
@@ -55,10 +55,10 @@ window.SIVUN_SISALTO = {
         otsikko: "Tietoa",
         numero: "01",
         merkinta: "",
-        avaus: "Ohjelmiston arvo syntyy, kun se tukee ihmisten työtä ja asiakkaalle annettua lupausta.",
+        avaus: "Palkkaa kaupalliseen työhön. Sivun voit myös katsoa tästä.",
         kappaleet: [
-          "Yhdistän markkinoinnin, myynnin ja ohjelmistot samaan ketjuun: asiakastarpeesta selkeisiin työnkulkuihin ja käyttöönottoon. CRM- ja ERP-prosessien tuntemus auttaa minua tuomaan liiketoiminnan ja tekniset tiimit saman pöydän ääreen.",
-          "Valmennus on kulkenut mukana vuodesta 2013 Kickboxing Team Oulussa. Se on tapa johtaa ihmisiä.",
+          "Webman Oy:ssä johdan B2B-myyntiä, SaaS-kasvua ja toimipisteen käynnistystä. Aiemmin asiakasmenestys ja markkinointi JCADilla sekä myynti ja sivut Fissionilla. Centrian tietojenkäsittelyn opinnot ovat kesken, eivät valmis tutkinto.",
+          "HTML-esimerkit ovat tämä sivu, Aulan oma sivu ja paikallinen chatbot-demo. En rakenna ERP:tä enkä taustajärjestelmiä. Valmennus on kulkenut mukana vuodesta 2013.",
         ],
         muokkaus: "",
       },
@@ -67,7 +67,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Osaaminen",
         numero: "02",
         merkinta: "",
-        johdanto: "Kaupallinen johtaminen, tiimit ja ohjelmistot liiketoiminnan näkökulmasta.",
+        johdanto: "Kolme ensimmäistä ovat kaupallista työtä. Neljäs on se, minkä olen itse koonnut selaimeen.",
         kohdat: [
           {
             nimi: "Kaupallinen kasvu",
@@ -80,14 +80,14 @@ window.SIVUN_SISALTO = {
               "Toimipisteen käynnistäminen, rekrytointi sekä myynnin ja asiakasmenestyksen johtaminen. Kokemus siitä, miten paikallinen tiimi ja yhteinen tapa tehdä työtä syntyvät.",
           },
           {
-            nimi: "Yritysohjelmistot ja prosessit",
+            nimi: "CRM, ERP ja työnkulku",
             kuvaus:
-              "Ymmärrän, miten CRM- ja ERP-järjestelmät tukevat myynnin, projektien, tuntien ja laskutuksen kokonaisuutta. Vien käyttäjien ja liiketoiminnan tarpeet selkeiksi työnkuluiksi ja teen yhteistyötä teknisten tiimien kanssa. Painopisteeni on prosessien ja ohjelmistojen käytön kehittämisessä, ei ohjelmistokehityksessä.",
+              "CRM ja ERP ovat työkaluja myynnissä, projekteissa, tunneissa ja laskutuksessa. Alla oleva tunneli on kuvitus tästä ketjusta. En ole rakentanut järjestelmää.",
           },
           {
-            nimi: "Brändi ja markkinointi",
+            nimi: "HTML-kokonaisuudet",
             kuvaus:
-              "Strategia, kampanjat, mittarit, sivut ja visuaalinen ilme. Käytännön työtä Suomessa ja Ruotsissa sekä yrittäjänä, kun brändi ja myyntiputki rakennetaan samaan aikaan.",
+              "Tämä sivu, Aulan sivu ja chatbot-demo on HTML, CSS ja JavaScript. Ne ovat omia esimerkkejä. Asiakastoimitusta tai tuotantopalvelua niistä ei väitetä.",
           },
         ],
       },
@@ -96,7 +96,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Toiminnanohjaus",
         numero: "05",
         johdanto:
-          "Havainnollistus siitä, miten kaupallinen työ voi kulkea asiakkaasta raportointiin, kun CRM ja ERP ovat samassa ketjussa. Tämä ei ole kuvaus tietystä käyttöönotosta, asiakkaista tai tuloksista.",
+          "Kuvitus kaupallisesta ketjusta, ei järjestelmä jonka olisin rakentanut tai ottanut käyttöön. Vieritys vain näyttää vaiheet.",
         vaiheet: [
           { id: "asiakkaat", nimi: "Asiakkaat" },
           { id: "dokumentit", nimi: "Dokumentit" },
@@ -225,11 +225,11 @@ window.SIVUN_SISALTO = {
         projektit: [
           {
             onEsimerkki: false,
-            nimi: "Oulun toimipiste ja SaaS-kasvu",
+            nimi: "Toimipiste ja SaaS-kasvu",
             organisaatio: "Webman Oy",
             rooli: "Sales Team Lead",
             aika: "2026",
-            paikka: "Oulu",
+            paikka: "",
             tiivis: "Toimipisteen käynnistäminen, rekrytointi ja SaaS-liiketoiminnan kasvu.",
             kuvaus:
               "Rooli kokoaa strategisen myynnin, asiakasmenestyksen ja myynnin johtamisen. Työ on paikallisen toiminnan ja kasvun rakentamista.",
@@ -296,7 +296,7 @@ window.SIVUN_SISALTO = {
         johdanto: "Valmennus, yrittäjyys ja opinnot kaupallisen työn rinnalla.",
         kohdat: [
           {
-            nimi: "Kickboxing Team Oulu",
+            nimi: "Kamppailu-urheilu",
             meta: "Urheilija ja valmentaja vuodesta 2013",
             teksti: "Kamppailu-urheilun valmennus on pitkäjänteistä ihmisten johtamista.",
           },
@@ -323,7 +323,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Yhteys",
         numero: "07",
         merkinta: "",
-        johdanto: "Oulu. Ota yhteyttä LinkedInissä.",
+        johdanto: "Seuraava askel on LinkedIn. GitHubissa on tämän sivuston lähdekoodi.",
         linkedin: {
           osoite: "https://www.linkedin.com/in/joakim-rydenfelt",
           teksti: "linkedin.com/in/joakim-rydenfelt",
@@ -346,18 +346,18 @@ window.SIVUN_SISALTO = {
       },
 
       alatunniste: {
-        kuvaus: "Oulu",
+        kuvaus: "Webman Oy · Sales Team Lead",
         muokkaus: "",
         ylos: "Takaisin ylös",
       },
     },
 
     en: {
-      paikka: "Oulu",
+      paikka: "",
       nykyinenRooli: "Sales Team Lead",
       tyonantaja: "Webman Oy",
       kuvaus:
-        "Joakim Rydenfelt, Oulu. Commercial growth, teams and digital processes as one operating whole.",
+        "Joakim Rydenfelt. B2B sales, customer work and teams. The HTML pages and demos are built by hand.",
 
       ui: {
         ohitus: "Skip to content",
@@ -369,15 +369,15 @@ window.SIVUN_SISALTO = {
       },
 
       hero: {
-        ylateksti: "Oulu",
-        otsikko: "I lead commercial growth across software, teams and customer relationships.",
+        ylateksti: "Webman Oy · Sales Team Lead",
+        otsikko: "I lead sales and customer work. I build the pages myself.",
         ingressi:
-          "At Webman Oy, I lead B2B sales and help build the SaaS business. I connect the customer lifecycle, software onboarding and team operating models into one commercial whole.",
-        focusLabel: "Current role",
-        focus: ["SaaS business", "CRM and ERP workflows", "Team leadership"],
+          "B2B sales, onboarding and how a team works. This site, the Aula page and the chatbot demo are HTML, CSS and JavaScript I assembled. They are my examples, not customer deployments.",
+        focusLabel: "What you can see",
+        focus: ["B2B sales and customers", "Starting a team", "HTML pages and demos"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
-        selaaNappi: "See the work",
+        selaaNappi: "See the solutions",
       },
 
       navigointi: [
@@ -394,10 +394,10 @@ window.SIVUN_SISALTO = {
         otsikko: "About",
         numero: "01",
         merkinta: "",
-        avaus: "Software creates value when it supports people's work and the promise made to customers.",
+        avaus: "Hire for commercial work. The pages are here to look at.",
         kappaleet: [
-          "I connect marketing, sales and software into one chain: from customer needs to clear workflows and onboarding. My familiarity with CRM and ERP processes helps me bring business and technical teams to the same table.",
-          "Coaching has been part of this since 2013 at Kickboxing Team Oulu. It is a way of leading people.",
+          "At Webman Oy I lead B2B sales, SaaS growth and the opening of an office. Before that, customer success and marketing at JCAD, and sales and sites at Fission. Computer science studies at Centria are in progress, not a completed degree.",
+          "The HTML examples are this site, the Aula page and the local chatbot demo. I do not build an ERP or a backend. Coaching has been part of this since 2013.",
         ],
         muokkaus: "",
       },
@@ -406,7 +406,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Capability",
         numero: "02",
         merkinta: "",
-        johdanto: "Commercial leadership, teams and software from a business perspective.",
+        johdanto: "The first three are commercial work. The fourth is what I have actually assembled in the browser.",
         kohdat: [
           {
             nimi: "Commercial growth",
@@ -419,14 +419,14 @@ window.SIVUN_SISALTO = {
               "Opening an office, hiring, and leading sales and customer success. Experience in how a local team and a shared way of working take shape.",
           },
           {
-            nimi: "Business software and workflows",
+            nimi: "CRM, ERP and the workflow",
             kuvaus:
-              "I understand how CRM and ERP systems support sales, projects, time tracking and invoicing. I translate business and user needs into clear workflows and collaborate with technical teams. My focus is improving processes and software adoption, not software development.",
+              "CRM and ERP are tools in sales, projects, hours and invoicing. The tunnel below illustrates that chain. I did not build the system.",
           },
           {
-            nimi: "Brand and marketing systems",
+            nimi: "HTML builds",
             kuvaus:
-              "Strategy, campaigns, measurement, sites and visual identity. Hands-on work in Finland and Sweden, and as a founder when the brand and the pipeline are built together.",
+              "This page, the Aula page and the chatbot demo are HTML, CSS and JavaScript. They are my examples. They are not a customer deployment or a production service.",
           },
         ],
       },
@@ -435,7 +435,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Operations",
         numero: "05",
         johdanto:
-          "An illustration of how commercial work can move from the customer to reporting when CRM and ERP sit in the same chain. This is not a claim about a specific implementation, clients or results.",
+          "An illustration of a commercial chain, not a system I built or deployed. Scrolling only reveals the stages.",
         vaiheet: [
           { id: "asiakkaat", nimi: "Customers" },
           { id: "dokumentit", nimi: "Documents" },
@@ -564,11 +564,11 @@ window.SIVUN_SISALTO = {
         projektit: [
           {
             onEsimerkki: false,
-            nimi: "Oulu office and SaaS growth",
+            nimi: "Office and SaaS growth",
             organisaatio: "Webman Oy",
             rooli: "Sales Team Lead",
             aika: "2026",
-            paikka: "Oulu",
+            paikka: "",
             tiivis: "Opening the office, hiring and growing the SaaS business.",
             kuvaus:
               "The role brings strategic sales, customer success and sales leadership together. The work is building a local operation and its growth.",
@@ -635,7 +635,7 @@ window.SIVUN_SISALTO = {
         johdanto: "Coaching, entrepreneurship and studies alongside the commercial work.",
         kohdat: [
           {
-            nimi: "Kickboxing Team Oulu",
+            nimi: "Combat sports",
             meta: "Athlete and coach since 2013",
             teksti: "Coaching in combat sports is long-term leadership of people.",
           },
@@ -662,7 +662,7 @@ window.SIVUN_SISALTO = {
         otsikko: "Contact",
         numero: "07",
         merkinta: "",
-        johdanto: "Oulu. Get in touch on LinkedIn.",
+        johdanto: "The next step is LinkedIn. The source of this site is on GitHub.",
         linkedin: {
           osoite: "https://www.linkedin.com/in/joakim-rydenfelt",
           teksti: "linkedin.com/in/joakim-rydenfelt",
@@ -685,7 +685,7 @@ window.SIVUN_SISALTO = {
       },
 
       alatunniste: {
-        kuvaus: "Oulu",
+        kuvaus: "Webman Oy · Sales Team Lead",
         muokkaus: "",
         ylos: "Back to top",
       },

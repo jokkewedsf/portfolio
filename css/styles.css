@@ -460,7 +460,7 @@ main {
   display: flex;
   flex-direction: column;
   margin: 0 0 0.35rem;
-  font-size: clamp(3rem, 13.6vw, 11.4rem);
+  font-size: clamp(2.4rem, 11vw, 8.6rem);
   font-weight: 560;
   line-height: 0.82;
   letter-spacing: -0.055em;
@@ -1341,9 +1341,8 @@ main,
   }
 
   .nimi-kirjain {
-    animation:
-      nimi-esiin 0.7s cubic-bezier(0.16, 0.84, 0.3, 1) both,
-      nimi-valo 6.5s ease-in-out calc(0.7s + var(--i) * 0.07s) infinite;
+    animation: nimi-asettuu 0.8s cubic-bezier(0.16, 0.8, 0.24, 1) both;
+    animation-delay: calc(var(--i) * 0.032s);
   }
 
   .nimi-suku::after {
@@ -1367,14 +1366,9 @@ main,
   50% { opacity: 1; }
 }
 
-@keyframes nimi-esiin {
-  from { opacity: 0.55; transform: translateY(0.12em); }
-  to { opacity: 1; transform: none; }
-}
-
-@keyframes nimi-valo {
-  0%, 100% { background-position: 100% 50%; }
-  45% { background-position: 0% 50%; }
+@keyframes nimi-asettuu {
+  from { transform: translateY(0.16em); }
+  to { transform: none; }
 }
 
 @keyframes viiva {

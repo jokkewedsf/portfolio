@@ -9,7 +9,7 @@ Etusivun nimi on typografinen animaatio. Patsasta ei ole sivulla.
 
 Osio Toiminnanohjaus on scrolliin sidottu havainnollistus. Se ei väitä, että jokin tietty ERP-järjestelmä olisi tehty tai käyttöönotettu tällä sivulla.
 
-Sisältö perustuu Joakim Rydenfeltin julkiseen esittelyyn: nimi, otsikko, Oulu, työkokemuksen vastuut, käynnissä olevat opinnot ja kaksi profiililinkkiä. [LinkedIn](https://www.linkedin.com/in/joakim-rydenfelt) ja [GitHub](https://github.com/jokkewedsf) ovat ainoat yhteyslinkit. Sähköpostia ei ole lisätty.
+Sisältö perustuu Joakim Rydenfeltin julkiseen esittelyyn: nimi, rooli, työkokemuksen vastuut, käynnissä olevat opinnot ja kaksi profiililinkkiä. [LinkedIn](https://www.linkedin.com/in/joakim-rydenfelt) ja [GitHub](https://github.com/jokkewedsf) ovat ainoat yhteyslinkit. Sähköpostia ei ole lisätty.
 
 Centria-opinnot 2026–2029 ja Oamkin Construction Management -jaksot on merkitty opinnoiksi, ei valmiiksi tutkinnoiksi. Työkorteissa ei ole keksittyjä mittareita, asiakkaita tai tuloksia.
 
