@@ -207,14 +207,14 @@ button {
   z-index: 1;
   background-image: url("../assets/rae.png");
   background-size: 180px 180px;
-  opacity: 0.1;
+  opacity: 0.045;
   mix-blend-mode: overlay;
 }
 
 .vinjetti {
   z-index: 2;
   background:
-    radial-gradient(ellipse at 50% 35%, transparent 0%, transparent 55%, rgba(0, 0, 0, 0.28) 100%);
+    radial-gradient(ellipse at 50% 35%, transparent 0%, transparent 62%, rgba(0, 0, 0, 0.16) 100%);
 }
 
 .eteneminen {
@@ -261,6 +261,9 @@ button {
 
 .merkki {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-naytto);
   font-weight: 520;
   font-size: clamp(1rem, 2vw, 1.2rem);
@@ -481,8 +484,9 @@ main {
   margin: 0 0 0.35rem;
   font-size: clamp(2.4rem, 11vw, 8.6rem);
   font-weight: 560;
-  line-height: 0.82;
-  letter-spacing: -0.055em;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  padding-bottom: 0.04em;
 }
 
 .nimi-rivi {
@@ -492,27 +496,24 @@ main {
 
 .nimi-kirjain {
   display: inline-block;
-  background-image: linear-gradient(105deg, #6d5840 0%, #f7f2e8 30%, #d7b56a 48%, #f8f4ec 62%, #5c4834 100%);
-  background-size: 240% 100%;
-  background-position: 20% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  padding-inline: 0.015em;
+  color: var(--teksti);
+  -webkit-text-fill-color: currentColor;
 }
 
 .nimi-suku {
   font-style: italic;
   font-weight: 460;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.03em;
+  color: var(--messinki);
 }
 
 .nimi-suku::after {
   content: "";
   display: block;
   width: min(38%, 9rem);
-  height: 2px;
-  margin-top: 0.28em;
+  height: 1px;
+  margin-top: 0.42em;
   background: linear-gradient(90deg, var(--kajo), var(--messinki) 72%, transparent);
   transform: scaleX(1);
   transform-origin: left center;
@@ -1137,8 +1138,7 @@ main {
   transition: color 0.2s ease;
 }
 
-.kortti:hover h3,
-.tapaus:hover h3 {
+.kortti:hover h3 {
   color: var(--kajo);
 }
 
@@ -1304,6 +1304,9 @@ main {
 }
 
 .alatunniste a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--teksti);
   text-decoration: none;
 }
@@ -1344,15 +1347,13 @@ main {
 }
 
 .tapaus-rivit div {
-  display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr);
-  gap: 0.35rem 1rem;
-  padding: 0.55rem 0;
-  border-top: 1px solid var(--viiva);
+  display: block;
+  padding: 0.7rem 0 0;
+  border-top: 0;
 }
 
 .tapaus-rivit dt {
-  margin: 0;
+  margin: 0 0 0.2rem;
   color: var(--messinki);
   font-size: var(--koko-silma);
   font-weight: 560;
@@ -1418,17 +1419,23 @@ main,
 @media (min-width: 981px) {
   .hero {
     align-items: center;
-    min-height: min(820px, calc(100svh - var(--ylapalkki)));
-    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+    min-height: calc(100svh - var(--ylapalkki));
+    padding-block: clamp(1rem, 2.4vh, 2rem);
   }
 
   .hero-teksti {
     grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
     column-gap: clamp(2rem, 5vw, 5rem);
-    row-gap: 1rem;
+    row-gap: 0.7rem;
     align-items: center;
     max-width: 1180px;
     margin-inline: auto;
+  }
+
+  .hero-luku,
+  .hero-opinnot,
+  .toiminnot {
+    margin-top: 0;
   }
 
   .ylateksti {
@@ -1440,7 +1447,7 @@ main,
   #nimi-otsikko {
     grid-column: 1;
     grid-row: 2;
-    font-size: clamp(4.5rem, 8.4vw, 8.8rem);
+    font-size: clamp(4rem, 6.6vw, 6.9rem);
   }
 
   .ammattiotsikko {
@@ -1460,27 +1467,23 @@ main,
     grid-row: 5;
   }
 
-  .toiminnot {
+  .hero-opinnot {
     grid-column: 1;
     grid-row: 6;
+  }
+
+  .toiminnot {
+    grid-column: 1;
+    grid-row: 7;
     margin-top: 0.4rem;
   }
 
-  .hero-focus {
+  .pilarit {
     grid-column: 2;
-    grid-row: 2 / span 5;
-    align-self: center;
-    width: 100%;
-    max-width: 30rem;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-    border-color: rgba(228, 194, 122, 0.3);
-    background:
-      radial-gradient(ellipse at 100% 0%, rgba(228, 194, 122, 0.12), transparent 58%),
-      linear-gradient(145deg, rgba(27, 28, 24, 0.96), rgba(13, 14, 12, 0.88));
-  }
-
-  .hero-focus h2 {
-    font-size: clamp(1.8rem, 2.7vw, 2.5rem);
+    grid-row: 4 / span 4;
+    align-self: end;
+    width: min(100%, 22rem);
+    justify-self: end;
   }
 
   .osaaminen-lista {
@@ -2218,7 +2221,223 @@ main,
 }
 
 #nimi-otsikko {
-  line-height: 0.82;
+  line-height: 0.92;
   text-wrap: nowrap;
   hyphens: manual;
+}
+
+.pilarit {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pilarit li {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--viiva);
+  color: var(--teksti);
+  font-family: var(--font-naytto);
+  font-size: clamp(1.55rem, 2.3vw, 2.15rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.pilarit span {
+  color: var(--messinki);
+  font-family: var(--font-leipa);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+}
+
+.hero-opinnot span {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--himmea);
+  font-weight: 450;
+}
+
+.nav-viiva {
+  display: none;
+}
+
+@media (min-width: 861px) {
+  .navigaatio { position: relative; }
+
+  .nav-viiva {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0.45rem;
+    height: 1px;
+    width: 0;
+    background: var(--kajo);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s var(--kaari), width 0.35s var(--kaari), opacity var(--kesto) ease;
+  }
+
+  .navigaatio a[aria-current="true"]::after { display: none; }
+}
+
+.tapaus {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: center;
+  padding: clamp(2rem, 4vw, 3.25rem) 0;
+  border-top: 1px solid var(--viiva);
+}
+
+.tapaus:nth-child(even) .tapaus-kuva { order: 2; }
+
+.tapaus-kuva {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--viiva);
+  border-radius: var(--sade);
+  background: #10110e;
+}
+
+.tapaus-kuva img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 750;
+  object-fit: contain;
+  background: #0c0d0b;
+}
+
+.tapaus .silma,
+.tapaus h3,
+.tapaus .tekstilinkki,
+.tapaus-rivit,
+.tapaus-linkit {
+  grid-column: auto;
+}
+
+.tapaus-teksti h3 { margin: 0.2rem 0 0.8rem; }
+
+.tapaus-linkit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.4rem;
+  margin-top: 1rem;
+}
+
+.tekstilinkki {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  text-decoration: none;
+  transition: background-size 0.28s var(--kaari), color var(--kesto) ease;
+}
+
+.tapaus-linkit .tekstilinkki {
+  position: relative;
+}
+
+.tapaus-linkit .tekstilinkki::before {
+  content: "";
+  position: absolute;
+  inset: -0.7rem -0.15rem;
+}
+
+.tekstilinkki:hover,
+.tekstilinkki:focus-visible {
+  background-size: 100% 1px;
+  color: var(--kajo);
+}
+
+.nappi .nuoli {
+  transition: transform var(--kesto) var(--kaari);
+}
+
+.nappi:hover .nuoli,
+.nappi:focus-visible .nuoli {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 800px) {
+  .tapaus,
+  .tapaus:nth-child(even) .tapaus-kuva {
+    grid-template-columns: 1fr;
+    order: 0;
+  }
+
+  .tapaus-kuva { order: -1; }
+
+  .hero {
+    padding-bottom: 2.4rem;
+  }
+
+  #nimi-otsikko {
+    font-size: clamp(2.65rem, 13vw, 4.3rem);
+  }
+
+  .ammattiotsikko {
+    font-size: clamp(1.42rem, 5.2vw, 1.85rem);
+  }
+
+  .ingressi {
+    font-size: 1.05rem;
+  }
+
+  .ylateksti {
+    margin-bottom: 0.35rem;
+  }
+
+  .toiminnot {
+    margin-top: 1.15rem;
+  }
+
+  .hero-luku {
+    margin-top: 1.35rem;
+  }
+
+  .pilarit {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem 0.75rem;
+    margin-top: 1.2rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--viiva);
+  }
+
+  .pilarit li {
+    display: block;
+    padding: 0;
+    border: 0;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .pilarit span { display: block; margin-bottom: 0.2rem; }
+
+  .toiminnot .nappi { flex: 1 1 auto; }
+}
+
+@media (max-width: 420px) {
+  .hero .toiminnot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero .nappi {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-viiva,
+  .tekstilinkki,
+  .nappi .nuoli,
+  .tapaus-kuva {
+    transition: none;
+  }
 }

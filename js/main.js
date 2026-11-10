@@ -82,6 +82,7 @@
   }
 
   let hahmoKuuntelija = null;
+  let navViivaKuuntelee = false;
 
   function alustaHahmot() {
     if (hahmoKuuntelija) {
@@ -220,14 +221,31 @@
       const luokka = avain === "linkedin" ? "nav-ulkoinen nav-yhteys" : "nav-ulkoinen";
       osiot.push(ulkoinenLinkki(luokka, osoite, kanava.navTeksti || avain, kanava.selite || ""));
     });
-    nav.innerHTML = osiot.join("");
+    nav.innerHTML = osiot.join("") + '<span class="nav-viiva" aria-hidden="true"></span>';
     if (data.ui && data.ui.navAria) nav.setAttribute("aria-label", data.ui.navAria);
+    siirräNavViiva();
+  }
+
+  function siirräNavViiva() {
+    if (!nav) return;
+    const viiva = nav.querySelector(".nav-viiva");
+    const nykyinen = nav.querySelector('a[aria-current="true"]');
+    if (!viiva) return;
+    if (!nykyinen || valikkoMq.matches) {
+      viiva.style.opacity = "0";
+      return;
+    }
+    const pohja = nav.getBoundingClientRect();
+    const kohde = nykyinen.getBoundingClientRect();
+    viiva.style.opacity = "1";
+    viiva.style.width = kohde.width + "px";
+    viiva.style.transform = "translateX(" + (kohde.left - pohja.left) + "px)";
   }
 
   function hero() {
     const linkedin = data.yhteys && data.yhteys.linkedin ? data.yhteys.linkedin : {};
-    const linkedinNappi = ulkoinenLinkki(
-      "nappi nappi-ensisijainen",
+    const yhteysNappi = ulkoinenLinkki(
+      "nappi nappi-toissijainen",
       linkedin.osoite,
       data.hero.linkedinNappi || "LinkedIn",
       linkedin.selite || ""
@@ -235,20 +253,16 @@
     const otsikko = data.hero.otsikko
       ? '<p class="ammattiotsikko">' + esc(data.hero.otsikko) + "</p>"
       : "";
-    const huomautus = data.hero.huomautus
-      ? '<p class="huomautus">' + esc(data.hero.huomautus) + "</p>"
-      : "";
-    const focus = (data.hero.focus || [])
+    const pilarit = (data.hero.focus || [])
       .filter(Boolean)
-      .map(function (kohta) {
-        return "<li>" + esc(kohta) + "</li>";
+      .map(function (kohta, indeksi) {
+        return "<li><span>" + String(indeksi + 1).padStart(2, "0") + "</span>" + esc(kohta) + "</li>";
       })
       .join("");
-    const heroMeta = [data.tyonantaja, data.paikka].filter(Boolean).join(" · ");
-    const luku = lukuMerkki("hero-luku");
     const opinnot = data.hero.opinnotNimi
-      ? '<p class="hero-opinnot">' + esc(data.hero.opinnotNimi) + "</p>" +
-        (data.hero.opinnotRivi ? '<p class="hero-focus-meta">' + esc(data.hero.opinnotRivi) + "</p>" : "")
+      ? '<p class="hero-opinnot">' + esc(data.hero.opinnotNimi) +
+        (data.hero.opinnotRivi ? "<span>" + esc(data.hero.opinnotRivi) + "</span>" : "") +
+        "</p>"
       : "";
     return (
       '<section class="hero" id="alku" aria-labelledby="nimi-otsikko">' +
@@ -258,23 +272,17 @@
       "</p>" +
       nimiAnimaatio() +
       otsikko +
-      '<p class="ingressi">' +
-      esc(data.hero.ingressi) +
-      "</p>" +
-      luku +
+      '<p class="ingressi">' + esc(data.hero.ingressi) + "</p>" +
       '<div class="toiminnot">' +
-      linkedinNappi +
-      '<a class="nappi nappi-toissijainen" href="#valitut">' +
-      esc(data.hero.selaaNappi) +
-      "</a></div>" +
-      '<aside class="hero-focus" aria-label="' + esc(data.hero.focusLabel) + '">' +
-      '<p class="silma">' + esc(data.hero.focusLabel) + "</p>" +
-      '<h2>' + esc(data.nykyinenRooli) + "</h2>" +
-      (heroMeta ? '<p class="hero-focus-meta">' + esc(heroMeta) + "</p>" : "") +
+      '<a class="nappi nappi-ensisijainen" href="#valitut">' + esc(data.hero.selaaNappi) +
+      '<svg class="nuoli" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M9 6h9v9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>' +
+      yhteysNappi +
+      "</div>" +
+      lukuMerkki("hero-luku") +
       opinnot +
-      (focus ? '<ul>' + focus + "</ul>" : "") +
-      "</aside>" +
-      huomautus +
+      (pilarit
+        ? '<ol class="pilarit" aria-label="' + esc(data.hero.focusLabel) + '">' + pilarit + "</ol>"
+        : "") +
       "</div></section>"
     );
   }
@@ -391,17 +399,40 @@
         const linkki = sisainen && kohta.linkinTeksti
           ? '<a class="tekstilinkki" href="' + esc(href) + '">' + esc(kohta.linkinTeksti) + "</a>"
           : "";
+        const demoHref = kohta.demo || "";
+        const demoOk = demoHref.charAt(0) === "#" || demoHref.indexOf("ratkaisut/") === 0;
+        const demo = demoOk && kohta.demoTeksti
+          ? '<a class="tekstilinkki" href="' + esc(demoHref) + '">' + esc(kohta.demoTeksti) + "</a>"
+          : "";
+        const lahde = httpUrl(kohta.lahde);
+        const lahdeLinkki = lahde
+          ? '<a class="tekstilinkki" href="' + esc(lahde) + '" target="_blank" rel="noopener noreferrer">' +
+            esc(osio.lahdeTeksti || "GitHub") +
+            '<span class="sr-only"> (' + esc(data.ui.uusiValilehti) + ")</span></a>"
+          : "";
+        const kuva = kohta.kuva
+          ? '<figure class="tapaus-kuva paljasta"><img src="' + esc(kohta.kuva) + '" width="' +
+            Number(kohta.kuvaLeveys || 1200) + '" height="' + Number(kohta.kuvaKorkeus || 750) +
+            '" alt="' + esc(kohta.kuvaAlt || "") + '" loading="lazy" decoding="async"></figure>'
+          : "";
+        function rivi(otsikko, teksti) {
+          if (!teksti) return "";
+          return "<div><dt>" + esc(otsikko) + "</dt><dd>" + esc(teksti) + "</dd></div>";
+        }
         return (
-          '<article class="tapaus paljasta">' +
+          '<article class="tapaus">' +
+          kuva +
+          '<div class="tapaus-teksti paljasta">' +
           '<p class="silma">' + String(indeksi + 1).padStart(2, "0") + "</p>" +
           "<h3>" + esc(kohta.nimi) + "</h3>" +
           '<dl class="tapaus-rivit">' +
-          "<div><dt>" + esc(osio.ongelma) + "</dt><dd>" + esc(kohta.ongelma) + "</dd></div>" +
-          "<div><dt>" + esc(osio.tein) + "</dt><dd>" + esc(kohta.tein) + "</dd></div>" +
-          "<div><dt>" + esc(osio.nayttaa) + "</dt><dd>" + esc(kohta.nayttaa) + "</dd></div>" +
+          rivi(osio.tarve, kohta.tarve) +
+          rivi(osio.rooli, kohta.rooli) +
+          rivi(osio.tekniikka, kohta.tekniikka) +
+          rivi(osio.nayttaa, kohta.nayttaa) +
           "</dl>" +
-          linkki +
-          "</article>"
+          '<p class="tapaus-linkit">' + linkki + demo + lahdeLinkki + "</p>" +
+          "</div></article>"
         );
       })
       .join("");
@@ -842,11 +873,16 @@
           if (linkki.getAttribute("href") === "#" + id) linkki.setAttribute("aria-current", "true");
           else linkki.removeAttribute("aria-current");
         });
+        siirräNavViiva();
       },
-      { rootMargin: "-28% 0px -55% 0px", threshold: [0.15, 0.4, 0.7] }
+      { rootMargin: "-40% 0px -55% 0px", threshold: [0, 0.15, 0.4] }
     );
     osiot.forEach(function (osio) { tarkkailija.observe(osio); });
     osioTarkkailija = tarkkailija;
+    if (!navViivaKuuntelee) {
+      window.addEventListener("resize", siirräNavViiva);
+      navViivaKuuntelee = true;
+    }
   }
 
   function alustaVieritys() {
