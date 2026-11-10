@@ -698,6 +698,95 @@ main {
 .osio {
   position: relative;
   padding-block: var(--tila-osio);
+  overflow: clip;
+}
+
+.hahmo {
+  position: absolute;
+  z-index: 0;
+  height: auto;
+  pointer-events: none;
+  object-fit: contain;
+  filter: grayscale(1) sepia(0.55) saturate(0.45) brightness(0.95) contrast(0.9);
+  opacity: 0.72;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 46%, transparent 82%);
+  mask-image: radial-gradient(ellipse at center, #000 46%, transparent 82%);
+}
+
+.hahmo-muotokuva {
+  width: 190px;
+  right: 0;
+  top: 22%;
+}
+
+.hahmo-esitys {
+  width: 150px;
+  left: 0;
+  bottom: 8%;
+}
+
+.hahmo-kamppailu {
+  width: 150px;
+  right: 0;
+  top: 8%;
+}
+
+.hahmo-palvelus {
+  width: 108px;
+  left: 0;
+  bottom: 6%;
+  opacity: 0.42;
+}
+
+.hahmo-metsa {
+  width: 200px;
+  right: 0;
+  top: 10%;
+}
+
+@media (min-width: 980px) {
+  #tietoa .tietoa-asetelma { margin-right: 8.5rem; }
+  #osaaminen .osaaminen-lista { margin-left: 7rem; }
+  #taustat .tausta-lista { margin-inline: 6.5rem; }
+  #yhteys .yhteys-lista { margin-right: 9rem; }
+}
+
+.hahmo-nauha {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hahmo-muotokuva {
+    pointer-events: auto;
+    transition: opacity 0.35s ease, filter 0.35s ease;
+  }
+
+  .hahmo-muotokuva:hover,
+  .hahmo-muotokuva:focus-visible {
+    filter: none;
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 860px) {
+  .hahmo[data-liuku] { display: none; }
+
+  .hahmo-nauha {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    margin: 0.5rem 0 0;
+    pointer-events: none;
+  }
+
+  .hahmo-nauha .hahmo {
+    position: static;
+    width: 72px;
+    height: 96px;
+    object-fit: contain;
+    object-position: center top;
+    opacity: 0.55;
+  }
 }
 
 .osio + .osio::before {
@@ -1543,6 +1632,7 @@ main,
   .kortti,
   .tapaus h3,
   .luku-elava,
+  .hahmo,
   .navigaatio,
   .valikko-ikoni,
   .valikko-ikoni::before,

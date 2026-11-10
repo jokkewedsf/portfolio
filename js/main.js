@@ -65,6 +65,45 @@
     return siisti;
   }
 
+  function hahmo(nimi, leveys, korkeus, luokka, alt, liuku) {
+    const koriste = !alt;
+    return (
+      '<img class="hahmo ' + luokka + '"' +
+      (liuku ? ' data-liuku="' + liuku + '"' : "") +
+      ' src="assets/kuvat/' + nimi + '.webp"' +
+      ' srcset="assets/kuvat/' + nimi + '.webp ' + leveys + "w, assets/kuvat/" + nimi + "@2x.webp " + leveys * 2 + 'w"' +
+      ' sizes="' + leveys + 'px"' +
+      ' width="' + leveys + '" height="' + korkeus + '"' +
+      ' alt="' + esc(alt || "") + '"' +
+      (koriste ? ' aria-hidden="true"' : "") +
+      ' loading="lazy" decoding="async">'
+    );
+  }
+
+  let hahmoKuuntelija = null;
+
+  function alustaHahmot() {
+    if (hahmoKuuntelija) {
+      window.removeEventListener("scroll", hahmoKuuntelija);
+      hahmoKuuntelija = null;
+    }
+    document.querySelectorAll(".hahmo[data-liuku]").forEach(function (el) {
+      el.style.transform = "";
+    });
+    if (liikeMq.matches) return;
+    hahmoKuuntelija = function () {
+      document.querySelectorAll(".hahmo[data-liuku]").forEach(function (el) {
+        const r = el.getBoundingClientRect();
+        const keski = r.top + r.height / 2 - window.innerHeight / 2;
+        const vauhti = Number(el.getAttribute("data-liuku")) || 0;
+        const siirto = Math.max(-28, Math.min(28, -keski * vauhti));
+        el.style.transform = "translate3d(0," + siirto.toFixed(1) + "px,0)";
+      });
+    };
+    window.addEventListener("scroll", hahmoKuuntelija, { passive: true });
+    hahmoKuuntelija();
+  }
+
   function lukuMerkki(luokka) {
     if (!data.hero || !data.hero.luku) return "";
     const lause = [data.hero.luku, data.hero.lukuSelite].filter(Boolean).join(" ");
@@ -248,6 +287,12 @@
       .join("");
     return (
       '<section class="osio" id="tietoa" aria-labelledby="tietoa-otsikko">' +
+      hahmo("joakim-muotokuva", 271, 420, "hahmo-muotokuva", data.hero.muotokuva, "0.05") +
+      '<div class="hahmo-nauha" aria-hidden="true">' +
+      hahmo("joakim-muotokuva", 271, 420, "hahmo-nauha-kuva", data.hero.muotokuva) +
+      hahmo("joakim-kamppailu", 187, 420, "hahmo-nauha-kuva", "") +
+      hahmo("joakim-metsa", 318, 420, "hahmo-nauha-kuva", "") +
+      "</div>" +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta"><p class="silma">' +
       esc(osio.numero) +
@@ -290,6 +335,7 @@
       .join("");
     return (
       '<section class="osio" id="osaaminen" aria-labelledby="osaaminen-otsikko">' +
+      hahmo("joakim-esitys", 177, 420, "hahmo-esitys", "", "0.04") +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta">' +
       (osio.numero ? '<p class="silma">' + esc(osio.numero) + "</p>" : "") +
@@ -416,6 +462,8 @@
       .join("");
     return (
       '<section class="osio" id="taustat" aria-labelledby="tausta-otsikko">' +
+      hahmo("joakim-kamppailu", 187, 420, "hahmo-kamppailu", "", "0.06") +
+      hahmo("joakim-palvelus", 220, 260, "hahmo-palvelus", "", "0.03") +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta"><p class="silma">' +
       esc(osio.numero) +
@@ -475,6 +523,7 @@
 
     return (
       '<section class="osio" id="yhteys" aria-labelledby="yhteys-otsikko">' +
+      hahmo("joakim-metsa", 318, 420, "hahmo-metsa", "", "0.05") +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta"><p class="silma">' +
       esc(osio.numero) +
@@ -556,6 +605,7 @@
     data = juuri.kielet[kieli];
     rakennaSivu();
     alustaLuvut();
+    alustaHahmot();
     alustaPaljastukset();
     alustaNykyinenOsio();
     const juuriHtml = document.documentElement;
@@ -815,6 +865,7 @@
 
   rakennaSivu();
   alustaLuvut();
+  alustaHahmot();
   alustaKieli();
   alustaValikko();
   alustaPaljastukset();
