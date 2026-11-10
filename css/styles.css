@@ -59,6 +59,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -1765,8 +1766,9 @@ main,
 }
 
 @media (max-width: 800px) {
-  .tuote-asetelma {
-    grid-template-columns: 1fr;
+  .tuote-asetelma,
+  .aula-asetelma {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1838,11 +1840,6 @@ main,
   margin: 0;
 }
 
-@media (max-width: 800px) {
-  .aula-asetelma {
-    grid-template-columns: 1fr;
-  }
-}
 
 .erp-svg {
   width: clamp(2.8rem, 7vw, 4rem);
