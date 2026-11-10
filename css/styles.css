@@ -701,58 +701,117 @@ main {
   overflow: clip;
 }
 
-.hahmo {
-  position: absolute;
-  z-index: 0;
-  height: auto;
-  pointer-events: none;
-  object-fit: contain;
-  filter: grayscale(1) sepia(0.55) saturate(0.45) brightness(0.95) contrast(0.9);
-  opacity: 0.72;
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 46%, transparent 82%);
-  mask-image: radial-gradient(ellipse at center, #000 46%, transparent 82%);
-}
-
-.hahmo-muotokuva {
-  width: 190px;
-  right: 0;
-  top: 22%;
-}
-
-.hahmo-esitys {
-  width: 150px;
-  left: 0;
-  bottom: 8%;
-}
-
-.hahmo-kamppailu {
-  width: 150px;
-  right: 0;
-  top: 8%;
-}
-
-.hahmo-palvelus {
-  width: 108px;
-  left: 0;
-  bottom: 6%;
-  opacity: 0.42;
-}
-
-.hahmo-metsa {
-  width: 200px;
-  right: 0;
-  top: 10%;
-}
-
-@media (min-width: 980px) {
-  #tietoa .tietoa-asetelma { margin-right: 8.5rem; }
-  #osaaminen .osaaminen-lista { margin-left: 7rem; }
-  #taustat .tausta-lista { margin-inline: 6.5rem; }
-  #yhteys .yhteys-lista { margin-right: 9rem; }
-}
-
-.hahmo-nauha {
+.hahmo-paikka {
   display: none;
+}
+
+.hahmo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: clamp(20rem, 34vw, 32rem);
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  filter: grayscale(1) sepia(0.62) saturate(0.38) brightness(0.8) contrast(0.88);
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 16%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 16%, #000 70%, transparent 100%);
+}
+
+.hahmo-peili {
+  transform: scaleX(-1);
+}
+
+@media (min-width: 861px) {
+  #tietoa,
+  #osaaminen,
+  #taustat,
+  #yhteys {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(0.75rem, 1.4vw, 1.35rem);
+    align-items: start;
+  }
+
+  .hahmo-paikka {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    grid-row: 1 / 3;
+    align-self: end;
+    position: relative;
+    margin-bottom: calc(var(--tila-osio) * -0.45);
+    pointer-events: none;
+  }
+
+  .hahmo-paikka::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 10%;
+    height: 48%;
+    background: radial-gradient(ellipse at center, rgba(228, 194, 122, 0.24), transparent 70%);
+    pointer-events: none;
+  }
+
+  #tietoa .osio-otsake { grid-column: 1 / 8; grid-row: 1; }
+  #tietoa .tietoa-asetelma { grid-column: 1 / 8; grid-row: 2; }
+
+  #tietoa .tietoa-asetelma {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin: 0;
+  }
+
+  #tietoa .suuri-lause,
+  #tietoa .luku-rivi,
+  #tietoa .paikka-kortti {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  #tietoa .hahmo-muotokuva-paikka {
+    grid-column: 8 / 13;
+    justify-content: flex-end;
+  }
+
+  #osaaminen .osio-otsake { grid-column: 5 / 13; grid-row: 1; }
+  #osaaminen .osaaminen-lista { grid-column: 5 / 13; grid-row: 2; }
+
+  #osaaminen .osaaminen-lista { margin: 0; }
+
+  #osaaminen .hahmo-esitys-paikka {
+    grid-column: 1 / 5;
+    justify-content: flex-start;
+  }
+
+  #taustat .osio-otsake { grid-column: 1 / 9; grid-row: 1; }
+  #taustat .tausta-lista { grid-column: 1 / 9; grid-row: 2; }
+
+  #taustat .tausta-lista { margin: 0; }
+
+  #taustat .hahmo-kamppailu-paikka {
+    grid-column: 9 / 13;
+    justify-content: flex-end;
+  }
+
+  #yhteys .osio-otsake { grid-column: 5 / 13; grid-row: 1; }
+  #yhteys .yhteys-lista { grid-column: 5 / 13; grid-row: 2; }
+
+  #yhteys .yhteys-lista { margin: 0; }
+
+  #yhteys .hahmo-metsa-paikka {
+    grid-column: 1 / 5;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1100px) {
+  .hahmo { height: clamp(16rem, 32vw, 22rem); }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -764,28 +823,45 @@ main {
   .hahmo-muotokuva:hover,
   .hahmo-muotokuva:focus-visible {
     filter: none;
-    opacity: 0.9;
+    opacity: 0.88;
   }
 }
 
 @media (max-width: 860px) {
-  .hahmo[data-liuku] { display: none; }
+  #tietoa { position: relative; }
 
-  .hahmo-nauha {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.4rem;
-    margin: 0.5rem 0 0;
+  #tietoa .hahmo-muotokuva-paikka,
+  #yhteys .hahmo-metsa-paikka {
+    display: block;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 12.5rem;
+    min-height: 0;
+    margin: 0 0 0.75rem;
+    overflow: hidden;
     pointer-events: none;
   }
 
-  .hahmo-nauha .hahmo {
-    position: static;
-    width: 72px;
-    height: 96px;
-    object-fit: contain;
-    object-position: center top;
-    opacity: 0.55;
+  #tietoa .osio-otsake,
+  #tietoa .tietoa-asetelma {
+    position: relative;
+    z-index: 1;
+  }
+
+  #tietoa .hahmo,
+  #yhteys .hahmo {
+    width: 100%;
+    height: 12.5rem;
+    min-height: 0;
+    opacity: 0.48;
+    object-position: center 18%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 52%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 52%, transparent 100%);
+  }
+
+  #yhteys .hahmo-metsa {
+    object-position: center 20%;
   }
 }
 
