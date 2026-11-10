@@ -1,8 +1,3 @@
-/**
- * Yhden ratkaisusivun kokoaminen. Tekstit tulevat js/sisalto.js-tiedostosta.
- * Polku ratkaisut/<id>/ toimii sekä juuresta että GitHub Pages -alikansiosta,
- * koska viittaukset ovat suhteellisia.
- */
 (function () {
   const juuri = window.SIVUN_SISALTO;
   const main = document.getElementById("sisalto");
@@ -100,7 +95,7 @@
     if (!nappi) return;
     const uusi = nappi.getAttribute("data-kieli");
     if (uusi !== "fi" && uusi !== "en") return;
-    try { window.localStorage.setItem("kieli", uusi); } catch (virhe) { /* valinta voi silti vaihtua */ }
+    try { window.localStorage.setItem("kieli", uusi); } catch (virhe) {}
     kieli = uusi;
     const y = window.scrollY;
     piirra();

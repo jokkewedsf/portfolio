@@ -1,7 +1,3 @@
-/**
- * Kokoaa sivun js/sisalto.js-tiedoston tiedoista ja kytkee valikon,
- * kortit, vierityksen ja näppäimistön. Ei lomaketta eikä keksittyjä linkkejä.
- */
 (function () {
   const juuri = window.SIVUN_SISALTO;
 
@@ -133,26 +129,6 @@
     });
     nav.innerHTML = osiot.join("");
     if (data.ui && data.ui.navAria) nav.setAttribute("aria-label", data.ui.navAria);
-  }
-
-  function sisallysLista() {
-    const kohdat = (data.navigointi || [])
-      .filter(function (kohta) {
-        return kohta && kohta.id;
-      })
-      .map(function (kohta) {
-        const otsikko = [kohta.numero, kohta.teksti].filter(Boolean).join(" ");
-        return (
-          "<li><a href=\"#" + esc(kohta.id) + '" aria-label="' + esc(otsikko) + '"><span>' +
-          esc(kohta.numero || "") +
-          "</span>" +
-          esc(kohta.teksti || "") +
-          "</a></li>"
-        );
-      })
-      .join("");
-    if (!kohdat) return "";
-    return '<ol class="sisallys">' + kohdat + "</ol>";
   }
 
   function hero() {
@@ -526,9 +502,7 @@
     const merkkiFokus = fokusMerkki(document.activeElement);
     try {
       window.localStorage.setItem("kieli", uusi);
-    } catch (virhe) {
-      /* tallennus ei ole välttämätön */
-    }
+    } catch (virhe) {}
     kieli = uusi;
     data = juuri.kielet[kieli];
     rakennaSivu();

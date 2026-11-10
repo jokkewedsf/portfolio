@@ -1,12 +1,3 @@
-/**
- * SIVUN SISÄLTÖ
- * -------------
- * Tekstit ovat kahdella kielellä: kielet.fi ja kielet.en.
- * Muokkaa molempia, kun vaihdat sanomaa. Älä lisää lukuja, asiakkaita,
- * tutkintoja tai järjestelmäkäyttöönottoja, joita lähde ei kerro.
- *
- * Sähköpostia ei ole vahvistettu. Jätä sahkoposti tyhjäksi.
- */
 window.SIVUN_SISALTO = {
   etunimi: "Joakim",
   sukunimi: "Rydenfelt",

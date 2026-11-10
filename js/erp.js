@@ -1,7 +1,3 @@
-/**
- * Scrolliin sidottu havainnollistus. Ei väitä, että tietty ERP olisi
- * käyttäjän rakentama tai että vaiheet olisivat mitattuja tuloksia.
- */
 (function () {
   function esc(arvo) {
     return String(arvo == null ? "" : arvo).replace(/[&<>"']/g, function (merkki) {

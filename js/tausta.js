@@ -1,8 +1,3 @@
-/**
- * Hidas kajo taustalla: pehmeät valorenkaat, verhomaiset nauhat ja harva pöly.
- * Canvas ei ota vastaan osoitintapahtumia. Liike pysähtyy, jos käyttäjä
- * on pyytänyt vähentämään liikettä tai välilehti ei ole näkyvissä.
- */
 (function () {
   const canvas = document.getElementById("tausta");
   if (!canvas) return;
