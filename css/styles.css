@@ -40,6 +40,10 @@
   --nappi-teksti: #14120e;
   --font-naytto: "Fraunces", "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
   --font-leipa: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --koko-silma: 0.78rem;
+  --koko-osio: clamp(2.15rem, 4.2vw, 3.35rem);
+  --koko-h3: clamp(1.35rem, 2.1vw, 1.8rem);
+  --tila-osio: clamp(3.25rem, 7vw, 5.5rem);
   --sivu: clamp(1.15rem, 4vw, 3.25rem);
   --ylapalkki: 4.6rem;
   --sade: 1.35rem;
@@ -502,9 +506,34 @@ main {
   color: var(--leipa);
 }
 
+.hero-luku,
+.luku-rivi {
+  max-width: 28rem;
+  margin: 1.15rem 0 0;
+  color: var(--himmea);
+  font-size: 0.98rem;
+}
+
+.hero-luku span,
+.luku-rivi span {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--teksti);
+  font-family: var(--font-naytto);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.hero-opinnot {
+  margin-top: 1rem;
+  color: var(--teksti);
+  font-weight: 560;
+}
+
 .ammattiotsikko {
   margin: 0;
-  max-width: 20ch;
+  max-width: 22rem;
   font-family: var(--font-naytto);
   font-weight: 500;
   font-size: clamp(1.65rem, 2.5vw, 2.45rem);
@@ -639,7 +668,7 @@ main {
 
 .osio {
   position: relative;
-  padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-block: var(--tila-osio);
 }
 
 .osio + .osio::before {
@@ -687,15 +716,17 @@ main {
 .silma {
   margin: 0 0 0.7rem;
   color: var(--kajo);
-  font-size: 0.78rem;
+  font-size: var(--koko-silma);
   font-weight: 560;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.osio h2 {
+.osio h2,
+.erp-johdanto h2 {
   margin: 0;
-  font-size: clamp(3rem, 6vw, 5.4rem);
+  font-size: var(--koko-osio);
+  line-height: 1.05;
 }
 
 .johdanto {
@@ -720,6 +751,16 @@ main {
   grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
+}
+
+.tietoa-asetelma .suuri-lause,
+.tietoa-asetelma .luku-rivi {
+  grid-column: 1;
+}
+
+.tietoa-asetelma .paikka-kortti {
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .paikka-kortti,
@@ -796,7 +837,7 @@ main {
 .osa-kortti h3 {
   grid-column: 2;
   margin: 0;
-  font-size: clamp(1.85rem, 2.4vw, 2.5rem);
+  font-size: var(--koko-h3);
 }
 
 .osa-kortti p {
@@ -823,8 +864,7 @@ main {
 }
 
 .kortti {
-  display: grid;
-  grid-template-columns: 3px minmax(0, 1fr);
+  display: block;
   overflow: hidden;
   min-width: 0;
   border-top: 1px solid var(--viiva);
@@ -879,9 +919,16 @@ main {
   padding: clamp(1.2rem, 2vw, 1.8rem);
 }
 
-.kortti-runko h3 {
+.kortti-runko h3,
+.tapaus h3 {
   margin: 0;
-  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-size: var(--koko-h3);
+  transition: color 0.2s ease;
+}
+
+.kortti:hover h3,
+.tapaus:hover h3 {
+  color: var(--kajo);
 }
 
 .kortti-meta {
@@ -1039,6 +1086,91 @@ main {
   letter-spacing: -0.03em;
 }
 
+.alatunniste-linkit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+.alatunniste a {
+  color: var(--teksti);
+  text-decoration: none;
+}
+
+.alatunniste a:hover {
+  color: var(--kajo);
+}
+
+.tapaus-lista {
+  display: grid;
+  gap: 0;
+}
+
+.tapaus {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--viiva);
+}
+
+.tapaus:last-child {
+  border-bottom: 1px solid var(--viiva);
+}
+
+.tapaus .silma {
+  margin: 0.35rem 0 0;
+}
+
+.tapaus h3,
+.tapaus .tekstilinkki,
+.tapaus-rivit {
+  grid-column: 2;
+}
+
+.tapaus-rivit {
+  margin: 0.35rem 0 0;
+}
+
+.tapaus-rivit div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--viiva);
+}
+
+.tapaus-rivit dt {
+  margin: 0;
+  color: var(--messinki);
+  font-size: var(--koko-silma);
+  font-weight: 560;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tapaus-rivit dd {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .tapaus,
+  .tapaus-rivit div {
+    grid-template-columns: 1fr;
+  }
+
+  .tapaus h3,
+  .tapaus .tekstilinkki,
+  .tapaus-rivit {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 861px) {
+  .nav-nro { display: none; }
+  .navigaatio a { padding-inline: 0.4rem; font-size: 0.82rem; }
+}
+
 .ilman-js,
 .virhe {
   position: relative;
@@ -1066,21 +1198,9 @@ main,
 }
 
 @media (min-width: 960px) {
-  .tyot-ruudukko {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .kortti:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .kortti:first-child {
-    display: grid;
-    grid-template-columns: minmax(240px, 0.86fr) minmax(0, 1.14fr);
-  }
-
-  .kortti:first-child .kortti-motiivi {
-    min-height: 100%;
+  .tyot-ruudukko,
+  .tapaus-lista {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1115,8 +1235,8 @@ main,
   .ammattiotsikko {
     grid-column: 1;
     grid-row: 3;
-    max-width: 24ch;
-    font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+    max-width: 28rem;
+    font-size: clamp(1.55rem, 2.1vw, 2.15rem);
   }
 
   .ingressi {
@@ -1124,15 +1244,20 @@ main,
     grid-row: 4;
   }
 
-  .toiminnot {
+  .hero-luku {
     grid-column: 1;
     grid-row: 5;
+  }
+
+  .toiminnot {
+    grid-column: 1;
+    grid-row: 6;
     margin-top: 0.4rem;
   }
 
   .hero-focus {
     grid-column: 2;
-    grid-row: 2 / span 4;
+    grid-row: 2 / span 5;
     align-self: center;
     width: 100%;
     max-width: 30rem;
@@ -1192,6 +1317,13 @@ main,
   .tietoa-asetelma,
   .osaaminen-lista {
     grid-template-columns: 1fr;
+  }
+
+  .tietoa-asetelma .suuri-lause,
+  .tietoa-asetelma .luku-rivi,
+  .tietoa-asetelma .paikka-kortti {
+    grid-column: 1;
+    grid-row: auto;
   }
 }
 
@@ -1380,6 +1512,7 @@ main,
   .nimi-suku::after,
   .paljasta,
   .kortti,
+  .tapaus h3,
   .navigaatio,
   .valikko-ikoni,
   .valikko-ikoni::before,

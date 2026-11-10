@@ -65,10 +65,6 @@
     return siisti;
   }
 
-  function vari(arvo, oletus) {
-    return typeof arvo === "string" && /^#[0-9a-fA-F]{6}$/.test(arvo) ? arvo : oletus;
-  }
-
   function nimiAnimaatio() {
     function rivi(sana, alku, luokka) {
       const kirjaimet = String(sana)
@@ -152,6 +148,13 @@
       })
       .join("");
     const heroMeta = [data.tyonantaja, data.paikka].filter(Boolean).join(" · ");
+    const luku = data.hero.luku
+      ? '<p class="hero-luku"><span>' + esc(data.hero.luku) + "</span> " + esc(data.hero.lukuSelite || "") + "</p>"
+      : "";
+    const opinnot = data.hero.opinnotNimi
+      ? '<p class="hero-opinnot">' + esc(data.hero.opinnotNimi) + "</p>" +
+        (data.hero.opinnotRivi ? '<p class="hero-focus-meta">' + esc(data.hero.opinnotRivi) + "</p>" : "")
+      : "";
     return (
       '<section class="hero" id="alku" aria-labelledby="nimi-otsikko">' +
       '<div class="hero-teksti">' +
@@ -163,15 +166,17 @@
       '<p class="ingressi">' +
       esc(data.hero.ingressi) +
       "</p>" +
+      luku +
       '<div class="toiminnot">' +
       linkedinNappi +
-      '<a class="nappi nappi-toissijainen" href="#ratkaisut">' +
+      '<a class="nappi nappi-toissijainen" href="#valitut">' +
       esc(data.hero.selaaNappi) +
       "</a></div>" +
       '<aside class="hero-focus" aria-label="' + esc(data.hero.focusLabel) + '">' +
       '<p class="silma">' + esc(data.hero.focusLabel) + "</p>" +
       '<h2>' + esc(data.nykyinenRooli) + "</h2>" +
       (heroMeta ? '<p class="hero-focus-meta">' + esc(heroMeta) + "</p>" : "") +
+      opinnot +
       (focus ? '<ul>' + focus + "</ul>" : "") +
       "</aside>" +
       huomautus +
@@ -199,6 +204,9 @@
       '<p class="suuri-lause paljasta">' +
       esc(osio.avaus) +
       "</p>" +
+      (data.hero && data.hero.luku
+        ? '<p class="luku-rivi paljasta"><span>' + esc(data.hero.luku) + "</span> " + esc(data.hero.lukuSelite || "") + "</p>"
+        : "") +
       '<div class="paikka-kortti paljasta">' +
       (osio.merkinta
         ? '<p class="merkinta merkinta-paikka">' + esc(osio.merkinta) + "</p>"
@@ -231,9 +239,9 @@
     return (
       '<section class="osio" id="osaaminen" aria-labelledby="osaaminen-otsikko">' +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
-      '<div class="osio-otsake paljasta"><p class="silma">' +
-      esc(osio.numero) +
-      '</p><h2 id="osaaminen-otsikko">' +
+      '<div class="osio-otsake paljasta">' +
+      (osio.numero ? '<p class="silma">' + esc(osio.numero) + "</p>" : "") +
+      '<h2 id="osaaminen-otsikko">' +
       esc(osio.otsikko) +
       '</h2><p class="johdanto">' +
       esc(osio.johdanto) +
@@ -246,64 +254,19 @@
 
   function projektit() {
     const osio = data.tyot;
-    const sallitut = { kaari: true, viiva: true, piste: true };
     const kortit = (osio.projektit || [])
-      .map(function (projekti, indeksi) {
-        const esimerkki = projekti.onEsimerkki !== false;
-        const motiivi = sallitut[projekti.motiivi] ? projekti.motiivi : "kaari";
-        const savy = Array.isArray(projekti.savy) ? projekti.savy : [];
-        const a = vari(savy[0], "#12352f");
-        const b = vari(savy[1], "#9af0d0");
-        const id = "projekti-" + (indeksi + 1);
-        const linkki = httpUrl(projekti.linkki);
-        const linkinTeksti = projekti.linkinTeksti || (linkki ? new URL(linkki).host : "");
-        const tunnisteet = (projekti.tunnisteet || [])
-          .filter(Boolean)
-          .map(function (tunniste) {
-            return "<li>" + esc(tunniste) + "</li>";
-          })
-          .join("");
-        const linkkiHtml = linkki
-          ? ulkoinenLinkki("tekstilinkki", linkki, linkinTeksti, "")
-          : esimerkki
-            ? '<p class="ei-linkkia">' + esc(osio.eiLinkkia) + "</p>"
-            : "";
-        const merkkiHtml = esimerkki
-          ? '<p class="merkinta merkinta-esimerkki">' + esc(osio.esimerkkiMerkinta) + "</p>"
-          : "";
+      .map(function (projekti) {
         const meta = [projekti.organisaatio, projekti.rooli].filter(Boolean).join(" · ");
         const ala = [projekti.aika, projekti.paikka].filter(Boolean).join(" · ");
         return (
-          '<article class="kortti paljasta" style="--savy-a:' + a + ";--savy-b:" + b + '">' +
-          '<div class="kortti-motiivi motiivi-' + motiivi + '" aria-hidden="true"></div>' +
+          '<article class="kortti paljasta">' +
           '<div class="kortti-runko">' +
-          merkkiHtml +
-          "<h3 id=\"" + id + '-otsikko">' +
-          esc(projekti.nimi) +
-          "</h3>" +
+          "<h3>" + esc(projekti.nimi) + "</h3>" +
           (meta ? '<p class="kortti-meta">' + esc(meta) + "</p>" : "") +
           (ala ? '<p class="kortti-meta">' + esc(ala) + "</p>" : "") +
-          "<p>" +
-          esc(projekti.tiivis) +
-          "</p>" +
-          '<button type="button" class="nappi-teksti" id="' + id + '-nappi" aria-expanded="false" aria-controls="' +
-          id +
-          '-lisa">' +
-          esc(osio.nayta) +
-          "</button>" +
-          '<div id="' + id + '-lisa" class="kortti-lisa" hidden>' +
-          "<p>" +
-          esc(projekti.kuvaus) +
-          "</p>" +
-          (tunnisteet
-            ? '<p class="tunniste-otsikko">' +
-              esc(osio.tunnisteOtsikko) +
-              '</p><ul class="tunnisteet">' +
-              tunnisteet +
-              "</ul>"
-            : "") +
-          linkkiHtml +
-          "</div></div></article>"
+          (projekti.tiivis ? "<p>" + esc(projekti.tiivis) + "</p>" : "") +
+          (projekti.kuvaus ? "<p>" + esc(projekti.kuvaus) + "</p>" : "") +
+          "</div></article>"
         );
       })
       .join("");
@@ -320,6 +283,40 @@
       '<div class="tyot-ruudukko">' +
       kortit +
       "</div></section>"
+    );
+  }
+
+  function valitut() {
+    const osio = data.valitut;
+    if (!osio || !Array.isArray(osio.kohdat) || !osio.kohdat.length) return "";
+    const kortit = osio.kohdat
+      .map(function (kohta, indeksi) {
+        const href = kohta.linkki || "";
+        const sisainen = href.charAt(0) === "#" || href.indexOf("ratkaisut/") === 0;
+        const linkki = sisainen && kohta.linkinTeksti
+          ? '<a class="tekstilinkki" href="' + esc(href) + '">' + esc(kohta.linkinTeksti) + "</a>"
+          : "";
+        return (
+          '<article class="tapaus paljasta">' +
+          '<p class="silma">' + String(indeksi + 1).padStart(2, "0") + "</p>" +
+          "<h3>" + esc(kohta.nimi) + "</h3>" +
+          '<dl class="tapaus-rivit">' +
+          "<div><dt>" + esc(osio.ongelma) + "</dt><dd>" + esc(kohta.ongelma) + "</dd></div>" +
+          "<div><dt>" + esc(osio.tein) + "</dt><dd>" + esc(kohta.tein) + "</dd></div>" +
+          "<div><dt>" + esc(osio.nayttaa) + "</dt><dd>" + esc(kohta.nayttaa) + "</dd></div>" +
+          "</dl>" +
+          linkki +
+          "</article>"
+        );
+      })
+      .join("");
+    return (
+      '<section class="osio" id="valitut" aria-labelledby="valitut-otsikko">' +
+      '<div class="osio-otsake paljasta">' +
+      (osio.numero ? '<p class="silma">' + esc(osio.numero) + "</p>" : "") +
+      '<h2 id="valitut-otsikko">' + esc(osio.otsikko) + "</h2>" +
+      '<p class="johdanto">' + esc(osio.johdanto) + "</p></div>" +
+      '<div class="tapaus-lista">' + kortit + "</div></section>"
     );
   }
 
@@ -444,18 +441,21 @@
   }
 
   function alatunniste() {
+    const linkedin = data.yhteys && httpUrl(data.yhteys.linkedin && data.yhteys.linkedin.osoite);
+    const github = data.yhteys && httpUrl(data.yhteys.github && data.yhteys.github.osoite);
+    const linkit = [
+      linkedin ? '<a href="' + esc(linkedin) + '" target="_blank" rel="me noopener noreferrer">LinkedIn</a>' : "",
+      github ? '<a href="' + esc(github) + '" target="_blank" rel="me noopener noreferrer">GitHub</a>' : "",
+      '<a href="#alku">' + esc(data.alatunniste.ylos) + "</a>",
+    ].filter(Boolean).join("");
     footer.innerHTML =
       '<div class="kehys alatunniste-sisus"><p class="alatunniste-nimi">' +
       esc(nimi) +
       '</p><p>' +
       esc(data.alatunniste.kuvaus) +
-      "</p>" +
-      (data.alatunniste.muokkaus
-        ? '<p class="muokkaus">' + esc(data.alatunniste.muokkaus) + "</p>"
-        : "") +
-      '<a class="tekstilinkki" href="#alku">' +
-      esc(data.alatunniste.ylos) +
-      "</a></div>";
+      '</p><p class="alatunniste-linkit">' +
+      linkit +
+      "</p></div>";
   }
 
   function paivitaKieli() {
@@ -496,10 +496,6 @@
     if (uusi !== "fi" && uusi !== "en") return;
     if (!juuri.kielet || !juuri.kielet[uusi] || uusi === kieli) return;
     const y = window.scrollY;
-    const avoimet = Array.prototype.map.call(
-      document.querySelectorAll('.nappi-teksti[aria-expanded="true"]'),
-      function (el) { return el.getAttribute("aria-controls"); }
-    );
     const merkkiFokus = fokusMerkki(document.activeElement);
     try {
       window.localStorage.setItem("kieli", uusi);
@@ -507,18 +503,8 @@
     kieli = uusi;
     data = juuri.kielet[kieli];
     rakennaSivu();
-    alustaKortit();
     alustaPaljastukset();
     alustaNykyinenOsio();
-    avoimet.forEach(function (id) {
-      if (!id) return;
-      const paneeli = document.getElementById(id);
-      const painike = document.querySelector('[aria-controls="' + id + '"]');
-      if (!paneeli || !painike) return;
-      painike.setAttribute("aria-expanded", "true");
-      painike.textContent = data.tyot.piilota;
-      paneeli.hidden = false;
-    });
     const juuriHtml = document.documentElement;
     const aiempi = juuriHtml.style.scrollBehavior;
     juuriHtml.style.scrollBehavior = "auto";
@@ -551,8 +537,7 @@
     paivitaKieli();
 
     main.innerHTML =
-      '<div class="kehys">' + hero() + tietoa() + osaaminen() + "</div>" +
-      '<div class="kehys">' + projektit() + "</div>" +
+      '<div class="kehys">' + hero() + tietoa() + osaaminen() + valitut() + projektit() + "</div>" +
       aulaOsio() +
       (window.piirraErp ? window.piirraErp(data.erp) : "") +
       '<div class="kehys">' + tausta() + yhteys() + "</div>";
@@ -709,21 +694,6 @@
     });
   }
 
-  function alustaKortit() {
-    const tyot = document.getElementById("tyot");
-    if (!tyot) return;
-    tyot.addEventListener("click", function (tapahtuma) {
-      const painike = tapahtuma.target.closest(".nappi-teksti");
-      if (!painike) return;
-      const paneeli = document.getElementById(painike.getAttribute("aria-controls"));
-      if (!paneeli) return;
-      const auki = painike.getAttribute("aria-expanded") === "true";
-      painike.setAttribute("aria-expanded", auki ? "false" : "true");
-      painike.textContent = auki ? data.tyot.nayta : data.tyot.piilota;
-      paneeli.hidden = auki;
-    });
-  }
-
   function alustaPaljastukset() {
     const kohteet = main.querySelectorAll(".paljasta");
     if (liikeMq.matches || !("IntersectionObserver" in window)) {
@@ -793,7 +763,6 @@
   rakennaSivu();
   alustaKieli();
   alustaValikko();
-  alustaKortit();
   alustaPaljastukset();
   alustaNykyinenOsio();
   alustaVieritys();

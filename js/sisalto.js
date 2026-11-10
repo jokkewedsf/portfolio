@@ -9,7 +9,7 @@ window.SIVUN_SISALTO = {
       nykyinenRooli: "Sales Team Lead",
       tyonantaja: "Webman Oy",
       kuvaus:
-        "Joakim Rydenfelt. B2B-myynti, asiakkuudet ja tiimit. HTML-sivut ja demot on tehty itse.",
+        "Joakim Rydenfelt. Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.",
 
       ui: {
         ohitus: "Siirry sisältöön",
@@ -22,21 +22,25 @@ window.SIVUN_SISALTO = {
 
       hero: {
         ylateksti: "Webman Oy · Sales Team Lead",
-        otsikko: "Johdan myyntiä ja asiakkuuksia. Sivut rakennan itse.",
+        otsikko: "Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.",
         ingressi:
-          "B2B-myynti, käyttöönotto ja tiimin tapa toimia. Tämän sivuston, Aulan sivun ja chatbot-demon olen koonnut HTML:llä, CSS:llä ja JavaScriptillä. Ne ovat omia esimerkkejä, eivät asiakastoimituksia.",
-        focusLabel: "Mitä tästä näkee",
-        focus: ["B2B-myynti ja asiakkuus", "Tiimin käynnistys", "HTML-sivut ja demot"],
+          "Johdan myyntiä ja tiimejä Webman Oy:ssä. Ohjelmointi näkyy sivuissa, jotka olen koonnut itse.",
+        luku: "Yli 250 000 €",
+        lukuSelite: "SaaS-myyntiä vuonna 2026 (tilanne 11/2026)",
+        opinnotNimi: "Centria-ammattikorkeakoulu",
+        opinnotRivi: "Tradenomi (AMK), tietojenkäsittely · opinnot käynnissä 2026–2029",
+        focusLabel: "Kolme pilaria",
+        focus: ["Johtaminen", "Myynti", "Ohjelmointi"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
-        selaaNappi: "Katso ratkaisut",
+        selaaNappi: "Katso työt",
       },
 
       navigointi: [
         { id: "tietoa", numero: "01", teksti: "Tietoa" },
-        { id: "osaaminen", numero: "02", teksti: "Osaaminen" },
-        { id: "tyot", numero: "03", teksti: "Työ" },
-        { id: "ratkaisut", numero: "04", teksti: "Ratkaisut" },
+        { id: "valitut", numero: "02", teksti: "Työt" },
+        { id: "tyot", numero: "03", teksti: "Kokemus" },
+        { id: "ratkaisut", numero: "04", teksti: "Aula" },
         { id: "erp", numero: "05", teksti: "Polku" },
         { id: "taustat", numero: "06", teksti: "Tausta" },
         { id: "yhteys", numero: "07", teksti: "Yhteys" },
@@ -46,39 +50,71 @@ window.SIVUN_SISALTO = {
         otsikko: "Tietoa",
         numero: "01",
         merkinta: "",
-        avaus: "Palkkaa kaupalliseen työhön. Sivun voit myös katsoa tästä.",
+        avaus: "Ohjelmisto-osaaminen rakentuu johtamisesta, myynnistä ja ohjelmoinnista.",
         kappaleet: [
-          "Webman Oy:ssä johdan B2B-myyntiä, SaaS-kasvua ja toimipisteen käynnistystä. Aiemmin asiakasmenestys ja markkinointi JCADilla sekä myynti ja sivut Fissionilla. Centrian tietojenkäsittelyn opinnot ovat kesken, eivät valmis tutkinto.",
-          "HTML-esimerkit ovat tämä sivu, Aulan oma sivu ja paikallinen chatbot-demo. En rakenna ERP:tä enkä taustajärjestelmiä. Valmennus on kulkenut mukana vuodesta 2013.",
+          "Centria-ammattikorkeakoulu, tradenomi (AMK), tietojenkäsittely. Opinnot käynnissä 2026–2029, eivät valmis tutkinto.",
+          "Johdan B2B-myyntiä ja SaaS-kasvua Webman Oy:ssä sekä toimipisteen käynnistystä. Aiemmin asiakasmenestys ja markkinointi JCADilla, ja myynnin sekä markkinoinnin konsultointi Fissionilla.",
+          "Valmennus on kulkenut mukana vuodesta 2013: SM-tason vapaaottelu, brasilialaisen jujutsun purppuravyö ja valmennus. Ennen näitä rooleja tein asiakaspalvelua ja myyntiä opintojen ohessa.",
         ],
         muokkaus: "",
       },
 
       osaaminen: {
-        otsikko: "Osaaminen",
-        numero: "02",
+        otsikko: "Kolme pilaria",
+        numero: "",
         merkinta: "",
-        johdanto: "Kolme ensimmäistä ovat kaupallista työtä. Neljäs on se, minkä olen itse koonnut selaimeen.",
+        johdanto: "Johtaminen, myynti ja ohjelmointi. Neljäs rivi kertoo, mitä en ole rakentanut.",
         kohdat: [
           {
-            nimi: "Kaupallinen kasvu",
-            kuvaus:
-              "Strategiasta asiakasmenestykseen: myyntiputki, konsultoiva myynti, käyttöönotto ja asiakkuuden jatkuminen. Käytännön kokemus SaaS-kasvusta, Jobin asiakassyklistä ja urakoinnin tarjous- ja asiakastyöstä.",
+            nimi: "Johtaminen",
+            kuvaus: "Toimipisteen käynnistys, rekrytointi ja yhteinen tapa tehdä työtä.",
           },
           {
-            nimi: "Tiimit ja toimintamalli",
-            kuvaus:
-              "Toimipisteen käynnistäminen, rekrytointi sekä myynnin ja asiakasmenestyksen johtaminen. Kokemus siitä, miten paikallinen tiimi ja yhteinen tapa tehdä työtä syntyvät.",
+            nimi: "Myynti",
+            kuvaus: "Myyntiputki, konsultoiva myynti, käyttöönotto ja asiakkuuden jatkuminen.",
+          },
+          {
+            nimi: "Ohjelmointi",
+            kuvaus: "HTML, CSS ja JavaScript omissa esimerkeissä. Adobe Creative Suite ilmeen työssä. Opinnot ovat käynnissä, eivät valmis tutkinto.",
           },
           {
             nimi: "CRM, ERP ja työnkulku",
-            kuvaus:
-              "CRM ja ERP ovat työkaluja myynnissä, projekteissa, tunneissa ja laskutuksessa. Alla oleva tunneli on kuvitus tästä ketjusta. En ole rakentanut järjestelmää.",
+            kuvaus: "Työkaluja myynnissä, projekteissa, tunneissa ja laskutuksessa. Kuvitus on alempana. En ole rakentanut järjestelmää.",
+          },
+        ],
+      },
+
+      valitut: {
+        otsikko: "Valitut työt",
+        numero: "02",
+        johdanto: "Kolme esimerkkiä, jotka olen koonnut itse. Ne eivät ole asiakastoimituksia, eikä niissä ole tuloksia.",
+        ongelma: "Ongelma",
+        tein: "Mitä tein",
+        nayttaa: "Mitä tästä näkee",
+        kohdat: [
+          {
+            nimi: "Tämä sivu",
+            ongelma: "Profiilin pitää kertoa kaupallinen rooli ja näyttää, että sivut on tehty itse.",
+            tein: "Kokosin sivun HTML:llä, CSS:llä ja JavaScriptillä. Suomi ja englanti, ei taustajärjestelmää.",
+            nayttaa: "Sivun, jota luet. Ei asiakasprojekti.",
+            linkki: "#alku",
+            linkinTeksti: "Sivun alkuun",
           },
           {
-            nimi: "HTML-kokonaisuudet",
-            kuvaus:
-              "Tämä sivu, Aulan sivu ja chatbot-demo on HTML, CSS ja JavaScript. Ne ovat omia esimerkkejä. Asiakastoimitusta tai tuotantopalvelua niistä ei väitetä.",
+            nimi: "Aula",
+            ongelma: "Vastaanoton samat kysymykset toistuvat, ja rajan pitää näkyä, kun vastausta ei ole.",
+            tein: "Tein tuotesivun ja paikallisen demon, joka vastaa vain mukana olevasta tietopohjasta.",
+            nayttaa: "Miltä kokeiltava vastaanotto tuntuu. Simuloitu. Pohjolan Hammas ei ole asiakas.",
+            linkki: "ratkaisut/chatbot/",
+            linkinTeksti: "Avaa Aulan sivu",
+          },
+          {
+            nimi: "Toiminnanohjauksen kuvitus",
+            ongelma: "Myynti, projektit, laskutus ja raportointi puhutaan helposti erillään.",
+            tein: "Tein vieritettävän kuvituksen, jossa ketju kulkee kahdessatoista vaiheessa.",
+            nayttaa: "Miten selitän ketjun. En ole rakentanut ERP:tä enkä ottanut sitä käyttöön.",
+            linkki: "#erp",
+            linkinTeksti: "Katso kuvitus",
           },
         ],
       },
@@ -107,7 +143,7 @@ window.SIVUN_SISALTO = {
       ratkaisut: {
         otsikko: "Ratkaisut",
         numero: "04",
-        johdanto: "Myytävä ratkaisu omalla sivullaan. Demoa voi kokeilla tässä. Mukana on toistaiseksi yksi tuote.",
+        johdanto: "Aula on työnimi. Demoa voi kokeilla tässä. Vastaukset ovat simuloituja.",
         tutustu: "Tutustu ratkaisuun",
         kokeile: "Kokeile demoa",
         demoOtsikko: "Kokeile demoa",
@@ -204,10 +240,10 @@ window.SIVUN_SISALTO = {
       },
 
       tyot: {
-        otsikko: "Työ",
+        otsikko: "Kokemus",
         numero: "03",
         merkinta: "",
-        johdanto: "Konkreettisia vastuita myynnin, asiakkuuksien ja markkinoinnin parissa. Kortit kuvaavat rooleja, eivät erillisiä asiakastoimeksiantoja.",
+        johdanto: "Roolit, eivät erillisiä asiakastoimeksiantoja. Lukuja on mukana vain silloin, kun ne ovat omiani.",
         nayta: "Näytä kuvaus",
         piilota: "Piilota kuvaus",
         esimerkkiMerkinta: "Esimerkki · ei oikea projekti",
@@ -253,9 +289,9 @@ window.SIVUN_SISALTO = {
             rooli: "Customer Success ja markkinointi",
             aika: "2022–2026",
             paikka: "Suomi ja Ruotsi",
-            tiivis: "Tarjoustyön arvo asiakkaalle sekä kampanjat Suomessa ja Ruotsissa.",
+            tiivis: "Markkinoinnin koordinointi ja asiakasmenestys määrälaskennan SaaS-ohjelmistossa.",
             kuvaus:
-              "Asiakasmenestyksessä autoin urakoivia rakennusliikkeitä määrälaskennassa ja tarjouskilpailuissa. Markkinoinnissa suunnittelin ja toteutin kampanjoita, raportointia, sivuja ja tapahtumia.",
+              "Autoin urakoivia rakennusliikkeitä määrälaskennassa ja tarjouskilpailuissa sekä vedin kampanjoita Suomessa ja Ruotsissa.",
             tunnisteet: ["Asiakasmenestys", "Markkinointi", "Kampanjat"],
             linkki: "",
             linkinTeksti: "",
@@ -269,14 +305,29 @@ window.SIVUN_SISALTO = {
             rooli: "Perustajaosakas",
             aika: "2024–2026",
             paikka: "Yrittäjyys",
-            tiivis: "Konsultointi, visuaalinen ilme, sivut ja myyntiputket.",
+            tiivis: "Myynnin ja markkinoinnin johdon konsultointi.",
             kuvaus:
-              "Rakensin yrityksille markkinoinnin ja myynnin kokonaisuuksia: ilme, sivut ja putki, jota voi kasvattaa.",
+              "Strategista neuvontaa ja operatiivista tukea myynnin ja markkinoinnin kehittämiseen. Työhön kuului myös ilme ja sivut.",
             tunnisteet: ["Yrittäjyys", "Brändi", "Myyntiputki"],
             linkki: "",
             linkinTeksti: "",
             motiivi: "piste",
             savy: ["#2a2116", "#e2b56a"],
+          },
+          {
+            onEsimerkki: false,
+            nimi: "B2B-myynti",
+            organisaatio: "Moontalk Oy",
+            rooli: "SaaS-myyjä",
+            aika: "2019–2020",
+            paikka: "",
+            tiivis: "Viestintäpalveluiden myyntiä yrityksille.",
+            kuvaus: "Tarvekartoitus ja ratkaisumyynti.",
+            tunnisteet: ["B2B", "SaaS"],
+            linkki: "",
+            linkinTeksti: "",
+            motiivi: "viiva",
+            savy: ["#1a2430", "#c9c0b2"],
           },
         ],
       },
@@ -284,28 +335,28 @@ window.SIVUN_SISALTO = {
       tausta: {
         otsikko: "Tausta",
         numero: "06",
-        johdanto: "Valmennus, yrittäjyys ja opinnot kaupallisen työn rinnalla.",
+        johdanto: "Valmennus, yrittäjyys, opinnot ja kansainvälinen kokemus kaupallisen työn rinnalla.",
         kohdat: [
           {
             nimi: "Kamppailu-urheilu",
             meta: "Urheilija ja valmentaja vuodesta 2013",
-            teksti: "Kamppailu-urheilun valmennus on pitkäjänteistä ihmisten johtamista.",
+            teksti: "SM-tason vapaaottelija, brasilialaisen jujutsun purppuravyö ja valmentaja.",
           },
           {
-            nimi: "BULI",
-            meta: "Perustajaosakas",
-            teksti: "Vaatebrändi. Yrittäjyys, jossa ilme ja tuote kulkevat yhdessä.",
+            nimi: "BULI ja Buli Gear",
+            meta: "Brändi ja verkkokauppa",
+            teksti: "Vapaa-ajan vaatteiden brändi sekä kamppailuvarusteiden maahantuonti ja verkkokauppa 2022–2024. B2C ja brändinhallinta.",
           },
           {
             nimi: "Opinnot",
-            meta: "Centria · opinnot käynnissä 2026–2029",
+            meta: "Centria-ammattikorkeakoulu · opinnot käynnissä 2026–2029",
             teksti:
-              "Tietojenkäsittelyn tradenomiopinnot ovat käynnissä. Aiemmin Oamkissa Construction Management -opintoja. Elements of AI, Helsingin yliopisto ja MinnaLearn.",
+              "Tradenomi (AMK), tietojenkäsittely. Opinnot käynnissä 2026–2029. Rakennusmestariopinnot (AMK) 2022–2023, ei valmis tutkinto. Yhteiskuntatieteiden opinnot Lapin yliopistossa 2020–2021. Elements of AI, Helsingin yliopisto ja MinnaLearn.",
           },
           {
-            nimi: "Puolustusvoimat",
-            meta: "Kurssit ja projekti",
-            teksti: "NATO- ja YK-kiertokurssit 2018 ja 2023. Head of Welfare -projekti 2023–2024.",
+            nimi: "Kriisinhallinta",
+            meta: "Kansainvälinen palvelus",
+            teksti: "Aliupseeri NATO-operaatiossa ja rauhanturvaaja (UNIFIL) Libanonissa ja Irakissa. Head of Welfare -projekti 2023–2024.",
           },
         ],
       },
@@ -348,7 +399,7 @@ window.SIVUN_SISALTO = {
       nykyinenRooli: "Sales Team Lead",
       tyonantaja: "Webman Oy",
       kuvaus:
-        "Joakim Rydenfelt. B2B sales, customer work and teams. The HTML pages and demos are built by hand.",
+        "Joakim Rydenfelt. Software expertise from the combination of leadership, sales and programming.",
 
       ui: {
         ohitus: "Skip to content",
@@ -361,21 +412,25 @@ window.SIVUN_SISALTO = {
 
       hero: {
         ylateksti: "Webman Oy · Sales Team Lead",
-        otsikko: "I lead sales and customer work. I build the pages myself.",
+        otsikko: "Software expertise from the combination of leadership, sales and programming.",
         ingressi:
-          "B2B sales, onboarding and how a team works. This site, the Aula page and the chatbot demo are HTML, CSS and JavaScript I assembled. They are my examples, not customer deployments.",
-        focusLabel: "What you can see",
-        focus: ["B2B sales and customers", "Starting a team", "HTML pages and demos"],
+          "I lead sales and teams at Webman Oy. The programming shows up in the pages I assembled myself.",
+        luku: "Over €250,000",
+        lukuSelite: "in SaaS sales in 2026 (as of Nov 2026)",
+        opinnotNimi: "Centria University of Applied Sciences",
+        opinnotRivi: "BBA in Business Information Technology · studies in progress, 2026–2029",
+        focusLabel: "Three pillars",
+        focus: ["Leadership", "Sales", "Programming"],
         huomautus: "",
         linkedinNappi: "LinkedIn",
-        selaaNappi: "See the solutions",
+        selaaNappi: "See the work",
       },
 
       navigointi: [
         { id: "tietoa", numero: "01", teksti: "About" },
-        { id: "osaaminen", numero: "02", teksti: "Capability" },
-        { id: "tyot", numero: "03", teksti: "Work" },
-        { id: "ratkaisut", numero: "04", teksti: "Solutions" },
+        { id: "valitut", numero: "02", teksti: "Work" },
+        { id: "tyot", numero: "03", teksti: "Experience" },
+        { id: "ratkaisut", numero: "04", teksti: "Aula" },
         { id: "erp", numero: "05", teksti: "Path" },
         { id: "taustat", numero: "06", teksti: "Background" },
         { id: "yhteys", numero: "07", teksti: "Contact" },
@@ -385,39 +440,71 @@ window.SIVUN_SISALTO = {
         otsikko: "About",
         numero: "01",
         merkinta: "",
-        avaus: "Hire for commercial work. The pages are here to look at.",
+        avaus: "The software skill is built from leadership, sales and programming.",
         kappaleet: [
-          "At Webman Oy I lead B2B sales, SaaS growth and the opening of an office. Before that, customer success and marketing at JCAD, and sales and sites at Fission. Computer science studies at Centria are in progress, not a completed degree.",
-          "The HTML examples are this site, the Aula page and the local chatbot demo. I do not build an ERP or a backend. Coaching has been part of this since 2013.",
+          "Centria University of Applied Sciences, BBA in Business Information Technology. Studies in progress, 2026–2029, not a completed degree.",
+          "At Webman Oy I lead B2B sales, SaaS growth and the opening of an office. Before that, customer success and marketing coordination at JCAD, and sales and marketing consulting at Fission.",
+          "Coaching has been part of this since 2013: national-level MMA, a Brazilian jiu-jitsu purple belt, and coaching. Before these roles I did customer service and sales alongside studies.",
         ],
         muokkaus: "",
       },
 
       osaaminen: {
-        otsikko: "Capability",
-        numero: "02",
+        otsikko: "Three pillars",
+        numero: "",
         merkinta: "",
-        johdanto: "The first three are commercial work. The fourth is what I have actually assembled in the browser.",
+        johdanto: "Leadership, sales and programming. The fourth line says what I have not built.",
         kohdat: [
           {
-            nimi: "Commercial growth",
-            kuvaus:
-              "From strategy to customer success: pipeline, consultative sales, onboarding and the relationship that follows. Hands-on work in SaaS growth, the Jobi customer cycle, and bid and customer work in contracting.",
+            nimi: "Leadership",
+            kuvaus: "Opening an office, hiring, and a shared way of working.",
           },
           {
-            nimi: "Teams and the operating model",
-            kuvaus:
-              "Opening an office, hiring, and leading sales and customer success. Experience in how a local team and a shared way of working take shape.",
+            nimi: "Sales",
+            kuvaus: "Pipeline, consultative sales, onboarding and the relationship that follows.",
+          },
+          {
+            nimi: "Programming",
+            kuvaus: "HTML, CSS and JavaScript in my own examples. Adobe Creative Suite for visual work. The studies are in progress, not a completed degree.",
           },
           {
             nimi: "CRM, ERP and the workflow",
-            kuvaus:
-              "CRM and ERP are tools in sales, projects, hours and invoicing. The tunnel below illustrates that chain. I did not build the system.",
+            kuvaus: "Tools for sales, projects, hours and invoicing. The illustration is further down. I did not build the system.",
+          },
+        ],
+      },
+
+      valitut: {
+        otsikko: "Selected work",
+        numero: "02",
+        johdanto: "Three examples I assembled myself. They are not client deliveries, and they do not include results.",
+        ongelma: "Problem",
+        tein: "What I did",
+        nayttaa: "What it shows",
+        kohdat: [
+          {
+            nimi: "This site",
+            ongelma: "A profile has to state the commercial role and show that the pages were built by hand.",
+            tein: "I assembled the page in HTML, CSS and JavaScript. Finnish and English, no backend.",
+            nayttaa: "The page you are reading. Not a client project.",
+            linkki: "#alku",
+            linkinTeksti: "Back to the top",
           },
           {
-            nimi: "HTML builds",
-            kuvaus:
-              "This page, the Aula page and the chatbot demo are HTML, CSS and JavaScript. They are my examples. They are not a customer deployment or a production service.",
+            nimi: "Aula",
+            ongelma: "The same front-desk questions repeat, and the limit has to stay visible when there is no answer.",
+            tein: "I built a product page and a local demo that answers only from the included knowledge base.",
+            nayttaa: "What a tryable front desk feels like. Simulated. Pohjolan Hammas is not a client.",
+            linkki: "ratkaisut/chatbot/",
+            linkinTeksti: "Open the Aula page",
+          },
+          {
+            nimi: "The operations illustration",
+            ongelma: "Sales, projects, invoicing and reporting are easy to talk about as separate things.",
+            tein: "I made a scroll illustration of the chain in twelve stages.",
+            nayttaa: "How I explain the chain. I have not built an ERP or deployed one.",
+            linkki: "#erp",
+            linkinTeksti: "See the illustration",
           },
         ],
       },
@@ -446,7 +533,7 @@ window.SIVUN_SISALTO = {
       ratkaisut: {
         otsikko: "Solutions",
         numero: "04",
-        johdanto: "A solution you can buy, on its own page. The demo can be tried here. There is one product so far.",
+        johdanto: "Aula is a working title. Try the demo here. The replies are simulated.",
         tutustu: "Explore solution",
         kokeile: "Try demo",
         demoOtsikko: "Try the demo",
@@ -543,10 +630,10 @@ window.SIVUN_SISALTO = {
       },
 
       tyot: {
-        otsikko: "Work",
+        otsikko: "Experience",
         numero: "03",
         merkinta: "",
-        johdanto: "Concrete responsibilities across sales, customer success and marketing. These cards describe roles, not standalone client engagements.",
+        johdanto: "Roles, not separate client engagements.",
         nayta: "Show description",
         piilota: "Hide description",
         esimerkkiMerkinta: "Example · not a real project",
@@ -592,9 +679,9 @@ window.SIVUN_SISALTO = {
             rooli: "Customer success and marketing",
             aika: "2022–2026",
             paikka: "Finland and Sweden",
-            tiivis: "The value of bidding work for the customer, and campaigns in Finland and Sweden.",
+            tiivis: "Marketing coordination and customer success for SaaS estimating software.",
             kuvaus:
-              "In customer success I helped contracting firms with quantity takeoff and competitive bids. In marketing I planned and ran campaigns, reporting, the website and events.",
+              "I helped contracting firms with quantity takeoff and bids, and ran campaigns in Finland and Sweden.",
             tunnisteet: ["Customer success", "Marketing", "Campaigns"],
             linkki: "",
             linkinTeksti: "",
@@ -608,14 +695,29 @@ window.SIVUN_SISALTO = {
             rooli: "Co-founder",
             aika: "2024–2026",
             paikka: "Entrepreneurship",
-            tiivis: "Consulting, visual identity, websites and sales pipelines.",
+            tiivis: "Sales and marketing leadership consulting.",
             kuvaus:
-              "I built marketing and sales wholes for companies: identity, sites and a pipeline that can scale.",
+              "Strategic advice and operational support for developing sales and marketing. The work also included identity and sites.",
             tunnisteet: ["Founder", "Brand", "Pipeline"],
             linkki: "",
             linkinTeksti: "",
             motiivi: "piste",
             savy: ["#2a2116", "#e2b56a"],
+          },
+          {
+            onEsimerkki: false,
+            nimi: "B2B sales",
+            organisaatio: "Moontalk Oy",
+            rooli: "SaaS sales",
+            aika: "2019–2020",
+            paikka: "",
+            tiivis: "Communication services sold to companies.",
+            kuvaus: "Needs analysis and solution selling.",
+            tunnisteet: ["B2B", "SaaS"],
+            linkki: "",
+            linkinTeksti: "",
+            motiivi: "viiva",
+            savy: ["#1a2430", "#c9c0b2"],
           },
         ],
       },
@@ -623,28 +725,28 @@ window.SIVUN_SISALTO = {
       tausta: {
         otsikko: "Background",
         numero: "06",
-        johdanto: "Coaching, entrepreneurship and studies alongside the commercial work.",
+        johdanto: "Coaching, entrepreneurship, studies and international experience alongside the commercial work.",
         kohdat: [
           {
             nimi: "Combat sports",
             meta: "Athlete and coach since 2013",
-            teksti: "Coaching in combat sports is long-term leadership of people.",
+            teksti: "National-level MMA competitor, Brazilian jiu-jitsu purple belt, and coach.",
           },
           {
-            nimi: "BULI",
-            meta: "Co-founder",
-            teksti: "A clothing brand. Entrepreneurship where identity and product move together.",
+            nimi: "BULI and Buli Gear",
+            meta: "Brand and e-commerce",
+            teksti: "A leisurewear brand, plus import and e-commerce of combat-sports equipment, 2022–2024. B2C and brand management.",
           },
           {
             nimi: "Studies",
-            meta: "Centria · studies in progress, 2026–2029",
+            meta: "Centria University of Applied Sciences · studies in progress, 2026–2029",
             teksti:
-              "Bachelor of Business Administration studies in computer science are in progress. Earlier Construction Management studies at Oamk. Elements of AI, University of Helsinki and MinnaLearn.",
+              "BBA in Business Information Technology, studies in progress, 2026–2029. Construction management studies (UAS), 2022–2023, not a completed degree. Social science studies at the University of Lapland, 2020–2021. Elements of AI, University of Helsinki and MinnaLearn.",
           },
           {
-            nimi: "Finnish Defence Forces",
-            meta: "Courses and a project",
-            teksti: "NATO and UN rotation courses in 2018 and 2023. Head of Welfare project, 2023–2024.",
+            nimi: "Crisis management",
+            meta: "International service",
+            teksti: "Non-commissioned officer in a NATO operation and UNIFIL peacekeeper in Lebanon and Iraq. Head of Welfare project, 2023–2024.",
           },
         ],
       },
