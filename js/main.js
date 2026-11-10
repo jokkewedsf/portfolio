@@ -151,6 +151,7 @@
         return "<li>" + esc(kohta) + "</li>";
       })
       .join("");
+    const heroMeta = [data.tyonantaja, data.paikka].filter(Boolean).join(" · ");
     return (
       '<section class="hero" id="alku" aria-labelledby="nimi-otsikko">' +
       '<div class="hero-teksti">' +
@@ -170,7 +171,7 @@
       '<aside class="hero-focus" aria-label="' + esc(data.hero.focusLabel) + '">' +
       '<p class="silma">' + esc(data.hero.focusLabel) + "</p>" +
       '<h2>' + esc(data.nykyinenRooli) + "</h2>" +
-      '<p class="hero-focus-meta">' + esc(data.tyonantaja) + " · " + esc(data.paikka) + "</p>" +
+      (heroMeta ? '<p class="hero-focus-meta">' + esc(heroMeta) + "</p>" : "") +
       (focus ? '<ul>' + focus + "</ul>" : "") +
       "</aside>" +
       huomautus +
@@ -575,7 +576,7 @@
       '<h2 id="aula-otsikko">' + esc(osio.otsikko) + "</h2>" +
       '<p class="johdanto">' + esc(osio.johdanto) + "</p>" +
       '<article class="ratkaisu-kortti">' +
-      '<p class="silma">' + esc(demo.tuote) + " · " + esc(demo.huom) + "</p>" +
+      '<p class="silma">' + esc([demo.tuote, demo.huom].filter(Boolean).join(" · ")) + "</p>" +
       "<h3>" + esc(tuote.ylateksti) + "</h3>" +
       "<p>" + esc(tuote.arvo) + "</p>" +
       '<div class="toiminnot">' +

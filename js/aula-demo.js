@@ -290,7 +290,7 @@
     yla.appendChild(elementti("h2", "aula-demo-otsikko", asetukset.ui.title));
     yla.appendChild(elementti("p", "aula-demo-merkki", asetukset.ui.demoLabel));
     juuri.appendChild(yla);
-    var ingressi = asetukset.businessName + " · " + asetukset.industry + " · " + asetukset.city;
+    var ingressi = [asetukset.businessName, asetukset.industry, asetukset.city].filter(Boolean).join(" · ");
     if (asetukset.ui.sampleNote) ingressi += ". " + asetukset.ui.sampleNote;
     juuri.appendChild(elementti("p", "aula-demo-ingressi", ingressi));
     if (asetukset.ui.simulatedNote) juuri.appendChild(elementti("p", "aula-demo-huomio", asetukset.ui.simulatedNote));
