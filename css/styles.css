@@ -263,6 +263,7 @@ button {
   position: relative;
   display: inline-flex;
   align-items: center;
+  gap: 0.45rem;
   min-height: 44px;
   font-family: var(--font-naytto);
   font-weight: 520;
@@ -272,8 +273,33 @@ button {
   color: var(--teksti);
   white-space: nowrap;
   min-width: 0;
+}
+
+.jr-merkki {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+}
+
+.merkki-nimi {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+  .ylapalkki-sisus { gap: 0.35rem; }
+  .merkki { gap: 0.3rem; font-size: 0.95rem; }
+  .jr-merkki { width: 1.15rem; height: 1.15rem; }
+  .kieli button { padding-inline: 0.38rem; font-size: 0.74rem; }
+}
+
+@media (max-width: 380px) {
+  .ylapalkki .kehys { width: calc(100% - 1.4rem); }
+  .ylapalkki-sisus { gap: 0.22rem; }
+  .merkki { font-size: 0.88rem; }
+  .kieli button { padding-inline: 0.22rem; letter-spacing: 0; }
 }
 
 .valikko-nappi {
@@ -432,6 +458,31 @@ main {
   padding-top: 1.25rem;
   padding-bottom: clamp(1.6rem, 4vh, 3rem);
   overflow: clip;
+  background-color: #0c0d0b;
+  background-image: url("../assets/hero/fluid.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    background-image: url("../assets/hero/fluid-m.webp");
+  }
+}
+
+.ilman-js {
+  background-color: #0c0d0b;
+  background-image: url("../assets/hero/fluid.webp");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+@media (max-width: 700px) {
+  .ilman-js {
+    background-image: url("../assets/hero/fluid-m.webp");
+  }
 }
 
 .hero-teksti {

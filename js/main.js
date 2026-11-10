@@ -661,7 +661,11 @@
     if (og && data.kuvaus) og.setAttribute("content", data.kuvaus);
     const twitter = document.querySelector('meta[name="twitter:description"]');
     if (twitter && data.kuvaus) twitter.setAttribute("content", data.kuvaus);
-    if (merkki) merkki.textContent = nimi;
+    if (merkki) {
+      const nimiSolmu = merkki.querySelector(".merkki-nimi");
+      if (nimiSolmu) nimiSolmu.textContent = nimi;
+      else merkki.textContent = nimi;
+    }
     if (ohitus && data.ui.ohitus) ohitus.textContent = data.ui.ohitus;
     const valikkoTeksti = nappi && nappi.querySelector(".valikko-teksti");
     if (valikkoTeksti) valikkoTeksti.textContent = valikkoAuki ? data.ui.suljeValikko : data.ui.avaaValikko;
