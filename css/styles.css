@@ -46,8 +46,15 @@
   --tila-osio: clamp(3.25rem, 7vw, 5.5rem);
   --sivu: clamp(1.15rem, 4vw, 3.25rem);
   --ylapalkki: 4.6rem;
-  --sade: 1.35rem;
-  --varjo: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --sade: 1rem;
+  --sade-pilleri: 999px;
+  --varjo: 0 16px 36px rgba(0, 0, 0, 0.22);
+  --kesto: 0.2s;
+  --kaari: cubic-bezier(0.16, 0.8, 0.24, 1);
+  --tila-1: 0.5rem;
+  --tila-2: 0.75rem;
+  --tila-3: 1.25rem;
+  --tila-4: 2rem;
   color-scheme: dark;
 }
 
@@ -87,7 +94,9 @@ svg {
 h1,
 h2,
 h3,
-p {
+p,
+li,
+dd {
   overflow-wrap: break-word;
 }
 
@@ -96,9 +105,18 @@ h2,
 h3 {
   font-family: var(--font-naytto);
   font-weight: 520;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
   color: var(--teksti);
-  line-height: 0.92;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
+  hyphens: auto;
+  hyphenate-limit-chars: 8 3 3;
 }
 
 p {
@@ -189,15 +207,14 @@ button {
   z-index: 1;
   background-image: url("../assets/rae.png");
   background-size: 180px 180px;
-  opacity: 0.22;
+  opacity: 0.1;
   mix-blend-mode: overlay;
 }
 
 .vinjetti {
   z-index: 2;
   background:
-    radial-gradient(ellipse at 50% 35%, transparent 0%, transparent 46%, rgba(0, 0, 0, 0.42) 100%),
-    linear-gradient(to bottom, rgba(6, 7, 11, 0.18), transparent 16%, transparent 68%, rgba(6, 7, 11, 0.72));
+    radial-gradient(ellipse at 50% 35%, transparent 0%, transparent 55%, rgba(0, 0, 0, 0.28) 100%);
 }
 
 .eteneminen {
@@ -310,7 +327,7 @@ body.valikko-auki .valikko-ikoni::after { top: 0; transform: rotate(-45deg); }
 }
 
 .kieli button {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0.3rem 0.7rem;
   color: var(--himmea);
   font-size: 0.82rem;
@@ -1576,12 +1593,12 @@ main,
 
   .navigaatio a {
     font-family: var(--font-naytto);
-    font-size: clamp(2.3rem, 11vw, 3.6rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
+    font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
     color: var(--teksti);
-    min-height: 56px;
-    padding: 0.2rem 0;
+    min-height: 48px;
+    padding: 0.15rem 0;
   }
 
   .navigaatio a[aria-current="true"]::after {
@@ -1636,16 +1653,6 @@ main,
     transition: transform 0.45s ease, border-color 0.45s ease;
   }
 
-  .kortti:hover {
-    transform: translateY(-4px);
-    border-color: rgba(228, 194, 122, 0.55);
-  }
-
-  .kortti:hover .kortti-motiivi::after {
-    transform: translateX(35%);
-    transition: transform 0.8s ease;
-  }
-
   .sisallys a,
   .navigaatio a,
   .kanava-linkki,
@@ -1659,10 +1666,6 @@ main,
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .piste {
-    animation: syke 3.8s ease-in-out infinite;
-  }
-
   .nimi-kirjain {
     animation: nimi-asettuu 0.8s cubic-bezier(0.16, 0.8, 0.24, 1) both;
     animation-delay: calc(var(--i) * 0.032s);
@@ -2203,12 +2206,19 @@ main,
   }
 }
 
-@supports (backdrop-filter: blur(16px)) {
-  .kortti,
-  .paikka-kortti,
-  .osa-kortti,
-  .kanava-linkki {
-    background: rgba(14, 16, 24, 0.72);
-    backdrop-filter: blur(14px);
-  }
+.nappi:active,
+.kieli button:active,
+.navigaatio a:active,
+.tekstilinkki:active {
+  opacity: 0.72;
+}
+
+.hahmo-paikka::before {
+  opacity: 0.55;
+}
+
+#nimi-otsikko {
+  line-height: 0.82;
+  text-wrap: nowrap;
+  hyphens: manual;
 }

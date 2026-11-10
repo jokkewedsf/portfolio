@@ -628,6 +628,8 @@
     if (kuvaus && data.kuvaus) kuvaus.setAttribute("content", data.kuvaus);
     const og = document.querySelector('meta[property="og:description"]');
     if (og && data.kuvaus) og.setAttribute("content", data.kuvaus);
+    const twitter = document.querySelector('meta[name="twitter:description"]');
+    if (twitter && data.kuvaus) twitter.setAttribute("content", data.kuvaus);
     if (merkki) merkki.textContent = nimi;
     if (ohitus && data.ui.ohitus) ohitus.textContent = data.ui.ohitus;
     const valikkoTeksti = nappi && nappi.querySelector(".valikko-teksti");
