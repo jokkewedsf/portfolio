@@ -476,6 +476,53 @@ main {
   }
 }
 
+.katse {
+  display: block;
+  width: 4.25rem;
+  height: auto;
+  pointer-events: none;
+  justify-self: end;
+  align-self: center;
+}
+
+.katse-luomi {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleY(0);
+}
+
+.katse.on-ravytaa .katse-luomi {
+  transform: scaleY(1);
+}
+
+.ilman-js .katse {
+  float: right;
+  width: 4.5rem;
+  margin: 0.15rem 0 0.75rem 1rem;
+}
+
+@media (min-width: 981px) {
+  .hero .katse {
+    width: 7.25rem;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    justify-self: end;
+    margin: 0.35rem 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .katse-luomi { transition: transform 0.12s ease; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .katse-luomi {
+    transform: scaleY(0);
+    transition: none;
+  }
+}
+
 .hero::after {
   content: "";
   position: absolute;
@@ -1595,6 +1642,26 @@ main,
   .ingressi,
   .toiminnot {
     grid-column: 1;
+  }
+
+  .hero .katse {
+    position: absolute;
+    top: 0.2rem;
+    right: max(var(--sivu), calc((100vw - 1180px) / 2));
+    width: 4rem;
+    margin: 0;
+    z-index: 2;
+  }
+
+  .hero #nimi-otsikko {
+    margin-top: 2.6rem;
+  }
+
+  .hero .ylateksti {
+    justify-self: start;
+    width: max-content;
+    max-width: calc(100% - 5.7rem);
+    letter-spacing: 0.04em;
   }
 
   .hero-focus {

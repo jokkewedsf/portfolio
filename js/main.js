@@ -242,6 +242,26 @@
     viiva.style.transform = "translateX(" + (kohde.left - pohja.left) + "px)";
   }
 
+  function katseHahmo() {
+    return (
+      '<svg class="katse" viewBox="0 0 120 136" aria-hidden="true">' +
+      '<line x1="60" y1="15" x2="60" y2="5" stroke="#e4c27a" stroke-width="2" stroke-linecap="round"/>' +
+      '<circle cx="60" cy="3.4" r="3.1" fill="#e4c27a"/>' +
+      '<rect x="6" y="16" width="108" height="108" rx="40" fill="#0c0d0b" stroke="#e4c27a" stroke-width="2.4"/>' +
+      '<rect x="18" y="46" width="84" height="48" rx="24" fill="#12110e" stroke="#e4c27a" stroke-width="1.5"/>' +
+      '<g transform="translate(42 70)">' +
+      '<circle r="13" fill="#0c0d0b" stroke="#e4c27a" stroke-width="1.3"/>' +
+      '<circle class="katse-terava" r="4.4" fill="#f7f3ea"/>' +
+      '<ellipse class="katse-luomi" rx="14" ry="14" fill="#0c0d0b"/>' +
+      "</g>" +
+      '<g transform="translate(78 70)">' +
+      '<circle r="13" fill="#0c0d0b" stroke="#e4c27a" stroke-width="1.3"/>' +
+      '<circle class="katse-terava" r="4.4" fill="#f7f3ea"/>' +
+      '<ellipse class="katse-luomi" rx="14" ry="14" fill="#0c0d0b"/>' +
+      "</g></svg>"
+    );
+  }
+
   function hero() {
     const linkedin = data.yhteys && data.yhteys.linkedin ? data.yhteys.linkedin : {};
     const yhteysNappi = ulkoinenLinkki(
@@ -283,6 +303,7 @@
       (pilarit
         ? '<ol class="pilarit" aria-label="' + esc(data.hero.focusLabel) + '">' + pilarit + "</ol>"
         : "") +
+      katseHahmo() +
       "</div></section>"
     );
   }
@@ -681,6 +702,7 @@
     alatunniste();
     lisaaRakenteinenData();
     if (window.alustaErp) window.alustaErp();
+    if (window.alustaKatse) window.alustaKatse();
     alustaAula();
   }
 
