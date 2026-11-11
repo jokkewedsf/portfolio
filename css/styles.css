@@ -277,8 +277,8 @@ button {
 
 .jr-merkki {
   display: block;
-  width: 1.35rem;
-  height: 1.35rem;
+  height: 1.05em;
+  width: auto;
   flex: 0 0 auto;
 }
 
@@ -291,7 +291,7 @@ button {
 @media (max-width: 480px) {
   .ylapalkki-sisus { gap: 0.35rem; }
   .merkki { gap: 0.3rem; font-size: 0.95rem; }
-  .jr-merkki { width: 1.15rem; height: 1.15rem; }
+  .jr-merkki { height: 0.95em; }
   .kieli button { padding-inline: 0.38rem; font-size: 0.74rem; }
 }
 
@@ -454,9 +454,14 @@ main {
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: calc(100svh - var(--ylapalkki));
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
   padding-top: 1.25rem;
   padding-bottom: clamp(1.6rem, 4vh, 3rem);
+  padding-inline: max(var(--sivu), calc((100vw - 1180px) / 2));
+  min-height: calc(100svh - var(--ylapalkki));
   overflow: clip;
   background-color: #0c0d0b;
   background-image: url("../assets/hero/fluid.webp");
@@ -471,7 +476,23 @@ main {
   }
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5.5rem;
+  background: linear-gradient(to bottom, transparent, #0c0d0b);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .ilman-js {
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
   background-color: #0c0d0b;
   background-image: url("../assets/hero/fluid.webp");
   background-repeat: no-repeat;
@@ -1438,7 +1459,11 @@ main {
 .virhe {
   position: relative;
   z-index: 3;
-  padding: 6rem 0 4rem;
+  padding-block: 6rem 4rem;
+}
+
+.ilman-js {
+  padding-inline: max(var(--sivu), calc((100vw - 1180px) / 2));
 }
 
 .ilman-js h1 {
