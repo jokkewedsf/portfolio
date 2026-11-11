@@ -25,8 +25,8 @@ window.SIVUN_SISALTO = {
         otsikko: "Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.",
         ingressi:
           "Johdan myyntiä ja tiimejä Webman Oy:ssä. Ohjelmointi näkyy sivuissa, jotka olen koonnut itse.",
-        summa: 250000,
-        luku: "Yli 250\u00A0000\u00A0€",
+        summa: 300000,
+        luku: "Yli 300\u00A0000\u00A0€",
         lukuSelite: "SaaS-myyntiä vuonna 2026 (tilanne 11/2026)",
         opinnotNimi: "Centria-ammattikorkeakoulu",
         opinnotRivi: "Tradenomi (AMK), tietojenkäsittely · opinnot käynnissä 2026–2029",
@@ -439,8 +439,8 @@ window.SIVUN_SISALTO = {
         otsikko: "Software expertise from the combination of leadership, sales and programming.",
         ingressi:
           "I lead sales and teams at Webman Oy. The programming shows up in the pages I assembled myself.",
-        summa: 250000,
-        luku: "Over €250,000",
+        summa: 300000,
+        luku: "Over €300,000",
         lukuSelite: "in SaaS sales in 2026 (as of November 2026)",
         opinnotNimi: "Centria University of Applied Sciences",
         opinnotRivi: "BBA in Business Information Technology · studies in progress, 2026–2029",

@@ -110,10 +110,10 @@ if (!data) {
   const valilyonti = function (arvo) { return String(arvo).replace(/\u00A0/g, " "); };
   const fiLuku = valilyonti(kielet.fi.hero.luku + " " + kielet.fi.hero.lukuSelite);
   const enLuku = valilyonti(kielet.en.hero.luku + " " + kielet.en.hero.lukuSelite);
-  if (fiLuku !== "Yli 250 000 € SaaS-myyntiä vuonna 2026 (tilanne 11/2026)") fail("Suomen myyntiluku puuttuu");
+  if (fiLuku !== "Yli 300 000 € SaaS-myyntiä vuonna 2026 (tilanne 11/2026)") fail("Suomen myyntiluku puuttuu");
   if (!/\u00A0/.test(kielet.fi.hero.luku)) fail("Suomen luvusta puuttuu sitova välilyönti");
-  if (enLuku !== "Over €250,000 in SaaS sales in 2026 (as of November 2026)") fail("Englannin myyntiluku puuttuu");
-  if (kielet.fi.hero.summa !== 250000 || kielet.en.hero.summa !== 250000) fail("Myyntisumma puuttuu");
+  if (enLuku !== "Over €300,000 in SaaS sales in 2026 (as of November 2026)") fail("Englannin myyntiluku puuttuu");
+  if (kielet.fi.hero.summa !== 300000 || kielet.en.hero.summa !== 300000) fail("Myyntisumma puuttuu");
   if (!/Centria-ammattikorkeakoulu/.test(JSON.stringify(kielet.fi)) || !/Centria University of Applied Sciences/.test(JSON.stringify(kielet.en))) {
     fail("Centrian nimi puuttuu");
   }
