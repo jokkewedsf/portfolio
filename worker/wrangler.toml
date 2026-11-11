@@ -1,0 +1,16 @@
+name = "joakim-ai"
+main = "worker.js"
+compatibility_date = "2026-11-11"
+
+# Julkiset asetukset. Avain ja järjestelmäkehote ovat salaisuuksia, ei näitä.
+[vars]
+API_BASE = "https://api.x.ai/v1"
+MODEL = "grok-4.7"
+# Jätä tyhjäksi, jos malli ei tue kenttää. Grokille voi laittaa low.
+REASONING = ""
+
+# Luo nimiavaruus ja korvaa id sen tulosteella:
+# npx wrangler kv namespace create RAJA
+[[kv_namespaces]]
+binding = "RAJA"
+id = "00000000000000000000000000000000"

@@ -1,3 +1,6 @@
+// Tyhjä, kunnes Cloudflare Worker on julkaistu. Älä laita avainta tähän.
+window.JOAKIM_AI_ENDPOINT = "";
+
 window.SIVUN_SISALTO = {
   etunimi: "Joakim",
   sukunimi: "Rydenfelt",
@@ -36,6 +39,30 @@ window.SIVUN_SISALTO = {
         huomautus: "",
         linkedinNappi: "Ota yhteyttä LinkedInissä",
         selaaNappi: "Katso työt",
+      },
+
+      keskustelu: {
+        silma: "Tekoäly",
+        otsikko: "Keskustelu",
+        merkinta:
+          "Keskustele tekoäly-Joakimin kanssa — vastaukset tuottaa tekoäly Joakimin omien vastausten pohjalta",
+        ehdotukset: [
+          "Mitä osaat?",
+          "Millaisia ratkaisuja teet?",
+          "Miten saan sinuun yhteyden?",
+          "Mitä olet tehnyt?",
+        ],
+        syote: "Kirjoita viesti",
+        laheta: "Lähetä",
+        kirjoittaa: "Kirjoittaa",
+        avautuu: "Chat avautuu pian",
+        linkedin: "Ota yhteyttä LinkedInissä",
+        virhe: "Vastausta ei saatu juuri nyt. Voit ottaa yhteyttä LinkedInissä.",
+        tietosuoja:
+          "Viestit käsitellään tekoälypalvelussa vastauksen tuottamiseksi, niitä ei tallenneta sivustolle.",
+        sina: "Sinä",
+        joakim: "Tekoäly-Joakim",
+        loki: "Keskustelu",
       },
 
       navigointi: [
@@ -438,6 +465,30 @@ window.SIVUN_SISALTO = {
         huomautus: "",
         linkedinNappi: "Contact on LinkedIn",
         selaaNappi: "See the work",
+      },
+
+      keskustelu: {
+        silma: "AI",
+        otsikko: "Conversation",
+        merkinta:
+          "Talk with AI Joakim — an AI produces the answers from Joakim's own replies",
+        ehdotukset: [
+          "What can you do?",
+          "What kinds of solutions do you make?",
+          "How do I reach you?",
+          "What have you done?",
+        ],
+        syote: "Write a message",
+        laheta: "Send",
+        kirjoittaa: "Typing",
+        avautuu: "Chat opens soon",
+        linkedin: "Contact on LinkedIn",
+        virhe: "No reply just now. You can get in touch on LinkedIn.",
+        tietosuoja:
+          "Messages are processed by an AI service to produce a reply and are not stored on this site.",
+        sina: "You",
+        joakim: "AI Joakim",
+        loki: "Conversation",
       },
 
       navigointi: [

@@ -19,7 +19,7 @@ function lue(rel) {
   return fs.readFileSync(tiedosto, "utf8");
 }
 
-["js/sisalto.js", "js/main.js", "js/tausta.js", "js/erp.js"].forEach(function (tiedosto) {
+["js/sisalto.js", "js/main.js", "js/keskustelu.js", "js/tausta.js", "js/erp.js"].forEach(function (tiedosto) {
   const tulos = spawnSync(process.execPath, ["--check", path.join(juuri, tiedosto)], { encoding: "utf8" });
   if (tulos.status !== 0) fail(tiedosto + " ei ole kelvollista JavaScriptiä:\n" + (tulos.stderr || tulos.stdout));
 });
@@ -166,6 +166,34 @@ if (!html.includes("https://github.com/jokkewedsf")) fail("noscript-varasta puut
 if (!html.includes("https://www.linkedin.com/in/joakim-rydenfelt")) {
   fail("noscript-varasta puuttuu vahvistettu LinkedIn-osoite");
 }
+if (!html.includes("js/keskustelu.js")) fail("Keskustelun skripti puuttuu etusivulta");
+if (!html.includes("Keskustele tekoäly-Joakimin kanssa — vastaukset tuottaa tekoäly Joakimin omien vastausten pohjalta")) {
+  fail("noscript-varasta puuttuu tekoälymerkintä");
+}
+if (!/window\.JOAKIM_AI_ENDPOINT\s*=\s*""/.test(lue("js/sisalto.js"))) {
+  fail("Julkinen tekoälyosoite ei ole tyhjä");
+}
+if (data && data.kielet) {
+  ["fi", "en"].forEach(function (koodi) {
+    const keskustelu = data.kielet[koodi] && data.kielet[koodi].keskustelu;
+    if (!keskustelu || !keskustelu.merkinta || !keskustelu.tietosuoja || !(keskustelu.ehdotukset || []).length) {
+      fail(koodi + ": keskustelun tekstit puuttuvat");
+    }
+  });
+  if (!data.kielet.fi.keskustelu || !/Keskustele tekoäly-Joakimin kanssa/.test(data.kielet.fi.keskustelu.merkinta)) {
+    fail("Suomen tekoälymerkintä puuttuu");
+  }
+  if (!data.kielet.en.keskustelu || !/Talk with AI Joakim/.test(data.kielet.en.keskustelu.merkinta)) {
+    fail("Englannin tekoälymerkintä puuttuu");
+  }
+}
+["worker/worker.js", "worker/wrangler.toml", "worker/README.md", "worker/rakenna-prompti.js", "worker/tietopohja.esimerkki.md"].forEach(function (tiedosto) {
+  if (!fs.existsSync(path.join(juuri, tiedosto))) fail("Puuttuva tiedosto: " + tiedosto);
+});
+const gitignore = lue(".gitignore");
+if (!gitignore.includes("worker/tietopohja.md")) fail("Tietopohja ei ole gitignorattu");
+const workerLahde = lue("worker/worker.js");
+if (/sk-[A-Za-z0-9]{10,}|xai-[A-Za-z0-9]{10,}/.test(workerLahde)) fail("Workerin lähde sisältää avaimen näköisen merkkijonon");
 if (!/prefers-reduced-motion/.test(css)) fail("CSS ei huomioi liikkeen vähentämistä");
 if (!/:focus-visible/.test(css)) fail("CSS:stä puuttuu näkyvä fokus");
 if (/href\s*=\s*"#"/.test(lahde) || /href\s*=\s*'#'/.test(lahde)) {

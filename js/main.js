@@ -287,6 +287,50 @@
     );
   }
 
+  function keskustelu() {
+    const osio = data.keskustelu;
+    if (!osio) return "";
+    const linkedin = data.yhteys && data.yhteys.linkedin ? data.yhteys.linkedin : {};
+    const ehdotukset = (osio.ehdotukset || [])
+      .filter(Boolean)
+      .map(function (teksti) {
+        return '<button type="button" class="ai-ehdotus">' + esc(teksti) + "</button>";
+      })
+      .join("");
+    return (
+      '<section class="osio ai-osio" id="keskustelu" aria-labelledby="ai-otsikko">' +
+      '<p class="silma">' + esc(osio.silma) + "</p>" +
+      '<h2 id="ai-otsikko">' + esc(osio.otsikko) + "</h2>" +
+      '<p class="ai-merkinta">' + esc(osio.merkinta) + "</p>" +
+      '<div class="ai-kehys" data-tila="odotus">' +
+      '<div class="ai-odotus">' +
+      '<p class="ai-odotus-teksti">' + esc(osio.avautuu) + "</p>" +
+      ulkoinenLinkki(
+        "nappi nappi-ensisijainen",
+        linkedin.osoite,
+        osio.linkedin || data.hero.linkedinNappi,
+        linkedin.selite || ""
+      ) +
+      "</div>" +
+      '<div class="ai-kaynti">' +
+      '<div class="ai-ehdotukset">' + ehdotukset + "</div>" +
+      '<div class="ai-loki" role="log" aria-live="polite" aria-relevant="additions" aria-label="' +
+      esc(osio.loki) +
+      '"></div>' +
+      '<form class="ai-lomake">' +
+      '<label class="sr-only" for="ai-syote">' + esc(osio.syote) + "</label>" +
+      '<div class="ai-rivi">' +
+      '<textarea id="ai-syote" rows="2" maxlength="500" enterkeyhint="send" autocomplete="off"></textarea>' +
+      '<button type="submit" class="nappi nappi-ensisijainen ai-laheta">' +
+      esc(osio.laheta) +
+      "</button></div>" +
+      '<p class="ai-laskuri" id="ai-laskuri"><span class="ai-maara">0</span><span> / 500</span></p>' +
+      "</form></div>" +
+      '<p class="ai-tietosuoja">' + esc(osio.tietosuoja) + "</p>" +
+      "</div></section>"
+    );
+  }
+
   function tietoa() {
     const osio = data.tietoa;
     const kappaleet = (osio.kappaleet || [])
@@ -670,7 +714,7 @@
     paivitaKieli();
 
     main.innerHTML =
-      '<div class="kehys">' + hero() + tietoa() + osaaminen() + valitut() + projektit() + "</div>" +
+      '<div class="kehys">' + hero() + keskustelu() + tietoa() + osaaminen() + valitut() + projektit() + "</div>" +
       aulaOsio() +
       (window.piirraErp ? window.piirraErp(data.erp) : "") +
       '<div class="kehys">' + tausta() + yhteys() + "</div>";
@@ -679,6 +723,7 @@
     lisaaRakenteinenData();
     if (window.alustaErp) window.alustaErp();
     alustaAula();
+    if (window.alustaKeskustelu) window.alustaKeskustelu(data.keskustelu || {});
   }
 
   function aulaOsio() {
