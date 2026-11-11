@@ -242,24 +242,6 @@
     viiva.style.transform = "translateX(" + (kohde.left - pohja.left) + "px)";
   }
 
-  function katseHahmo() {
-    return (
-      '<svg class="katse" viewBox="0 0 120 120" aria-hidden="true">' +
-      '<rect x="8" y="8" width="104" height="104" rx="26" fill="#0c0d0b" stroke="#e4c27a" stroke-width="2.2"/>' +
-      '<path d="M88 24 H100 V36" fill="none" stroke="#e4c27a" stroke-width="2" stroke-linejoin="miter"/>' +
-      '<g transform="translate(44 62)">' +
-      '<circle r="13" fill="none" stroke="#e4c27a" stroke-width="1.6"/>' +
-      '<circle class="katse-terava" r="4" fill="#f7f3ea"/>' +
-      '<ellipse class="katse-luomi" rx="14.2" ry="14.2" fill="#0c0d0b"/>' +
-      "</g>" +
-      '<g transform="translate(76 62)">' +
-      '<circle r="13" fill="none" stroke="#e4c27a" stroke-width="1.6"/>' +
-      '<circle class="katse-terava" r="4" fill="#f7f3ea"/>' +
-      '<ellipse class="katse-luomi" rx="14.2" ry="14.2" fill="#0c0d0b"/>' +
-      "</g></svg>"
-    );
-  }
-
   function hero() {
     const linkedin = data.yhteys && data.yhteys.linkedin ? data.yhteys.linkedin : {};
     const yhteysNappi = ulkoinenLinkki(
@@ -301,7 +283,6 @@
       (pilarit
         ? '<ol class="pilarit" aria-label="' + esc(data.hero.focusLabel) + '">' + pilarit + "</ol>"
         : "") +
-      katseHahmo() +
       "</div></section>"
     );
   }
@@ -316,7 +297,6 @@
       .join("");
     return (
       '<section class="osio" id="tietoa" aria-labelledby="tietoa-otsikko">' +
-      hahmo("joakim-muotokuva", 271, 420, "hahmo-muotokuva", data.hero.muotokuva, "0.04") +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta"><p class="silma">' +
       esc(osio.numero) +
@@ -359,7 +339,6 @@
       .join("");
     return (
       '<section class="osio" id="osaaminen" aria-labelledby="osaaminen-otsikko">' +
-      hahmo("joakim-esitys", 177, 420, "hahmo-esitys", "", "0.04", true) +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta">' +
       (osio.numero ? '<p class="silma">' + esc(osio.numero) + "</p>" : "") +
@@ -509,7 +488,6 @@
       .join("");
     return (
       '<section class="osio" id="taustat" aria-labelledby="tausta-otsikko">' +
-      hahmo("joakim-kamppailu", 187, 420, "hahmo-kamppailu", "", "0.04") +
       '<p class="osio-numero" aria-hidden="true">' + esc(osio.numero) + "</p>" +
       '<div class="osio-otsake paljasta"><p class="silma">' +
       esc(osio.numero) +
@@ -700,7 +678,6 @@
     alatunniste();
     lisaaRakenteinenData();
     if (window.alustaErp) window.alustaErp();
-    if (window.alustaKatse) window.alustaKatse();
     alustaAula();
   }
 

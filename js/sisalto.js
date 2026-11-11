@@ -98,10 +98,6 @@ window.SIVUN_SISALTO = {
         kohdat: [
           {
             nimi: "Tämä sivu",
-            kuva: "assets/tyot/sivu.webp",
-            kuvaLeveys: 1200,
-            kuvaKorkeus: 750,
-            kuvaAlt: "Etusivun näkymä.",
             tarve: "Kaupallinen rooli ja itse tehdyt sivut pitää näyttää samassa paikassa.",
             rooli: "Kokosin sivun itse.",
             tekniikka: "HTML, CSS ja JavaScript. Suomi ja englanti samassa sisällössä, kielivalinta säilyy selaimessa. Ei taustajärjestelmää.",
@@ -112,10 +108,6 @@ window.SIVUN_SISALTO = {
           },
           {
             nimi: "Aula",
-            kuva: "assets/tyot/aula.webp",
-            kuvaLeveys: 1200,
-            kuvaKorkeus: 750,
-            kuvaAlt: "Aulan demon näkymä.",
             tarve: "Samat vastaanoton kysymykset toistuvat, ja rajan pitää näkyä.",
             rooli: "Tein tuotesivun ja paikallisen demon.",
             tekniikka: "Komponentti omassa varjopuussa. Vastaukset tulevat mukana olevasta tietopohjasta. Ei verkkopyyntöä eikä tallennusta.",
@@ -128,10 +120,6 @@ window.SIVUN_SISALTO = {
           },
           {
             nimi: "Toiminnanohjauksen kuvitus",
-            kuva: "assets/tyot/erp.webp",
-            kuvaLeveys: 1200,
-            kuvaKorkeus: 750,
-            kuvaAlt: "Toiminnanohjauksen kuvituksen näkymä.",
             tarve: "Myynti, projektit, laskutus ja raportointi on helpompi nähdä yhtenä ketjuna.",
             rooli: "Tein vieritettävän kuvituksen.",
             tekniikka: "Kaksitoista vaihetta. Vierityskohta liikuttaa näkymää, ja vaiheet on piirretty SVG-kuvakkeina. En ole rakentanut ERP:tä enkä ottanut sitä käyttöön.",
@@ -512,10 +500,6 @@ window.SIVUN_SISALTO = {
         kohdat: [
           {
             nimi: "This site",
-            kuva: "assets/tyot/sivu.webp",
-            kuvaLeveys: 1200,
-            kuvaKorkeus: 750,
-            kuvaAlt: "View of the home page.",
             tarve: "The commercial role and the pages built by hand need to sit in one place.",
             rooli: "I assembled the page myself.",
             tekniikka: "HTML, CSS and JavaScript. Finnish and English live in the same content file, and the language choice stays in the browser. No backend.",
@@ -526,10 +510,6 @@ window.SIVUN_SISALTO = {
           },
           {
             nimi: "Aula",
-            kuva: "assets/tyot/aula.webp",
-            kuvaLeveys: 1200,
-            kuvaKorkeus: 750,
-            kuvaAlt: "View of the Aula demo.",
             tarve: "The same front-desk questions repeat, and the limit has to stay visible.",
             rooli: "I built a product page and a local demo.",
             tekniikka: "The component runs in its own shadow tree. Answers come from the included knowledge base. No network request and no storage.",
@@ -542,10 +522,6 @@ window.SIVUN_SISALTO = {
           },
           {
             nimi: "The operations illustration",
-            kuva: "assets/tyot/erp.webp",
-            kuvaLeveys: 1200,
-            kuvaKorkeus: 750,
-            kuvaAlt: "View of the operations illustration.",
             tarve: "Sales, projects, invoicing and reporting are easier to see as one chain.",
             rooli: "I made a scroll illustration.",
             tekniikka: "Twelve stages. Scroll position moves the view, and the stages are drawn as SVG icons. I have not built an ERP or deployed one.",

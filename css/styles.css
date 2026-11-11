@@ -476,53 +476,6 @@ main {
   }
 }
 
-.katse {
-  display: block;
-  width: 4.25rem;
-  height: auto;
-  pointer-events: none;
-  justify-self: end;
-  align-self: center;
-}
-
-.katse-luomi {
-  transform-box: fill-box;
-  transform-origin: center;
-  transform: scaleY(0);
-}
-
-.katse.on-ravytaa .katse-luomi {
-  transform: scaleY(1);
-}
-
-.ilman-js .katse {
-  float: right;
-  width: 4.5rem;
-  margin: 0.15rem 0 0.75rem 1rem;
-}
-
-@media (min-width: 981px) {
-  .hero .katse {
-    width: 7.25rem;
-    grid-column: 2;
-    grid-row: 1 / span 3;
-    align-self: start;
-    justify-self: end;
-    margin: 0.35rem 0 0;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .katse-luomi { transition: transform 0.12s ease; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .katse-luomi {
-    transform: scaleY(0);
-    transition: none;
-  }
-}
-
 .hero::after {
   content: "";
   position: absolute;
@@ -894,8 +847,8 @@ main {
     pointer-events: none;
   }
 
-  #tietoa .osio-otsake { grid-column: 1 / 8; grid-row: 1; }
-  #tietoa .tietoa-asetelma { grid-column: 1 / 8; grid-row: 2; }
+  #tietoa .osio-otsake { grid-column: 1 / 13; grid-row: 1; }
+  #tietoa .tietoa-asetelma { grid-column: 1 / 13; grid-row: 2; }
 
   #tietoa .tietoa-asetelma {
     display: flex;
@@ -916,8 +869,8 @@ main {
     justify-content: flex-end;
   }
 
-  #osaaminen .osio-otsake { grid-column: 5 / 13; grid-row: 1; }
-  #osaaminen .osaaminen-lista { grid-column: 5 / 13; grid-row: 2; }
+  #osaaminen .osio-otsake { grid-column: 1 / 13; grid-row: 1; }
+  #osaaminen .osaaminen-lista { grid-column: 1 / 13; grid-row: 2; }
 
   #osaaminen .osaaminen-lista { margin: 0; }
 
@@ -926,8 +879,8 @@ main {
     justify-content: flex-start;
   }
 
-  #taustat .osio-otsake { grid-column: 1 / 9; grid-row: 1; }
-  #taustat .tausta-lista { grid-column: 1 / 9; grid-row: 2; }
+  #taustat .osio-otsake { grid-column: 1 / 13; grid-row: 1; }
+  #taustat .tausta-lista { grid-column: 1 / 13; grid-row: 2; }
 
   #taustat .tausta-lista { margin: 0; }
 
@@ -944,6 +897,13 @@ main {
   #yhteys .hahmo-metsa-paikka {
     grid-column: 1 / 5;
     justify-content: flex-start;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  #yhteys .hahmo {
+    height: clamp(16rem, 28vw, 24rem);
+    opacity: 0.82;
   }
 }
 
@@ -965,36 +925,26 @@ main {
 }
 
 @media (max-width: 860px) {
-  #tietoa { position: relative; }
-
-  #tietoa .hahmo-muotokuva-paikka,
   #yhteys .hahmo-metsa-paikka {
     display: block;
     position: relative;
     z-index: 0;
     width: 100%;
-    height: 12.5rem;
+    height: 14rem;
     min-height: 0;
     margin: 0 0 0.75rem;
     overflow: hidden;
     pointer-events: none;
   }
 
-  #tietoa .osio-otsake,
-  #tietoa .tietoa-asetelma {
-    position: relative;
-    z-index: 1;
-  }
-
-  #tietoa .hahmo,
   #yhteys .hahmo {
     width: 100%;
-    height: 12.5rem;
+    height: 14rem;
     min-height: 0;
-    opacity: 0.48;
-    object-position: center 18%;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 52%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 52%, transparent 100%);
+    opacity: 0.82;
+    object-position: center 30%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 78%, transparent 100%);
   }
 
   #yhteys .hahmo-metsa {
@@ -1642,26 +1592,6 @@ main,
   .ingressi,
   .toiminnot {
     grid-column: 1;
-  }
-
-  .hero .katse {
-    position: absolute;
-    top: 0.2rem;
-    right: max(var(--sivu), calc((100vw - 1180px) / 2));
-    width: 4rem;
-    margin: 0;
-    z-index: 2;
-  }
-
-  .hero #nimi-otsikko {
-    margin-top: 2.6rem;
-  }
-
-  .hero .ylateksti {
-    justify-self: start;
-    width: max-content;
-    max-width: calc(100% - 5.7rem);
-    letter-spacing: 0.04em;
   }
 
   .hero-focus {
@@ -2427,10 +2357,8 @@ main,
 }
 
 .tapaus {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(1.25rem, 3vw, 3rem);
-  align-items: center;
+  display: block;
+  max-width: 42rem;
   padding: clamp(2rem, 4vw, 3.25rem) 0;
   border-top: 1px solid var(--viiva);
 }
