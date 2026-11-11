@@ -244,20 +244,18 @@
 
   function katseHahmo() {
     return (
-      '<svg class="katse" viewBox="0 0 120 136" aria-hidden="true">' +
-      '<line x1="60" y1="15" x2="60" y2="5" stroke="#e4c27a" stroke-width="2" stroke-linecap="round"/>' +
-      '<circle cx="60" cy="3.4" r="3.1" fill="#e4c27a"/>' +
-      '<rect x="6" y="16" width="108" height="108" rx="40" fill="#0c0d0b" stroke="#e4c27a" stroke-width="2.4"/>' +
-      '<rect x="18" y="46" width="84" height="48" rx="24" fill="#12110e" stroke="#e4c27a" stroke-width="1.5"/>' +
-      '<g transform="translate(42 70)">' +
-      '<circle r="13" fill="#0c0d0b" stroke="#e4c27a" stroke-width="1.3"/>' +
-      '<circle class="katse-terava" r="4.4" fill="#f7f3ea"/>' +
-      '<ellipse class="katse-luomi" rx="14" ry="14" fill="#0c0d0b"/>' +
+      '<svg class="katse" viewBox="0 0 120 120" aria-hidden="true">' +
+      '<rect x="8" y="8" width="104" height="104" rx="26" fill="#0c0d0b" stroke="#e4c27a" stroke-width="2.2"/>' +
+      '<path d="M88 24 H100 V36" fill="none" stroke="#e4c27a" stroke-width="2" stroke-linejoin="miter"/>' +
+      '<g transform="translate(44 62)">' +
+      '<circle r="13" fill="none" stroke="#e4c27a" stroke-width="1.6"/>' +
+      '<circle class="katse-terava" r="4" fill="#f7f3ea"/>' +
+      '<ellipse class="katse-luomi" rx="14.2" ry="14.2" fill="#0c0d0b"/>' +
       "</g>" +
-      '<g transform="translate(78 70)">' +
-      '<circle r="13" fill="#0c0d0b" stroke="#e4c27a" stroke-width="1.3"/>' +
-      '<circle class="katse-terava" r="4.4" fill="#f7f3ea"/>' +
-      '<ellipse class="katse-luomi" rx="14" ry="14" fill="#0c0d0b"/>' +
+      '<g transform="translate(76 62)">' +
+      '<circle r="13" fill="none" stroke="#e4c27a" stroke-width="1.6"/>' +
+      '<circle class="katse-terava" r="4" fill="#f7f3ea"/>' +
+      '<ellipse class="katse-luomi" rx="14.2" ry="14.2" fill="#0c0d0b"/>' +
       "</g></svg>"
     );
   }
