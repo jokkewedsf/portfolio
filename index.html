@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <title>Joakim Rydenfelt</title>
+  <meta name="description" content="Joakim Rydenfelt. Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.">
+  <meta name="author" content="Joakim Rydenfelt">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0c0d0b">
+  <meta property="og:title" content="Joakim Rydenfelt">
+  <meta property="og:description" content="Joakim Rydenfelt. Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fi_FI">
+  <meta property="og:url" content="https://jokkewedsf.github.io/portfolio/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Joakim Rydenfelt">
+  <meta name="twitter:description" content="Joakim Rydenfelt. Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä.">
+  <link rel="canonical" href="https://jokkewedsf.github.io/portfolio/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="ohitus" href="#sisalto">Siirry sisältöön</a>
+  <canvas id="tausta" aria-hidden="true"></canvas>
+  <div class="rae" aria-hidden="true"></div>
+  <div class="vinjetti" aria-hidden="true"></div>
+  <div class="eteneminen" aria-hidden="true"><span id="eteneminen-palkki"></span></div>
+
+  <header class="ylapalkki" id="ylapalkki">
+    <div class="kehys ylapalkki-sisus">
+      <a class="merkki" href="#alku"><img class="jr-merkki" src="assets/jr.svg" alt="" width="42" height="26" aria-hidden="true"><span class="merkki-nimi">Joakim Rydenfelt</span></a>
+      <nav id="navigaatio" class="navigaatio" aria-label="Sivun osiot"></nav>
+      <div class="kieli" id="kieli" role="group" aria-label="Kieli">
+        <button type="button" id="kieli-fi" data-kieli="fi" lang="fi" aria-pressed="true">Suomi</button>
+        <span class="kieli-ero" aria-hidden="true">/</span>
+        <button type="button" id="kieli-en" data-kieli="en" lang="en" aria-pressed="false">English</button>
+      </div>
+      <button type="button" class="valikko-nappi" id="valikko-nappi" aria-expanded="false" aria-controls="navigaatio">
+        <span class="valikko-ikoni" aria-hidden="true"></span>
+        <span class="valikko-teksti">Avaa valikko</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="sisalto" tabindex="-1">
+    <!-- Tekstit tulevat tiedostosta js/sisalto.js. Tämä noscript näkyy vain ilman JavaScriptiä.
+         Osoitteiden on vastattava js/sisalto.js-tiedoston kenttiä yhteys.linkedin ja yhteys.github. -->
+    <noscript>
+      <div class="kehys ilman-js">
+        <h1>Joakim Rydenfelt</h1>
+        <p lang="fi">Ohjelmisto-osaamista johtamisen, myynnin ja ohjelmoinnin yhdistelmästä. Yli 300&nbsp;000&nbsp;€ SaaS-myyntiä vuonna 2026 (tilanne 11/2026). Centria-ammattikorkeakoulu, tradenomi (AMK), tietojenkäsittely, opinnot käynnissä 2026–2029.</p>
+        <p lang="en">Software expertise from the combination of leadership, sales and programming. Over €300,000 in SaaS sales in 2026 (as of November 2026). Centria University of Applied Sciences, BBA in Business Information Technology, studies in progress, 2026–2029.</p>
+        <h2 lang="fi">Keskustelu</h2>
+        <p lang="fi">Keskustele tekoäly-Joakimin kanssa — vastaukset tuottaa tekoäly Joakimin omien vastausten pohjalta. Chat avautuu pian. <a href="https://www.linkedin.com/in/joakim-rydenfelt">Ota yhteyttä LinkedInissä</a></p>
+        <p lang="en">Talk with AI Joakim — an AI produces the answers from Joakim's own replies. The chat opens soon. <a href="https://www.linkedin.com/in/joakim-rydenfelt">Contact on LinkedIn</a></p>
+        <p lang="fi">Viestit käsitellään tekoälypalvelussa vastauksen tuottamiseksi, niitä ei tallenneta sivustolle.</p>
+        <p><a href="https://www.linkedin.com/in/joakim-rydenfelt">linkedin.com/in/joakim-rydenfelt</a></p>
+        <p><a href="https://github.com/jokkewedsf">github.com/jokkewedsf</a></p>
+        <h2 lang="fi">Toiminnanohjauksen havainnollistus</h2>
+        <ol>
+          <li>Asiakkaat</li>
+          <li>Dokumentit</li>
+          <li>Tarjouspyynnöt</li>
+          <li>Myynti</li>
+          <li>CRM</li>
+          <li>Projektit</li>
+          <li>Tilaukset</li>
+          <li>Varasto</li>
+          <li>Hallinta</li>
+          <li>Integraatiot</li>
+          <li>Laskutus</li>
+          <li>Raportointi</li>
+        </ol>
+      </div>
+    </noscript>
+  </main>
+
+  <footer class="alatunniste" id="alatunniste"></footer>
+
+  <script src="js/sisalto.js"></script>
+  <script src="js/tausta.js"></script>
+  <script src="js/erp.js"></script>
+  <script src="js/aula-demo.js"></script>
+  <script src="js/keskustelu.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

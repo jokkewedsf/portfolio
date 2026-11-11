@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sivua ei löydy — Joakim Rydenfelt</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body { margin: 0; background: #0c0d0b; color: #f7f3ea; font-family: Georgia, "Iowan Old Style", serif; }
+    main { max-width: 40rem; margin: 0 auto; padding: 4rem 1.25rem; }
+    a { color: #e4c27a; }
+    p { line-height: 1.5; font-family: "Segoe UI", sans-serif; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Sivua ei löydy</h1>
+    <p lang="fi">Tämä osoite ei vastaa mitään sivua. Portfolio ja Aulan sivu ovat edelleen tallella.</p>
+    <p lang="en">This address does not match a page. The portfolio and the Aula page are still available.</p>
+    <p><a id="koti" href="https://jokkewedsf.github.io/portfolio/">Joakim Rydenfelt</a></p>
+    <p><a id="aula" href="https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/">Aula</a></p>
+  </main>
+  <script>
+    var kanta = location.pathname.indexOf("/portfolio/") === 0 ? "/portfolio/" : "/";
+    document.getElementById("koti").setAttribute("href", kanta);
+    document.getElementById("aula").setAttribute("href", kanta + "ratkaisut/chatbot/");
+  </script>
+</body>
+</html>
