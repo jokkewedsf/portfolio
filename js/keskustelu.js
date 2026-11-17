@@ -6,6 +6,8 @@
   let historia = [];
   let ohjain = null;
   let auki = false;
+  let historiaMerkki = false;
+  let sulkuLukko = 0;
   let tekstit = {};
   let juuri = null;
   let paneeli = null;
@@ -159,6 +161,12 @@
 
   function avaa() {
     asetaAuki(true);
+    if (mobiili() && !historiaMerkki) {
+      try {
+        history.pushState({ joakimAi: 1 }, "");
+        historiaMerkki = true;
+      } catch (virhe) {}
+    }
     window.setTimeout(function () {
       const kohde = kentta && !kentta.disabled ? kentta : paneeli.querySelector(".ai-sulje");
       if (kohde) kohde.focus();
@@ -166,8 +174,25 @@
   }
 
   function sulje() {
+    const nyt = Date.now();
+    if (nyt - sulkuLukko < 400) return;
+    sulkuLukko = nyt;
+    const takaisin = historiaMerkki;
+    historiaMerkki = false;
     asetaAuki(false);
-    avain.focus();
+    if (avain) avain.focus();
+    const suoja = document.createElement("div");
+    suoja.setAttribute("aria-hidden", "true");
+    suoja.style.cssText = "position:fixed;top:0;right:0;width:7.5rem;height:5.5rem;z-index:80;background:transparent;";
+    document.body.appendChild(suoja);
+    window.setTimeout(function () {
+      suoja.remove();
+    }, 450);
+    if (takaisin) {
+      try {
+        history.back();
+      } catch (virhe) {}
+    }
   }
 
   async function lueVirta(vastaus, sisalto) {
@@ -337,11 +362,11 @@
     const nimi = el("h2", "ai-nimi");
     nimi.id = "ai-otsikko";
     otsake.append(nimi, el("p", "ai-tila"));
-    const sulje = el("button", "ai-sulje");
-    sulje.type = "button";
-    sulje.innerHTML =
+    const suljeNappi = el("button", "ai-sulje");
+    suljeNappi.type = "button";
+    suljeNappi.innerHTML =
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
-    paa.append(merkki, otsake, sulje);
+    paa.append(merkki, otsake, suljeNappi);
 
     const odotus = el("div", "ai-odotus");
     odotus.append(el("p", "ai-odotus-teksti"));
@@ -384,7 +409,11 @@
       if (auki) sulje();
       else avaa();
     });
-    sulje.addEventListener("click", sulje);
+    suljeNappi.addEventListener("click", function (tapahtuma) {
+      tapahtuma.preventDefault();
+      tapahtuma.stopPropagation();
+      sulje();
+    });
     tervehdysSulje.addEventListener("click", piilotaTervehdys);
     lomake.addEventListener("submit", function (tapahtuma) {
       tapahtuma.preventDefault();
@@ -431,6 +460,12 @@
       window.visualViewport.addEventListener("scroll", sovitaNakyma);
     }
     window.addEventListener("resize", sovitaNakyma);
+    window.addEventListener("popstate", function () {
+      if (!auki) return;
+      historiaMerkki = false;
+      sulkuLukko = Date.now();
+      asetaAuki(false);
+    });
   }
 
   window.alustaKeskustelu = function (uudet) {
