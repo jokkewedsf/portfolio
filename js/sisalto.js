@@ -44,6 +44,12 @@ window.SIVUN_SISALTO = {
       keskustelu: {
         silma: "Tekoäly",
         otsikko: "Keskustelu",
+        nimi: "Joakim",
+        tila: "Tekoäly · vastaa omista tiedoista",
+        avaa: "Avaa keskustelu",
+        sulje: "Sulje keskustelu",
+        tervehdys: "Kysy minulta mitä vain",
+        tervehdysSulje: "Sulje tervehdys",
         merkinta:
           "Keskustele tekoäly-Joakimin kanssa — vastaukset tuottaa tekoäly Joakimin omien vastausten pohjalta",
         ehdotukset: [
@@ -470,6 +476,12 @@ window.SIVUN_SISALTO = {
       keskustelu: {
         silma: "AI",
         otsikko: "Conversation",
+        nimi: "Joakim",
+        tila: "AI · answers from Joakim's replies",
+        avaa: "Open chat",
+        sulje: "Close chat",
+        tervehdys: "Ask me anything",
+        tervehdysSulje: "Dismiss greeting",
         merkinta:
           "Talk with AI Joakim — an AI produces the answers from Joakim's own replies",
         ehdotukset: [
