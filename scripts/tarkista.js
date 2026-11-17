@@ -167,6 +167,17 @@ if (!html.includes("https://www.linkedin.com/in/joakim-rydenfelt")) {
   fail("noscript-varasta puuttuu vahvistettu LinkedIn-osoite");
 }
 if (!html.includes("js/keskustelu.js")) fail("Keskustelun skripti puuttuu etusivulta");
+function vaadiVersio(lahde, nimi) {
+  (lahde.match(/<(?:script|link)\b[^>]*>/gi) || []).forEach(function (tagi) {
+    const osoite = (tagi.match(/\b(?:src|href)="([^"]+)"/) || [])[1];
+    if (!osoite || /^(https?:)?\/\//.test(osoite)) return;
+    if (/\.(?:js|css)(?:\?|$)/.test(osoite) && osoite.indexOf("?v=") === -1) {
+      fail(nimi + ": paikallisesta tiedostosta puuttuu ?v=: " + osoite);
+    }
+  });
+}
+vaadiVersio(html, "index.html");
+vaadiVersio(tuoteSivu, "ratkaisut/chatbot/index.html");
 if (!html.includes("Keskustele tekoäly-Joakimin kanssa — vastaukset tuottaa tekoäly Joakimin omien vastausten pohjalta")) {
   fail("noscript-varasta puuttuu tekoälymerkintä");
 }

@@ -125,18 +125,25 @@
     return window.matchMedia("(max-width: 480px)").matches;
   }
 
+  function nollaaSovitus() {
+    paneeli.style.top = "";
+    paneeli.style.height = "";
+    paneeli.style.bottom = "";
+  }
+
   function sovitaNakyma() {
     if (!paneeli) return;
     document.body.classList.toggle("ai-auki", auki && mobiili());
     if (auki) paneeli.setAttribute("aria-modal", mobiili() ? "true" : "false");
     if (!auki || !mobiili() || !window.visualViewport) {
-      paneeli.style.top = "";
-      paneeli.style.height = "";
+      nollaaSovitus();
       return;
     }
     const nakyma = window.visualViewport;
-    paneeli.style.top = nakyma.offsetTop + "px";
-    paneeli.style.height = nakyma.height + "px";
+    const peitto = Math.max(0, Math.round(window.innerHeight - nakyma.height - nakyma.offsetTop));
+    paneeli.style.top = "0px";
+    paneeli.style.height = "auto";
+    paneeli.style.bottom = peitto + "px";
   }
 
   function kohteet() {
@@ -180,7 +187,10 @@
     const takaisin = historiaMerkki;
     historiaMerkki = false;
     asetaAuki(false);
-    if (avain) avain.focus();
+    if (kentta && document.activeElement === kentta) kentta.blur();
+    if (avain && document.activeElement && paneeli.contains(document.activeElement)) {
+      avain.focus({ preventScroll: true });
+    }
     const suoja = document.createElement("div");
     suoja.setAttribute("aria-hidden", "true");
     suoja.style.cssText = "position:fixed;top:0;right:0;width:7.5rem;height:5.5rem;z-index:80;background:transparent;";
@@ -189,9 +199,11 @@
       suoja.remove();
     }, 450);
     if (takaisin) {
-      try {
-        history.back();
-      } catch (virhe) {}
+      window.setTimeout(function () {
+        try {
+          history.back();
+        } catch (virhe) {}
+      }, 0);
     }
   }
 
@@ -409,10 +421,15 @@
       if (auki) sulje();
       else avaa();
     });
-    suljeNappi.addEventListener("click", function (tapahtuma) {
-      tapahtuma.preventDefault();
+    function suljeNapista(tapahtuma) {
+      if (tapahtuma.type === "touchstart" || tapahtuma.type === "pointerdown") {
+        tapahtuma.preventDefault();
+      }
       tapahtuma.stopPropagation();
       sulje();
+    }
+    ["pointerdown", "pointerup", "touchstart", "touchend", "click"].forEach(function (nimi) {
+      suljeNappi.addEventListener(nimi, suljeNapista, { passive: false });
     });
     tervehdysSulje.addEventListener("click", piilotaTervehdys);
     lomake.addEventListener("submit", function (tapahtuma) {

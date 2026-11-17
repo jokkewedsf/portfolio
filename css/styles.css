@@ -2622,6 +2622,8 @@ main,
 }
 
 .ai-paa {
+  position: relative;
+  z-index: 4;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 0.7rem;
@@ -2654,7 +2656,7 @@ main,
 
 .ai-sulje {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   width: 44px;
   height: 44px;
   min-width: 44px;
@@ -2852,9 +2854,13 @@ main,
     transform: none;
   }
 
+  .ai-widget.on-auki .ai-avain {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   .ai-widget.on-auki .ai-paa {
-    position: relative;
-    z-index: 2;
+    z-index: 4;
     padding-top: calc(env(safe-area-inset-top, 0px) + 0.35rem);
   }
 

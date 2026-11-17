@@ -35,3 +35,5 @@ Aulan demo vastaa vain mukana olevasta tietopohjasta. Esimerkkiyritys on kuvitte
 ## Julkaisu
 
 GitHub Pages julkaisee haaran `cursor/portfolio-sivu-e9b4` juuren. Tekstejä muokataan tiedostossa `js/sisalto.js`.
+
+Sivut viittaavat paikallisiin tyyleihin ja skripteihin kyselyllä `?v=`, koska Pages pitää tiedostoja välimuistissa kymmenen minuuttia. Kun muutat `css/`- tai `js/`-tiedostoa, nosta sama `?v=`-arvo jokaiseen paikalliseen `link rel="stylesheet"`- ja `script src`-viitteeseen tiedostoissa `index.html` ja `ratkaisut/chatbot/index.html`. Muuten Safari voi jatkaa vanhalla skriptillä.
