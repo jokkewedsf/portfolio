@@ -9,7 +9,7 @@ Kaksikielinen staattinen sivusto. Julkinen osoite on <https://jokkewedsf.github.
 - `js/sisalto.js` sisältää tekstit kohdissa `kielet.fi` ja `kielet.en`
 - `js/main.js` kokoaa etusivun, `js/ratkaisu.js` tuotesivun
 - `js/aula-demo.js` on paikallinen chatbot-demo
-- `js/keskustelu.js` on tekoäly-Joakimin keskustelu etusivulla. Osoite on `window.JOAKIM_AI_ENDPOINT` tiedostossa `js/sisalto.js`, ja se on tyhjä kunnes Worker on julkaistu.
+- `js/keskustelu.js` on tekoäly-Joakimin keskustelu etusivulla. Osoite on `window.JOAKIM_AI_ENDPOINT` tiedostossa `js/sisalto.js`: `https://joakim-ai.jokkewedsf.workers.dev`.
 - `worker/` on Cloudflare Worker. Ohje on tiedostossa `worker/README.md`.
 - `css/styles.css` on ulkoasu
 - `404.html` näytetään, jos osoite ei vastaa sivua

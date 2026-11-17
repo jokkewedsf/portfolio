@@ -1,6 +1,6 @@
 # Tekoäly-Joakimin Worker
 
-Cloudflare Worker, joka välittää sivuston keskustelun OpenAI-yhteensopivaan chat completions -rajapintaan. Sivusto ei sisällä avainta eikä tietopohjaa. Julkinen sivu jättää osoitteen `window.JOAKIM_AI_ENDPOINT` tyhjäksi, kunnes tämä Worker on julkaistu.
+Cloudflare Worker, joka välittää sivuston keskustelun OpenAI-yhteensopivaan chat completions -rajapintaan. Sivusto ei sisällä avainta eikä tietopohjaa. Julkinen osoite on `https://joakim-ai.jokkewedsf.workers.dev`, ja sama osoite on `window.JOAKIM_AI_ENDPOINT` tiedostossa `js/sisalto.js`.
 
 ## Mitä ei commitoitu
 
@@ -16,7 +16,7 @@ Tarkkoja hintoja ei ole tässä, koska ne vaihtuvat. Katso kulloinen hinnasto:
 - OpenAI, jos vaihdat tarjoajaa: <https://openai.com/api/pricing>
 - Cloudflare Workers ja KV: <https://developers.cloudflare.com/workers/platform/pricing/>
 
-Pyyntö on rajattu: enintään 400 vastausmerkkiä (`max_tokens`), enintään 16 viestiä historiassa ja enintään 20 viestiä samasta IP-osoitteesta 10 minuutissa. Lyhyt keskustelu kuluttaa vähän, mutta lopullinen hinta riippuu valitun mallin hinnastosta ja kävijämäärästä. Grok 4.7 voi käyttää päättelytokeneita oletuksena. Jos vastaukset ovat hitaita tai kalliimpia kuin odotit, aseta `REASONING = "low"` tiedostoon `wrangler.toml` ja julkaise uudelleen. Tyhjä arvo jättää kentän lähettämättä.
+Pyyntö on rajattu: enintään 400 vastausmerkkiä (`max_tokens`), enintään 16 viestiä historiassa ja enintään 20 viestiä samasta IP-osoitteesta 10 minuutissa. Lyhyt keskustelu kuluttaa vähän, mutta lopullinen hinta riippuu valitun mallin hinnastosta ja kävijämäärästä. Malli on `grok-4.20-0309-non-reasoning`. `grok-4.7` kesti 15–25 sekuntia ja ehti aikarajaan. `REASONING` on tyhjä, joten päättelykenttää ei lähetetä.
 
 ## Käyttöönotto
 
@@ -35,7 +35,7 @@ Pyyntö on rajattu: enintään 400 vastausmerkkiä (`max_tokens`), enintään 16
    npx wrangler kv namespace create RAJA
    ```
 
-   Korvaa rivi `id = "00000000000000000000000000000000"`. Ilman oikeaa id:tä julkaisu ei onnistu, ja ilman KV-sidosta Worker vastaa 503:lla eikä päästä liikennettä läpi.
+   Tiedostossa on jo julkaistun nimiavaruuden id `bf9b0a0e2ea342e28c3503c447b79fc3`. Ilman KV-sidosta Worker vastaa 503:lla eikä päästä liikennettä läpi.
 
 5. Kopioi `tietopohja.esimerkki.md` nimelle `tietopohja.md`. Kirjoita Joakimin omat vastaukset. Älä commitoi tiedostoa.
 6. Tarkista kehote:
@@ -76,14 +76,14 @@ Pyyntö on rajattu: enintään 400 vastausmerkkiä (`max_tokens`), enintään 16
 11. Aseta se tiedostoon `js/sisalto.js`:
 
     ```js
-    window.JOAKIM_AI_ENDPOINT = "https://joakim-ai.<tili>.workers.dev";
+    window.JOAKIM_AI_ENDPOINT = "https://joakim-ai.jokkewedsf.workers.dev";
     ```
 
     Julkaise sivusto sen jälkeen. Ennen tätä sivu näyttää tilan ”Chat avautuu pian” eikä yritä yhteyttä.
 
 ## Vaihto OpenAI:hin tai toiseen malliin
 
-`API_BASE` ja `MODEL` ovat tiedostossa `wrangler.toml`. Oletus on xAI:n nykyinen keskustelumalli `grok-4.7` ja osoite `https://api.x.ai/v1`.
+`API_BASE` ja `MODEL` ovat tiedostossa `wrangler.toml`. Käytössä on `grok-4.20-0309-non-reasoning` ja osoite `https://api.x.ai/v1`.
 
 OpenAI-esimerkki:
 

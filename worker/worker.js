@@ -111,7 +111,7 @@ export default {
 
     const pohja = String((env && env.API_BASE) || "https://api.x.ai/v1").replace(/\/+$/, "");
     if (pohja.indexOf("https://") !== 0) return vastaus(503, { error: "unavailable" }, origin);
-    const malli = String((env && env.MODEL) || "grok-4.7");
+    const malli = String((env && env.MODEL) || "grok-4.20-0309-non-reasoning");
     const pyynto = {
       model: malli,
       messages: [{ role: "system", content: prompti }].concat(

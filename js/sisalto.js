@@ -1,5 +1,5 @@
 // Tyhjä, kunnes Cloudflare Worker on julkaistu. Älä laita avainta tähän.
-window.JOAKIM_AI_ENDPOINT = "";
+window.JOAKIM_AI_ENDPOINT = "https://joakim-ai.jokkewedsf.workers.dev";
 
 window.SIVUN_SISALTO = {
   etunimi: "Joakim",

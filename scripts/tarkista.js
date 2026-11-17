@@ -170,9 +170,12 @@ if (!html.includes("js/keskustelu.js")) fail("Keskustelun skripti puuttuu etusiv
 if (!html.includes("Keskustele tekoäly-Joakimin kanssa — vastaukset tuottaa tekoäly Joakimin omien vastausten pohjalta")) {
   fail("noscript-varasta puuttuu tekoälymerkintä");
 }
-if (!/window\.JOAKIM_AI_ENDPOINT\s*=\s*""/.test(lue("js/sisalto.js"))) {
-  fail("Julkinen tekoälyosoite ei ole tyhjä");
+if (!/window\.JOAKIM_AI_ENDPOINT\s*=\s*"https:\/\/joakim-ai\.jokkewedsf\.workers\.dev"/.test(lue("js/sisalto.js"))) {
+  fail("Julkinen tekoälyosoite puuttuu");
 }
+const wrangler = lue("worker/wrangler.toml");
+if (!wrangler.includes('MODEL = "grok-4.20-0309-non-reasoning"')) fail("Workerin malli on väärä");
+if (!wrangler.includes('id = "bf9b0a0e2ea342e28c3503c447b79fc3"')) fail("KV-nimiavaruuden id puuttuu");
 if (data && data.kielet) {
   ["fi", "en"].forEach(function (koodi) {
     const keskustelu = data.kielet[koodi] && data.kielet[koodi].keskustelu;

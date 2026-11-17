@@ -5,12 +5,12 @@ compatibility_date = "2026-11-11"
 # Julkiset asetukset. Avain ja järjestelmäkehote ovat salaisuuksia, ei näitä.
 [vars]
 API_BASE = "https://api.x.ai/v1"
-MODEL = "grok-4.7"
-# Jätä tyhjäksi, jos malli ei tue kenttää. Grokille voi laittaa low.
+MODEL = "grok-4.20-0309-non-reasoning"
+# Jätä tyhjäksi. grok-4.7 kesti 15–25 s ja ehti aikarajaan.
 REASONING = ""
 
 # Luo nimiavaruus ja korvaa id sen tulosteella:
 # npx wrangler kv namespace create RAJA
 [[kv_namespaces]]
 binding = "RAJA"
-id = "00000000000000000000000000000000"
+id = "bf9b0a0e2ea342e28c3503c447b79fc3"
