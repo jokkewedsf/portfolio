@@ -140,15 +140,15 @@ window.SIVUN_SISALTO = {
             lahde: "https://github.com/jokkewedsf/portfolio",
           },
           {
-            nimi: "Aula",
-            tarve: "Samat vastaanoton kysymykset toistuvat, ja rajan pitää näkyä.",
-            rooli: "Tein tuotesivun ja paikallisen demon.",
-            tekniikka: "Komponentti omassa varjopuussa. Vastaukset tulevat mukana olevasta tietopohjasta. Ei verkkopyyntöä eikä tallennusta.",
-            nayttaa: "Kokeiltavan vastaanoton. Pohjolan Hammas on kuvitteellinen esimerkki.",
-            linkki: "ratkaisut/chatbot/",
-            linkinTeksti: "Avaa Aulan sivu",
-            demo: "ratkaisut/chatbot/#demo",
-            demoTeksti: "Kokeile demoa",
+            nimi: "Oma chat",
+            tarve: "Kysymykset minusta pitää voida esittää sivulla.",
+            rooli: "Tein chat-widgetin ja Cloudflare Workerin.",
+            tekniikka: "HTML, CSS ja JavaScript. Worker välittää viestin xAI:n Grok-mallille. Avain ja tietopohja pysyvät palvelimella.",
+            nayttaa: "Kulmasta aukeavan chatin ja reitin: selain, Worker, Grok, virtaava vastaus.",
+            linkki: "#ratkaisut",
+            linkinTeksti: "Katso osio",
+            demo: "ratkaisut/chatbot/",
+            demoTeksti: "Avaa sivu",
             lahde: "https://github.com/jokkewedsf/portfolio",
           },
           {
@@ -209,100 +209,16 @@ window.SIVUN_SISALTO = {
       ratkaisut: {
         otsikko: "Ratkaisut",
         numero: "04",
-        johdanto: "Aula on työnimi. Demoa voi kokeilla tässä. Vastaukset ovat simuloituja.",
+        johdanto: "Chat sivun kulmassa. Vastaukset tulevat omasta tietopohjasta.",
         tutustu: "Tutustu ratkaisuun",
         kokeile: "Kokeile demoa",
         demoOtsikko: "Kokeile demoa",
       },
 
       chatbot: {
-        ylateksti: "Asiakaspalvelu",
-        ingressi: "Vastaanotto, joka vastaa yrityksen omiin kysymyksiin ja sanoo suoraan, kun tietopohja ei riitä.",
-        arvo: "Kävijä saa vastauksen yleisiin asioihin heti. Ihminen tarvitaan vasta, kun sovittu aineisto ei ratkaise kysymystä.",
-        ongelmaOtsikko: "Mihin tämä vastaa",
-        ongelmat: [
-          { nimi: "Samat kysymykset toistuvat", teksti: "Aukiolo, sijainti ja palvelut kysytään uudelleen. Vastaus voi olla sivulla ilman, että jokainen viesti jää jonoon." },
-          { nimi: "Raja pidetään näkyvänä", teksti: "Kun vastausta ei ole, se sanotaan. Ohjaus ihmiselle on osa ratkaisua, ei piilotettu lupaus." }
-        ],
-        kykyOtsikko: "Mitä siihen kuuluu",
-        kyvyt: [
-          { nimi: "Tietopohja", teksti: "Vastaukset tulevat sovituista kysymyksistä ja vastauksista. Tässä demossa pohja on kuvitteellinen.", tila: "Näkyy demossa" },
-          { nimi: "Kokeiltava upotus", teksti: "Kävijä voi kysyä sivulla ja nähdä osuman, tuntemattoman kysymyksen ja simuloidun ohjauksen.", tila: "Näkyy demossa" },
-          { nimi: "Oma aineisto ja live-malli", teksti: "Yrityksen tietojen tuonti ja käytössä oleva kielimalli kuuluvat sovittuun toteutukseen. Ne eivät ole tässä demossa.", tila: "Sovitaan toteutuksessa" },
-          { nimi: "Ihmisen kanava ja CRM", teksti: "Ohjaus oikealle ihmiselle tai CRM-järjestelmään tehdään vain, jos se sovitaan. Demo ei lähetä viestiä.", tila: "Sovitaan toteutuksessa" }
-        ],
-        toimintaOtsikko: "Miten se toimii",
-        toiminta: [
-          "Kävijä kirjoittaa kysymyksen sivulla.",
-          "Jos kysymys osuu tietopohjaan, vastaus näytetään siitä.",
-          "Jos ei osu tai kävijä pyytää ihmistä, näytetään simuloidut yhteystiedot. Viestiä ei lähetetä."
-        ],
-        rajaOtsikko: "Mitä demo ei ole",
-        rajat: [
-          "Ei live-tekoälyä eikä jatkuvaa palvelua.",
-          "Ei tallennusta, maksua eikä varausta.",
-          "Pohjolan Hammas ei ole asiakas eikä referenssi.",
-          "Hintaa tai tuloksia ei ilmoiteta, koska niitä ei ole."
-        ],
-        ctaOtsikko: "Keskustellaan toteutuksesta",
-        cta: "Jos tällainen vastaanotto sopii, jatketaan LinkedInissä. Sivulla ei ole lomaketta eikä tilausta.",
+        ylateksti: "Tekoäly",
+        kuvaus: "Chat vastaa Joakimista hänen kokoamastaan tietopohjasta. Avain ja tietopohja pysyvät palvelimella.",
         takaisin: "Takaisin portfolioon"
-      },
-
-      aula: {
-        otsikko: "Simuloitu vastaanotto",
-        numero: "04",
-        johdanto:
-          "Aula on simuloidun vastaanoton työnimi. Pohjolan Hammas on kuvitteellinen esimerkki, ei asiakas.",
-        tuote: "Aula",
-        huom: "työnimi",
-        yritys: "Pohjolan Hammas",
-        ala: "Hammaslääkäri",
-        kaupunki: "Helsinki",
-        tervehdys:
-          "Hei, olen Pohjolan Hampaan esimerkkivastaanotto. Voin vastata vain tämän tietopohjan kysymyksiin.",
-        profiili: {
-          summary: "Pohjolan Hammas on kuvitteellinen hammaslääkäriasema Helsingissä. Tämä ei ole sivuston omistajan palvelu eikä asiakasreferenssi.",
-          services: "Hammastarkastus, paikkaus ja särkyvastaanotto. Hammasimplantteja ei tehdä.",
-          address: "Esimerkkikatu 12, 00100 Helsinki"
-        },
-        ukk: [
-          { q: "Miten varaan ajan?", a: "Tässä esimerkissä ajanvaraus kuvataan puhelimitse. Demo ei tee varausta eikä yhdistä oikeaan vastaanottoon." },
-          { q: "Mitä tarkastus maksaa?", a: "Kuvitteellisessa hinnastossa hammastarkastus on 75\u00A0€. Summa on esimerkkiaineistoa, eikä sitä laskuteta." },
-          { q: "Missä vastaanotto sijaitsee?", a: "Esimerkkivastaanotto sijaitsee osoitteessa Esimerkkikatu 12, 00100 Helsinki." }
-        ],
-        yhteys: {
-          email: "vastaanotto@example.com",
-          phone: "puhelin vain tekstinä",
-          hours: "ma–to 8–18, pe 8–15",
-          fallback: "Tämä on simuloitu ohjaus. Demoon kirjoitettua viestiä ei lähetetä eikä tallenneta."
-        },
-        ui: {
-          title: "Esimerkki asiakaspalvelusta",
-          demoLabel: "Interaktiivinen demo – simuloidut vastaukset",
-          reset: "Tyhjennä",
-          sampleNote: "",
-          simulatedNote: "Simuloitu vastaus. Ei tekoälyä, verkkopyyntöä eikä tallennusta. Älä kirjoita henkilötietoja.",
-          privacy: "",
-          messageLabel: "Kysymys esimerkkiyritykselle",
-          placeholder: "Kysy esimerkkiyritykseltä…",
-          send: "Lähetä",
-          visitor: "Vierailija",
-          greetingBadge: "Asetettu tervehdys",
-          answerBadge: "Simuloitu vastaus",
-          sourcePrefix: "Lähde: ",
-          notAi: "Ei tekoälyn tuottama",
-          empty: "Kirjoita viesti.",
-          humanLead: "Tämä on simuloitu ohjaus ihmiselle. Oikeaa yhteydenottoa ei tapahdu.",
-          fallbackLead: "En löydä tähän vastausta tämän esimerkin tietopohjasta.",
-          phone: "Puhelin: ",
-          email: "Sähköposti: ",
-          hours: "Aukiolo: ",
-          humanNote: "Viestiä ei lähetetä eikä tallenneta.",
-          greetingSource: "Asetettu tervehdys, ei tekoälyn tuottama",
-          humanSource: "Esimerkin yhteystiedot",
-          aria: "simuloitu asiakaspalveludemo"
-        }
       },
 
       tyot: {
@@ -593,15 +509,15 @@ window.SIVUN_SISALTO = {
             lahde: "https://github.com/jokkewedsf/portfolio",
           },
           {
-            nimi: "Aula",
-            tarve: "The same front-desk questions repeat, and the limit has to stay visible.",
-            rooli: "I built a product page and a local demo.",
-            tekniikka: "The component runs in its own shadow tree. Answers come from the included knowledge base. No network request and no storage.",
-            nayttaa: "A front desk you can try. Pohjolan Hammas is a fictional example.",
-            linkki: "ratkaisut/chatbot/",
-            linkinTeksti: "Open the Aula page",
-            demo: "ratkaisut/chatbot/#demo",
-            demoTeksti: "Try the demo",
+            nimi: "My chat",
+            tarve: "Questions about me need a place on the page.",
+            rooli: "I built the chat widget and the Cloudflare Worker.",
+            tekniikka: "HTML, CSS and JavaScript. The Worker passes the message to xAI's Grok model. The key and the knowledge base stay on the server.",
+            nayttaa: "The corner chat and the path: browser, Worker, Grok, a streamed reply.",
+            linkki: "#ratkaisut",
+            linkinTeksti: "See the section",
+            demo: "ratkaisut/chatbot/",
+            demoTeksti: "Open the page",
             lahde: "https://github.com/jokkewedsf/portfolio",
           },
           {
@@ -662,100 +578,16 @@ window.SIVUN_SISALTO = {
       ratkaisut: {
         otsikko: "Solutions",
         numero: "04",
-        johdanto: "Aula is a working title. Try the demo here. The replies are simulated.",
+        johdanto: "The chat in the corner. Replies come from my own knowledge base.",
         tutustu: "Explore the solution",
         kokeile: "Try the demo",
         demoOtsikko: "Try the demo",
       },
 
       chatbot: {
-        ylateksti: "Customer service",
-        ingressi: "A front desk that answers a company's own questions and says plainly when the knowledge base is not enough.",
-        arvo: "A visitor gets an answer to common questions immediately. A person is needed only when the agreed material does not resolve the question.",
-        ongelmaOtsikko: "What this is for",
-        ongelmat: [
-          { nimi: "The same questions repeat", teksti: "Hours, location and services get asked again. The answer can sit on the page instead of every message waiting in a queue." },
-          { nimi: "The limit stays visible", teksti: "When there is no answer, the page says so. A handoff to a person is part of the solution, not a hidden promise." }
-        ],
-        kykyOtsikko: "What it includes",
-        kyvyt: [
-          { nimi: "Knowledge base", teksti: "Answers come from agreed questions and replies. In this demo the base is fictional.", tila: "In this demo" },
-          { nimi: "Embed you can try", teksti: "A visitor can ask on the page and see a match, an unknown question and a simulated handoff.", tila: "In this demo" },
-          { nimi: "Own material and a live model", teksti: "Bringing in a company's material and a live language model belongs to an agreed implementation. They are not in this demo.", tila: "Agreed for the build" },
-          { nimi: "A human channel and CRM", teksti: "Routing to a person or a CRM is built only if it is agreed. The demo does not send the message.", tila: "Agreed for the build" }
-        ],
-        toimintaOtsikko: "How it works",
-        toiminta: [
-          "The visitor types a question on the page.",
-          "If it matches the knowledge base, the answer is shown from there.",
-          "If it does not match, or the visitor asks for a person, sample contact details are shown. The message is not sent."
-        ],
-        rajaOtsikko: "What the demo is not",
-        rajat: [
-          "Not live AI and not an always-on service.",
-          "No storage, payment or booking.",
-          "Pohjolan Hammas is not a client or a reference.",
-          "No price or results are stated, because there are none."
-        ],
-        ctaOtsikko: "Talk about an implementation",
-        cta: "If this kind of front desk fits, the conversation continues on LinkedIn. There is no form and no order on this page.",
+        ylateksti: "AI",
+        kuvaus: "The chat answers about Joakim from the knowledge base he maintains. The key and the knowledge base stay on the server.",
         takaisin: "Back to the portfolio"
-      },
-
-      aula: {
-        otsikko: "Simulated front desk",
-        numero: "04",
-        johdanto:
-          "Aula is a working title for a simulated front desk. Pohjolan Hammas is a fictional example, not a client.",
-        tuote: "Aula",
-        huom: "working title",
-        yritys: "Pohjolan Hammas",
-        ala: "Dental clinic",
-        kaupunki: "Helsinki",
-        tervehdys:
-          "Hello, I am the sample front desk for Pohjolan Hammas. I can answer only from this knowledge base.",
-        profiili: {
-          summary: "Pohjolan Hammas is a fictional dental clinic in Helsinki. This is sample material, not a service or client of the site owner.",
-          services: "Check-up, filling and emergency visit. Implants are not offered.",
-          address: "Example Street 12, 00100 Helsinki"
-        },
-        ukk: [
-          { q: "How do I book an appointment?", a: "In this example, booking is described as a phone call. The demo does not make a booking or reach a real clinic." },
-          { q: "What does a check-up cost?", a: "In the fictional price list a check-up is €75. The amount is sample data and is not charged." },
-          { q: "Where is the clinic?", a: "The sample clinic is at Example Street 12, 00100 Helsinki." }
-        ],
-        yhteys: {
-          email: "reception@example.com",
-          phone: "phone shown as text only",
-          hours: "Mon–Thu 8–18, Fri 8–15",
-          fallback: "This is a simulated handoff. A message typed here is not sent or stored."
-        },
-        ui: {
-          title: "Sample customer service",
-          demoLabel: "Interactive demo – simulated responses",
-          reset: "Reset",
-          sampleNote: "",
-          simulatedNote: "Simulated reply. No AI, no network send and no storage. Do not enter personal data.",
-          privacy: "",
-          messageLabel: "Question for the sample business",
-          placeholder: "Ask the sample business…",
-          send: "Send",
-          visitor: "Visitor",
-          greetingBadge: "Set greeting",
-          answerBadge: "Simulated reply",
-          sourcePrefix: "Source: ",
-          notAi: "Not produced by AI",
-          empty: "Write a message.",
-          humanLead: "This is a simulated handoff to a person. No real contact is made.",
-          fallbackLead: "I cannot find an answer in this sample knowledge base.",
-          phone: "Phone: ",
-          email: "Email: ",
-          hours: "Hours: ",
-          humanNote: "The message is not sent or stored.",
-          greetingSource: "Set greeting, not produced by AI",
-          humanSource: "Sample contact details",
-          aria: "simulated customer-service demo"
-        }
       },
 
       tyot: {

@@ -2000,19 +2000,6 @@ main,
   visibility: hidden;
 }
 
-.aula-osio {
-  overflow: clip;
-  width: min(1180px, calc(100% - 2 * var(--sivu)));
-  margin-inline: auto;
-}
-
-.aula-asetelma {
-  display: grid;
-  grid-template-columns: minmax(16rem, 0.9fr) minmax(18rem, 1.1fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  align-items: start;
-}
-
 .ratkaisu-kortti h3,
 .ratkaisu-demo h3 {
   margin: 0 0 0.6rem;
@@ -2040,8 +2027,7 @@ main,
 }
 
 @media (max-width: 800px) {
-  .tuote-asetelma,
-  .aula-asetelma {
+  .tuote-asetelma {
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -2098,22 +2084,6 @@ main,
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-
-.aula-osio h2 {
-  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
-  max-width: 12ch;
-}
-
-.aula-johdanto .johdanto {
-  max-width: 28rem;
-}
-
-#aula-demo-juuri {
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-}
-
 
 .erp-svg {
   width: clamp(2.8rem, 7vw, 4rem);

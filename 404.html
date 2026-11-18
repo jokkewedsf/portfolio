@@ -15,15 +15,15 @@
 <body>
   <main>
     <h1>Sivua ei löydy</h1>
-    <p lang="fi">Tämä osoite ei vastaa mitään sivua. Portfolio ja Aulan sivu ovat edelleen tallella.</p>
-    <p lang="en">This address does not match a page. The portfolio and the Aula page are still available.</p>
+    <p lang="fi">Tämä osoite ei vastaa mitään sivua. Portfolio ja chatin sivu ovat edelleen tallella.</p>
+    <p lang="en">This address does not match a page. The portfolio and the chat page are still available.</p>
     <p><a id="koti" href="https://jokkewedsf.github.io/portfolio/">Joakim Rydenfelt</a></p>
-    <p><a id="aula" href="https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/">Aula</a></p>
+    <p><a id="chat-sivu" href="https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/">Chat</a></p>
   </main>
   <script>
     var kanta = location.pathname.indexOf("/portfolio/") === 0 ? "/portfolio/" : "/";
     document.getElementById("koti").setAttribute("href", kanta);
-    document.getElementById("aula").setAttribute("href", kanta + "ratkaisut/chatbot/");
+    document.getElementById("chat-sivu").setAttribute("href", kanta + "ratkaisut/chatbot/");
   </script>
 </body>
 </html>

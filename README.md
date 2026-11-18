@@ -5,11 +5,10 @@ Kaksikielinen staattinen sivusto. Julkinen osoite on <https://jokkewedsf.github.
 ## Rakenne
 
 - `index.html` on etusivu
-- `ratkaisut/chatbot/` on Aulan sivu
+- `ratkaisut/chatbot/` on oman chatin sivu
 - `js/sisalto.js` sisältää tekstit kohdissa `kielet.fi` ja `kielet.en`
 - `js/main.js` kokoaa etusivun, `js/ratkaisu.js` tuotesivun
-- `js/aula-demo.js` on paikallinen chatbot-demo
-- `js/keskustelu.js` on tekoäly-Joakimin keskustelu etusivulla. Osoite on `window.JOAKIM_AI_ENDPOINT` tiedostossa `js/sisalto.js`: `https://joakim-ai.jokkewedsf.workers.dev`.
+- `js/keskustelu.js` on tekoäly-Joakimin keskustelu. Osoite on `window.JOAKIM_AI_ENDPOINT` tiedostossa `js/sisalto.js`: `https://joakim-ai.jokkewedsf.workers.dev`.
 - `worker/` on Cloudflare Worker. Ohje on tiedostossa `worker/README.md`.
 - `css/styles.css` on ulkoasu
 - `404.html` näytetään, jos osoite ei vastaa sivua
@@ -30,7 +29,7 @@ Avaa <http://localhost:8080> ja <http://localhost:8080/ratkaisut/chatbot/>.
 2. Kirjoita tekstit molempiin kieliin.
 3. Kopioi `ratkaisut/chatbot/index.html` uuteen kansioon. Pidä polut suhteellisina, esimerkiksi `../../css/styles.css`.
 
-Aulan demo vastaa vain mukana olevasta tietopohjasta. Esimerkkiyritys on kuvitteellinen, eikä viestiä lähetetä.
+Oman chatin kokeilu avaa saman widgetin kuin etusivu. Avain ja tietopohja eivät ole sivun koodissa.
 
 ## Julkaisu
 

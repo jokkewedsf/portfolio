@@ -71,10 +71,7 @@ if (!data) {
     if ((sivu.navigointi || []).map(function (kohta) { return kohta.id; }).join("|") !== osiot.join("|")) {
       fail(koodi + ": sivun navigoinnin järjestys ei vastaa lukujärjestystä");
     }
-    if (!sivu.ratkaisut || !sivu.chatbot || !sivu.aula) fail(koodi + ": ratkaisu tai demo puuttuu");
-    if (!/Interaktiivinen demo|Interactive demo/.test(sivu.aula.ui.demoLabel)) {
-      fail(koodi + ": demon merkintä ei ole vaaditussa muodossa");
-    }
+    if (!sivu.ratkaisut || !sivu.chatbot || !sivu.omaChat) fail(koodi + ": ratkaisu tai oma chat puuttuu");
     if (/€|\$|alk\.\s*\d/.test(JSON.stringify(sivu.chatbot || {}))) {
       fail(koodi + ": tuotesivun markkinointi sisältää hinnan");
     }
@@ -123,7 +120,7 @@ if (!data) {
 }
 
 const tuoteSivu = lue("ratkaisut/chatbot/index.html");
-["../../css/styles.css", "../../js/sisalto.js", "../../js/aula-demo.js", "../../js/ratkaisu.js", 'href="../../"'].forEach(function (viite) {
+["../../css/styles.css", "../../js/sisalto.js", "../../js/keskustelu.js", "../../js/ratkaisu.js", 'href="../../"'].forEach(function (viite) {
   if (!tuoteSivu.includes(viite)) fail("Tuotesivulta puuttuu suhteellinen viite: " + viite);
 });
 if (/href="\//.test(tuoteSivu)) fail("Tuotesivu käyttää juuripolkuja, jotka hajoavat alikansiossa");
@@ -283,6 +280,11 @@ const merkkiPaikka = kontrasti("#1b140c", muuttujat.messinki || "#000000");
 const merkkiEsimerkki = kontrasti("#06211a", muuttujat.kajo || "#ffffff");
 if (merkkiPaikka < 7) fail("Paikkamerkkimerkin kontrasti on liian heikko");
 if (merkkiEsimerkki < 7) fail("Esimerkkimerkin kontrasti on liian heikko");
+
+const vanhaTuote = ["a", "u", "l", "a"].join("");
+["index.html", "404.html", "README.md", "js/sisalto.js", "js/main.js", "js/ratkaisu.js", "js/keskustelu.js", "ratkaisut/chatbot/index.html", "css/styles.css", "scripts/tarkista.js"].forEach(function (tiedosto) {
+  if (new RegExp(vanhaTuote, "i").test(lue(tiedosto))) fail("Vanha tuotenimi on vielä tiedostossa " + tiedosto);
+});
 
 if (virheet.length) {
   console.error(virheet.join("\n"));
