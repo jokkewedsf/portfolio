@@ -75,7 +75,7 @@ window.SIVUN_SISALTO = {
         { id: "tietoa", numero: "01", teksti: "Tietoa" },
         { id: "valitut", numero: "02", teksti: "Työt" },
         { id: "tyot", numero: "03", teksti: "Kokemus" },
-        { id: "ratkaisut", numero: "04", teksti: "Aula" },
+        { id: "ratkaisut", numero: "04", teksti: "Chat" },
         { id: "erp", numero: "05", teksti: "Polku" },
         { id: "taustat", numero: "06", teksti: "Tausta" },
         { id: "yhteys", numero: "07", teksti: "Yhteys" },
@@ -147,7 +147,7 @@ window.SIVUN_SISALTO = {
             nayttaa: "Kokeiltavan vastaanoton. Pohjolan Hammas on kuvitteellinen esimerkki.",
             linkki: "ratkaisut/chatbot/",
             linkinTeksti: "Avaa Aulan sivu",
-            demo: "#aula-demo",
+            demo: "ratkaisut/chatbot/#demo",
             demoTeksti: "Kokeile demoa",
             lahde: "https://github.com/jokkewedsf/portfolio",
           },
@@ -183,6 +183,27 @@ window.SIVUN_SISALTO = {
           { id: "laskutus", nimi: "Laskutus" },
           { id: "raportointi", nimi: "Raportointi" },
         ],
+      },
+
+      omaChat: {
+        otsikko: "Oma chat",
+        numero: "04",
+        johdanto:
+          "Kulmasta aukeava chat vastaa minusta. Se puhuu minä-muodossa, mutta vain siitä tietopohjasta, jonka kokoan itse.",
+        ketjuOtsikko: "Miten vastaus kulkee",
+        vaiheet: [
+          { nimi: "Selain", teksti: "Viesti lähtee tältä sivulta. Selain näkee vain viestit, ei avainta eikä tietopohjaa." },
+          { nimi: "Cloudflare Worker", teksti: "Palveliton Worker reunalla tarkistaa alkuperän, viestin pituuden ja kävijäkohtaisen rajan. Raja on Cloudflare KV:ssa." },
+          { nimi: "Grok", teksti: "Worker kysyy xAI:n Grok-mallilta chat completions -rajapinnan kautta." },
+          { nimi: "Vastaus", teksti: "Teksti virtaa takaisin sitä mukaa kuin malli kirjoittaa." }
+        ],
+        faktat: [
+          "Jos kysyt, olenko tekoäly, vastaan sen. En keksi asiakkaita, hintoja tai lukuja, joita tietopohjassa ei ole.",
+          "Avain ja tietopohja ovat palvelimen salaisuuksia. Niitä ei ole sivun koodissa.",
+          "CORS sallii vain osoitteen jokkewedsf.github.io.",
+          "Chat on tehty ilman kehyksiä: HTML, CSS ja JavaScript. Worker on yksi tiedosto."
+        ],
+        cta: "Kokeile chattia"
       },
 
       ratkaisut: {
@@ -507,7 +528,7 @@ window.SIVUN_SISALTO = {
         { id: "tietoa", numero: "01", teksti: "About" },
         { id: "valitut", numero: "02", teksti: "Work" },
         { id: "tyot", numero: "03", teksti: "Experience" },
-        { id: "ratkaisut", numero: "04", teksti: "Aula" },
+        { id: "ratkaisut", numero: "04", teksti: "Chat" },
         { id: "erp", numero: "05", teksti: "Path" },
         { id: "taustat", numero: "06", teksti: "Background" },
         { id: "yhteys", numero: "07", teksti: "Contact" },
@@ -579,7 +600,7 @@ window.SIVUN_SISALTO = {
             nayttaa: "A front desk you can try. Pohjolan Hammas is a fictional example.",
             linkki: "ratkaisut/chatbot/",
             linkinTeksti: "Open the Aula page",
-            demo: "#aula-demo",
+            demo: "ratkaisut/chatbot/#demo",
             demoTeksti: "Try the demo",
             lahde: "https://github.com/jokkewedsf/portfolio",
           },
@@ -615,6 +636,27 @@ window.SIVUN_SISALTO = {
           { id: "laskutus", nimi: "Invoicing" },
           { id: "raportointi", nimi: "Reporting" },
         ],
+      },
+
+      omaChat: {
+        otsikko: "My chat",
+        numero: "04",
+        johdanto:
+          "The chat in the corner answers about me. It speaks in the first person, and only from the knowledge base I maintain.",
+        ketjuOtsikko: "How a reply travels",
+        vaiheet: [
+          { nimi: "Browser", teksti: "The message leaves this page. The browser sees only the messages, not the key or the knowledge base." },
+          { nimi: "Cloudflare Worker", teksti: "A serverless Worker at the edge checks the origin, the message length and the per-visitor limit. The limit lives in Cloudflare KV." },
+          { nimi: "Grok", teksti: "The Worker asks xAI's Grok model through the chat completions API." },
+          { nimi: "Reply", teksti: "The text streams back as the model writes it." }
+        ],
+        faktat: [
+          "If you ask whether I am an AI, I say so. I do not invent clients, prices or figures that are not in the knowledge base.",
+          "The key and the knowledge base are server secrets. They are not in the page code.",
+          "CORS allows only jokkewedsf.github.io.",
+          "The chat is built without frameworks: HTML, CSS and JavaScript. The Worker is one file."
+        ],
+        cta: "Try the chat"
       },
 
       ratkaisut: {

@@ -671,68 +671,58 @@
 
     main.innerHTML =
       '<div class="kehys">' + hero() + tietoa() + osaaminen() + valitut() + projektit() + "</div>" +
-      aulaOsio() +
+      chatEsittely() +
       (window.piirraErp ? window.piirraErp(data.erp) : "") +
       '<div class="kehys">' + tausta() + yhteys() + "</div>";
     rakennaNavigointi();
     alatunniste();
     lisaaRakenteinenData();
     if (window.alustaErp) window.alustaErp();
-    alustaAula();
+    const avaaChat = document.getElementById("avaa-chat");
+    if (avaaChat) {
+      avaaChat.addEventListener("click", function () {
+        if (window.avaaKeskustelu) window.avaaKeskustelu();
+      });
+    }
     if (window.alustaKeskustelu) window.alustaKeskustelu(data.keskustelu || {});
   }
 
-  function aulaOsio() {
-    const osio = data.ratkaisut;
-    const demo = data.aula;
-    const tuote = data.chatbot;
-    const kohta = (juuri.katalogi || [])[0];
-    if (!osio || !demo || !tuote || !kohta) return "";
+  function chatEsittely() {
+    const osio = data.omaChat;
+    if (!osio) return "";
+    const vaiheet = (osio.vaiheet || [])
+      .map(function (vaihe, indeksi) {
+        return (
+          "<li><span class=\"virta-nro\" aria-hidden=\"true\">" +
+          String(indeksi + 1).padStart(2, "0") +
+          "</span><h3>" +
+          esc(vaihe.nimi) +
+          "</h3><p>" +
+          esc(vaihe.teksti) +
+          "</p></li>"
+        );
+      })
+      .join("");
+    const faktat = (osio.faktat || [])
+      .map(function (rivi) {
+        return "<li>" + esc(rivi) + "</li>";
+      })
+      .join("");
     return (
-      '<section class="osio aula-osio" id="ratkaisut" aria-labelledby="aula-otsikko">' +
-      '<div class="aula-asetelma">' +
-      '<div class="aula-johdanto"><p class="silma">' + esc(osio.numero) + "</p>" +
-      '<h2 id="aula-otsikko">' + esc(osio.otsikko) + "</h2>" +
+      '<section class="osio chat-esittely" id="ratkaisut" aria-labelledby="chat-otsikko">' +
+      '<p class="silma">' + esc(osio.numero) + "</p>" +
+      '<h2 id="chat-otsikko">' + esc(osio.otsikko) + "</h2>" +
       '<p class="johdanto">' + esc(osio.johdanto) + "</p>" +
-      '<article class="ratkaisu-kortti">' +
-      '<p class="silma">' + esc([demo.tuote, demo.huom].filter(Boolean).join(" · ")) + "</p>" +
-      "<h3>" + esc(tuote.ylateksti) + "</h3>" +
-      "<p>" + esc(tuote.arvo) + "</p>" +
-      '<div class="toiminnot">' +
-      '<a class="nappi nappi-ensisijainen" href="' + esc(kohta.polku) + '">' + esc(osio.tutustu) + "</a>" +
-      '<a class="nappi nappi-toissijainen" href="#aula-demo">' + esc(osio.kokeile) + "</a>" +
-      "</div></article></div>" +
-      '<div class="ratkaisu-demo" id="aula-demo">' +
-      "<h3>" + esc(osio.demoOtsikko) + "</h3>" +
-      '<div id="aula-demo-juuri"></div></div></div></section>'
+      '<ol class="virta" aria-label="' + esc(osio.ketjuOtsikko) + '">' +
+      vaiheet +
+      "</ol>" +
+      '<ul class="chat-faktat">' +
+      faktat +
+      "</ul>" +
+      '<p class="chat-toiminto"><button type="button" class="nappi nappi-ensisijainen" id="avaa-chat">' +
+      esc(osio.cta) +
+      "</button></p></section>"
     );
-  }
-
-  function aulaAsetukset() {
-    const osio = data.aula;
-    if (!osio) return null;
-    return {
-      productName: osio.tuote,
-      nameNote: osio.huom,
-      businessName: osio.yritys,
-      industry: osio.ala,
-      city: osio.kaupunki,
-      greeting: osio.tervehdys,
-      profile: osio.profiili,
-      faqs: osio.ukk,
-      contact: osio.yhteys,
-      ui: osio.ui
-    };
-  }
-
-  function alustaAula() {
-    if (window.__aulaKahva && typeof window.__aulaKahva.destroy === "function") {
-      window.__aulaKahva.destroy();
-      window.__aulaKahva = null;
-    }
-    const juuri = document.getElementById("aula-demo-juuri");
-    if (!juuri || !window.AulaDemo) return;
-    window.__aulaKahva = window.AulaDemo.mount(juuri, aulaAsetukset());
   }
 
   function lisaaRakenteinenData() {

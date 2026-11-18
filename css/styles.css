@@ -2921,3 +2921,99 @@ main,
     display: none !important;
   }
 }
+
+.chat-esittely {
+  width: min(1180px, calc(100% - 2 * var(--sivu)));
+  margin-inline: auto;
+}
+
+.chat-esittely h2 {
+  margin: 0;
+}
+
+.virta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.virta li {
+  position: relative;
+  min-width: 0;
+  padding: 1rem 1rem 1.15rem;
+  border: 1px solid rgba(228, 194, 122, 0.4);
+  border-radius: 1rem;
+  background: #141512;
+}
+
+.virta li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -0.62rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 1.5px solid var(--messinki);
+  border-right: 1.5px solid var(--messinki);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.virta-nro {
+  color: var(--kajo);
+  font-size: 0.78rem;
+  font-weight: 560;
+  letter-spacing: 0.14em;
+}
+
+.virta h3 {
+  margin: 0.35rem 0 0.45rem;
+  font-size: 1.35rem;
+}
+
+.virta p {
+  margin: 0;
+  color: var(--leipa);
+  font-size: 0.98rem;
+}
+
+.chat-faktat {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 44rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chat-faktat li {
+  margin: 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--messinki);
+}
+
+.chat-toiminto {
+  margin: 1.5rem 0 0;
+}
+
+.chat-toiminto .nappi {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 800px) {
+  .virta {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .virta li:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    bottom: -0.85rem;
+    left: 1.3rem;
+    transform: rotate(135deg);
+  }
+}

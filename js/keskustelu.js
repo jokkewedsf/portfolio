@@ -485,6 +485,11 @@
     });
   }
 
+  window.avaaKeskustelu = function () {
+    if (!juuri) return;
+    avaa();
+  };
+
   window.alustaKeskustelu = function (uudet) {
     tekstit = uudet || {};
     if (!juuri) {
