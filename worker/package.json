@@ -1,0 +1,5 @@
+{
+  "name": "joakim-ai-worker",
+  "private": true,
+  "type": "module"
+}
