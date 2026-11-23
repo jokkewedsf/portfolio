@@ -64,7 +64,7 @@ if (!data) {
       if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
       if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
     });
-    const osiot = ["tietoa", "valitut", "tyot", "ratkaisut", "erp", "taustat", "yhteys"];
+    const osiot = ["mindset", "work", "experience"];
     if (!sivu.valitut || !Array.isArray(sivu.valitut.kohdat) || sivu.valitut.kohdat.length !== 3) {
       fail(koodi + ": valittuja töitä pitää olla kolme");
     }
@@ -255,14 +255,11 @@ css.replace(/--([a-z0-9-]+):\s*(#[0-9a-fA-F]{6})/g, function (_, nimi, vari) {
 
 const parit = [
   ["teksti", "tausta", 7],
-  ["leipa", "tausta", 7],
   ["himmea", "tausta", 4.5],
-  ["teksti", "pinta", 7],
-  ["leipa", "pinta", 4.5],
-  ["himmea", "pinta", 4.5],
-  ["nappi-teksti", "nappi", 7],
-  ["kajo", "tausta", 4.5],
-  ["messinki", "tausta", 4.5],
+  ["teksti", "kortti", 7],
+  ["himmea", "kortti", 4.5],
+  ["tausta", "teksti", 7],
+  ["aksentti", "tausta", 4.5],
 ];
 
 parit.forEach(function (pari) {
@@ -275,11 +272,6 @@ parit.forEach(function (pari) {
   const suhde = kontrasti(vaalea, tumma);
   if (suhde < pari[2]) fail(pari[0] + " / " + pari[1] + " kontrasti " + suhde.toFixed(2) + " < " + pari[2]);
 });
-
-const merkkiPaikka = kontrasti("#1b140c", muuttujat.messinki || "#000000");
-const merkkiEsimerkki = kontrasti("#06211a", muuttujat.kajo || "#ffffff");
-if (merkkiPaikka < 7) fail("Paikkamerkkimerkin kontrasti on liian heikko");
-if (merkkiEsimerkki < 7) fail("Esimerkkimerkin kontrasti on liian heikko");
 
 const vanhaTuote = ["a", "u", "l", "a"].join("");
 ["index.html", "404.html", "README.md", "js/sisalto.js", "js/main.js", "js/ratkaisu.js", "js/keskustelu.js", "ratkaisut/chatbot/index.html", "css/styles.css", "scripts/tarkista.js"].forEach(function (tiedosto) {
