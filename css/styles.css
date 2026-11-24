@@ -938,7 +938,7 @@ body.dialogi-auki { overflow: hidden; }
   flex-wrap: wrap;
   gap: 8px;
   min-height: 0;
-  max-height: 7.5rem;
+  max-height: 12rem;
   margin: 0 0 12px;
   overflow: auto;
 }
@@ -1017,6 +1017,8 @@ body.dialogi-auki { overflow: hidden; }
       calc(env(safe-area-inset-bottom, 0px) + 12px)
       calc(env(safe-area-inset-left, 0px) + 14px);
   }
+}
+@media (max-height: 560px) {
   .ai-ehdotukset { max-height: 5.25rem; }
 }
 
