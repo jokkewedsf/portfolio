@@ -48,9 +48,9 @@ if (!data) {
     }
     const github = sivu.yhteys && sivu.yhteys.github && sivu.yhteys.github.osoite;
     const linkedin = sivu.yhteys && sivu.yhteys.linkedin && sivu.yhteys.linkedin.osoite;
-    if (github !== "https://github.com/jokkewedsf") fail(koodi + ": GitHub-osoite puuttuu");
+    if (github !== "https://github.com/jokkewedsf/portfolio") fail(koodi + ": GitHub-osoite puuttuu");
     if (linkedin !== "https://www.linkedin.com/in/joakim-rydenfelt") fail(koodi + ": LinkedIn-osoite puuttuu");
-    if (sivu.yhteys.sahkoposti !== "") fail(koodi + ": sähköpostia ei ole vahvistettu");
+    if (sivu.yhteys.sahkoposti !== "joakimrydenfelt@gmail.com") fail(koodi + ": vahvistettu sähköposti puuttuu");
     if (!sivu.osaaminen || !Array.isArray(sivu.osaaminen.kohdat) || sivu.osaaminen.kohdat.length < 4) {
       fail(koodi + ": osaamiskokonaisuuksia pitää olla vähintään neljä");
     }
@@ -64,7 +64,7 @@ if (!data) {
       if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
       if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
     });
-    const osiot = ["mindset", "work", "experience"];
+    const osiot = ["mindset", "work", "business", "experience", "contact"];
     if (!sivu.valitut || !Array.isArray(sivu.valitut.kohdat) || sivu.valitut.kohdat.length !== 3) {
       fail(koodi + ": valittuja töitä pitää olla kolme");
     }
@@ -79,15 +79,21 @@ if (!data) {
       if (!osiot.includes(kohta.id)) fail(koodi + " navigointi viittaa tuntemattomaan osioon: " + kohta.id);
     });
   });
-  const fiNimet = (kielet.fi.erp.vaiheet || []).map(function (v) { return v.nimi; });
-  const enNimet = (kielet.en.erp.vaiheet || []).map(function (v) { return v.nimi; });
-  const fiOdotus = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
-  const enOdotus = ["Customers", "Documents", "Quote requests", "Sales", "CRM", "Projects", "Orders", "Inventory", "Management", "Integrations", "Invoicing", "Reporting"];
-  if (fiNimet.join("|") !== fiOdotus.join("|")) fail("Suomen ERP-vaiheet ovat väärin");
-  if (enNimet.join("|") !== enOdotus.join("|")) fail("Englannin ERP-vaiheet ovat väärin");
-  const tunnukset = (kielet.fi.erp.vaiheet || []).map(function (v) { return v.id; }).join("|");
-  const enTunnukset = (kielet.en.erp.vaiheet || []).map(function (v) { return v.id; }).join("|");
-  if (tunnukset !== enTunnukset) fail("ERP-tunnukset eivät täsmää kielien välillä");
+  const fiNimet = (kielet.fi.demo.vaiheet || []).map(function (v) { return v.nimi; });
+  const enNimet = (kielet.en.demo.vaiheet || []).map(function (v) { return v.nimi; });
+  const fiOdotus = ["Tarjous", "Työmääräys", "Toteutus", "Laskutus"];
+  const enOdotus = ["Quote", "Work order", "Delivery", "Invoicing"];
+  if (fiNimet.join("|") !== fiOdotus.join("|")) fail("Suomen demovaiheet ovat väärin");
+  if (enNimet.join("|") !== enOdotus.join("|")) fail("Englannin demovaiheet ovat väärin");
+  const tunnukset = (kielet.fi.demo.vaiheet || []).map(function (v) { return v.id; }).join("|");
+  const enTunnukset = (kielet.en.demo.vaiheet || []).map(function (v) { return v.id; }).join("|");
+  if (tunnukset !== enTunnukset) fail("Demon tunnukset eivät täsmää kielien välillä");
+  if (kielet.fi.business.otsikko !== "Näin työ muuttuu hallittavaksi") fail("Demon otsikko puuttuu");
+  if (kielet.fi.business.silma !== "Havainnollistava demo") fail("Demon merkintä puuttuu");
+  if (kielet.fi.business.johdanto !== "Sama tieto kulkee mukana. Sitä ei tarvitse kirjoittaa joka vaiheessa uudelleen.") {
+    fail("Demon johdanto puuttuu");
+  }
+  if (kielet.fi.contact.kopioitu !== "Kopioitu") fail("Kopioinnin palaute puuttuu");
   if (!Array.isArray(data.katalogi) || data.katalogi.length !== 1 || data.katalogi[0].id !== "chatbot") {
     fail("Katalogissa saa toistaiseksi olla vain chatbot");
   }
@@ -138,7 +144,10 @@ const tausta = lue("js/tausta.js");
 const lahde = [html, css, main, tausta, lue("js/erp.js")].join("\n");
 if (lahde.includes("piirraToripolliisi") || lahde.includes("Toripolliisi")) fail("Toripolliisi on yhä mukana");
 if (!html.includes('id="kieli"') || !main.includes("localStorage")) fail("Kielivalinta puuttuu");
-const erpJarjestys = ["Asiakkaat", "Dokumentit", "Tarjouspyynnöt", "Myynti", "CRM", "Projektit", "Tilaukset", "Varasto", "Hallinta", "Integraatiot", "Laskutus", "Raportointi"];
+if (!/mailto:/.test(main)) fail("Sähköpostilinkki puuttuu");
+if (!/aria-live/.test(main)) fail("Tilapäivityksen aria-live puuttuu");
+if (!/prefers-reduced-motion/.test(main) || !/prefers-reduced-motion/.test(css)) fail("Liikkeen vähennys puuttuu");
+const erpJarjestys = ["Tarjous", "Työmääräys", "Toteutus", "Laskutus"];
 let edellinen = -1;
 erpJarjestys.forEach(function (nimi) {
   const kohta = html.indexOf("<li>" + nimi + "</li>");

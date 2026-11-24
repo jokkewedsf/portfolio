@@ -31,14 +31,25 @@
     if (solmu && sisalto) solmu.setAttribute("content", sisalto);
   }
 
+  function asetaOminaisuus(nimi, sisalto) {
+    const solmu = document.querySelector('meta[property="' + nimi + '"]');
+    if (solmu && sisalto) solmu.setAttribute("content", sisalto);
+  }
+
   function piirra() {
     const data = sivu();
     const osio = data.omaChat;
     const tuote = data.chatbot;
     if (!osio || !tuote) return;
     document.documentElement.lang = kieli === "en" ? "en" : "fi";
-    document.title = osio.otsikko + " — " + juuri.etunimi + " " + juuri.sukunimi;
+    const otsikko = osio.otsikko + " — " + juuri.etunimi + " " + juuri.sukunimi;
+    document.title = otsikko;
     asetaMeta("description", tuote.kuvaus);
+    asetaMeta("twitter:title", otsikko);
+    asetaMeta("twitter:description", tuote.kuvaus);
+    asetaOminaisuus("og:title", otsikko);
+    asetaOminaisuus("og:description", tuote.kuvaus);
+    asetaOminaisuus("og:locale", kieli === "en" ? "en_US" : "fi_FI");
     const takaisin = document.getElementById("ratkaisu-takaisin");
     if (takaisin) takaisin.textContent = tuote.takaisin;
     ["fi", "en"].forEach(function (koodi) {

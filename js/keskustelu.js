@@ -44,9 +44,18 @@
     return yhteys && yhteys.osoite ? yhteys.osoite : "https://www.linkedin.com/in/joakim-rydenfelt";
   }
 
+  function sivunJuuri() {
+    const polku = window.location.pathname;
+    const ratkaisu = polku.indexOf("/ratkaisut/");
+    if (ratkaisu !== -1) return polku.slice(0, ratkaisu + 1);
+    if (polku.indexOf("/portfolio/") === 0) return "/portfolio/";
+    return "/";
+  }
+
   function jrPolku() {
     const kuva = document.querySelector(".jr-merkki");
-    return kuva && kuva.getAttribute("src") ? kuva.getAttribute("src") : "assets/jr.svg";
+    if (kuva && kuva.getAttribute("src")) return kuva.getAttribute("src");
+    return sivunJuuri() + "assets/jr.svg";
   }
 
   function tervehdysKiinni() {
