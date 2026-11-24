@@ -1,0 +1,7 @@
+.DS_Store
+*.log
+.idea/
+.vscode/
+worker/tietopohja.md
+worker/.dev.vars
+worker/.wrangler/

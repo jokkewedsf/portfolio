@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Tekoäly-Joakim — Joakim Rydenfelt</title>
+  <meta name="description" content="Kysy tekoäly-Joakimilta työstä, johtamisesta ja yhteydenotosta. Vastaukset perustuvat Joakimin itse kokoamaan tietopohjaan. Avain pysyy palvelimella.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#191b18">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
+  <meta property="og:title" content="Tekoäly-Joakim — Joakim Rydenfelt">
+  <meta property="og:description" content="Kysy tekoäly-Joakimilta työstä, johtamisesta ja yhteydenotosta. Vastaukset perustuvat Joakimin itse kokoamaan tietopohjaan. Avain pysyy palvelimella.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tekoäly-Joakim — Joakim Rydenfelt">
+  <meta name="twitter:description" content="Kysy tekoäly-Joakimilta työstä, johtamisesta ja yhteydenotosta. Vastaukset perustuvat Joakimin itse kokoamaan tietopohjaan. Avain pysyy palvelimella.">
+  <link rel="canonical" href="https://jokkewedsf.github.io/portfolio/ratkaisut/chatbot/">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <!-- Nosta ?v= kaikissa paikallisissa css- ja js-viitteissä, kun tiedosto muuttuu. -->
+  <link rel="stylesheet" href="../../css/styles.css?v=20261124d">
+</head>
+<body>
+  <a class="ohitus" href="#sisalto">Siirry sisältöön</a>
+  <canvas id="tausta" aria-hidden="true"></canvas>
+  <div class="rae" aria-hidden="true"></div>
+  <div class="vinjetti" aria-hidden="true"></div>
+  <header class="ylapalkki" id="ylapalkki">
+    <div class="kehys ylapalkki-sisus">
+      <a class="merkki" href="../../"><span class="merkki-nimi">Joakim Rydenfelt</span></a>
+      <a class="tekstilinkki" id="ratkaisu-takaisin" href="../../">Takaisin portfolioon</a>
+      <div class="kieli" id="kieli" role="group" aria-label="Kieli">
+        <button type="button" id="kieli-fi" data-kieli="fi" lang="fi" aria-pressed="true">Suomi</button>
+        <span class="kieli-ero" aria-hidden="true">/</span>
+        <button type="button" id="kieli-en" data-kieli="en" lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+  </header>
+  <main id="sisalto" tabindex="-1">
+    <noscript>
+      <div class="tuote-sivu">
+        <h1 lang="fi">Tekoäly-Joakim</h1>
+        <p lang="fi">Chat vastaa Joakimista hänen kokoamastaan tietopohjasta. Selain lähettää viestin Cloudflare Workeriin, joka kysyy xAI:n Grok-mallilta. Avain ja tietopohja pysyvät palvelimella. Kokeilu tarvitsee JavaScriptin.</p>
+        <h1 lang="en">AI Joakim</h1>
+        <p lang="en">The chat answers about Joakim from the knowledge base he maintains. The browser sends the message to a Cloudflare Worker, which asks xAI's Grok model. The key and the knowledge base stay on the server. Trying it needs JavaScript.</p>
+        <p><a href="../../">Joakim Rydenfelt</a></p>
+        <p><a href="https://www.linkedin.com/in/joakim-rydenfelt">LinkedIn</a></p>
+      </div>
+    </noscript>
+  </main>
+  <script src="../../js/sisalto.js?v=20261124d"></script>
+  <script src="../../js/tausta.js?v=20261124d"></script>
+  <script src="../../js/keskustelu.js?v=20261124d"></script>
+  <script src="../../js/ratkaisu.js?v=20261124d"></script>
+</body>
+</html>
