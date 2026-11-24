@@ -64,7 +64,7 @@ if (!data) {
       if (!projekti.nimi || !projekti.organisaatio || !projekti.rooli) fail(koodi + " työkortilta puuttuu nimi");
       if (projekti.linkki) fail(koodi + " työkortissa on vahvistamaton linkki");
     });
-    const osiot = ["mindset", "work", "business", "experience", "contact"];
+    const osiot = ["johtaminen", "myynti", "teknologia", "kokemus", "yhteys"];
     if (!sivu.valitut || !Array.isArray(sivu.valitut.kohdat) || sivu.valitut.kohdat.length !== 3) {
       fail(koodi + ": valittuja töitä pitää olla kolme");
     }
@@ -88,11 +88,14 @@ if (!data) {
   const tunnukset = (kielet.fi.demo.vaiheet || []).map(function (v) { return v.id; }).join("|");
   const enTunnukset = (kielet.en.demo.vaiheet || []).map(function (v) { return v.id; }).join("|");
   if (tunnukset !== enTunnukset) fail("Demon tunnukset eivät täsmää kielien välillä");
-  if (kielet.fi.business.otsikko !== "Näin työ muuttuu hallittavaksi") fail("Demon otsikko puuttuu");
-  if (kielet.fi.business.silma !== "Havainnollistava demo") fail("Demon merkintä puuttuu");
-  if (kielet.fi.business.johdanto !== "Sama tieto kulkee mukana. Sitä ei tarvitse kirjoittaa joka vaiheessa uudelleen.") {
+  if (kielet.fi.demo.otsikko !== "Näin tieto kulkee mukana") fail("Demon otsikko puuttuu");
+  if (kielet.fi.demo.johdanto !== "Samaa tietoa ei tarvitse kirjoittaa joka vaiheessa uudelleen.") {
     fail("Demon johdanto puuttuu");
   }
+  if (kielet.fi.demo.huom !== "Keksitty esimerkki. Tämä ei ole käytössä oleva ERP eikä asiakkaalle toimitettu projekti.") {
+    fail("Demon huomautus puuttuu");
+  }
+  if (kielet.fi.hero.otsikko !== "Vedän myyntitiimiä, en pelkästään omaa myyntiä.") fail("Avauksen otsikko puuttuu");
   if (kielet.fi.contact.kopioitu !== "Kopioitu") fail("Kopioinnin palaute puuttuu");
   if (!Array.isArray(data.katalogi) || data.katalogi.length !== 1 || data.katalogi[0].id !== "chatbot") {
     fail("Katalogissa saa toistaiseksi olla vain chatbot");

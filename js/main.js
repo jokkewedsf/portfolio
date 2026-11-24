@@ -71,8 +71,8 @@
       "<h1>" + esc(h.otsikko) + "</h1>" +
       '<p class="lead">' + esc(h.ingressi) + "</p>" +
       '<div class="hero-napit">' +
-      '<a class="nappi" href="#contact">' + esc(h.linkedinNappi) + "</a>" +
-      '<a class="tekstilinkki" href="#work">' + esc(h.selaaNappi) + ' <span aria-hidden="true">↓</span></a>' +
+      '<a class="nappi" href="' + esc(h.yhteysKohde || "#yhteys") + '">' + esc(h.linkedinNappi) + "</a>" +
+      '<a class="tekstilinkki" href="' + esc(h.selaaKohde || "#kokemus") + '">' + esc(h.selaaNappi) + ' <span aria-hidden="true">↓</span></a>' +
       "</div>" +
       '<p class="allekirjoitus">' + esc(h.allekirjoitus) + "</p>" +
       "</div>" +
@@ -100,15 +100,33 @@
     );
   }
 
-  function mindset() {
-    const osio = data.mindset;
-    const kortit = (osio.kohdat || []).map(function (kohta, indeksi) {
-      const viive = Math.min(indeksi, 3) * 60;
-      return '<li class="liike" style="--viive:' + viive + 'ms"><p class="silma">' + esc(kohta.nro) + " / " + esc(kohta.silma) + "</p>" +
-        "<h3>" + esc(kohta.otsikko) + "</h3><p>" + esc(kohta.teksti) + "</p></li>";
-    }).join("");
-    return osioPaa("mindset", osio.numero, osio.silma, osio.otsikko, osio.johdanto) +
-      '<ul class="nelikko">' + kortit + "</ul></section>";
+  function ankkuri(id) {
+    return '<span id="' + esc(id) + '" class="ankkuri"></span>';
+  }
+
+  function proosa(kappaleet) {
+    return '<div class="proosa">' + (kappaleet || []).map(function (kappale) {
+      return "<p>" + esc(kappale) + "</p>";
+    }).join("") + "</div>";
+  }
+
+  function osioAlku(id, silma, otsikko) {
+    return (
+      '<section class="osio" id="' + esc(id) + '" tabindex="-1">' +
+      '<p class="silma">' + esc(silma) + "</p>" +
+      "<h2>" + esc(otsikko) + "</h2>"
+    );
+  }
+
+  function johtaminen() {
+    const osio = data.johtaminen;
+    return osioAlku("johtaminen", osio.silma, osio.otsikko) + proosa(osio.kappaleet) + "</section>";
+  }
+
+  function myynti() {
+    const osio = data.myynti;
+    return osioAlku("myynti", osio.silma, osio.otsikko) + proosa(osio.kappaleet) +
+      '<p class="luku-huom">' + esc(data.hero.luku) + " " + esc(data.hero.lukuSelite) + ".</p></section>";
   }
 
   function tyolinkki(href, teksti, ulko) {
@@ -158,7 +176,7 @@
         '<p class="tyo-linkit">' + linkit + "</p></div></article>"
       );
     }).join("");
-    return osioPaa("work", osio.numero, osio.silma, osio.otsikko, osio.johdanto) + rivit + "</section>";
+    return rivit;
   }
 
   function demoKuori() {
@@ -192,9 +210,12 @@
     );
   }
 
-  function business() {
-    const osio = data.business;
-    return osioPaa("business", osio.numero, osio.silma, osio.otsikko, osio.johdanto) +
+  function teknologia() {
+    const osio = data.teknologia;
+    const demoOsio = data.demo;
+    return osioAlku("teknologia", osio.silma, osio.otsikko) + proosa(osio.kappaleet) +
+      ankkuri("prosessi") + ankkuri("business") +
+      '<div class="demo-otsikko"><h3>' + esc(demoOsio.otsikko) + "</h3><p>" + esc(demoOsio.johdanto) + "</p></div>" +
       demoKuori() + "</section>";
   }
 
@@ -309,39 +330,44 @@
     paivitaDemo();
   }
 
-  function experience() {
-    const osio = data.experience;
+  function kokemus() {
+    const osio = data.kokemus;
+    const esimerkit = data.work;
     const rivit = (osio.rivit || []).map(function (rivi, indeksi) {
-      let teksti = rivi.teksti;
-      if (rivi.myynti) teksti += " " + data.hero.luku + " " + data.hero.lukuSelite + ".";
       const viive = Math.min(indeksi, 3) * 60;
       return '<li class="liike" style="--viive:' + viive + 'ms"><span class="vuosi">' + esc(rivi.vuosi) + "</span>" +
         "<div><p class=\"tyonantaja\">" + esc(rivi.tyonantaja) + "</p>" +
         '<p class="rooli">' + esc(rivi.rooli) + "</p></div>" +
-        "<p>" + esc(teksti) + "</p></li>";
+        "<p>" + esc(rivi.teksti) + "</p></li>";
     }).join("");
-    return osioPaa("experience", osio.numero, osio.silma, osio.otsikko, "") +
-      '<ul class="kokemus">' + rivit + "</ul></section>";
+    return osioAlku("kokemus", osio.silma, osio.otsikko) +
+      '<ul class="kokemus">' + rivit + "</ul>" +
+      '<div class="esimerkit">' + ankkuri("tyot") + ankkuri("work") +
+      "<h3>" + esc(osio.esimerkit || esimerkit.otsikko) + "</h3>" +
+      '<p>' + esc(esimerkit.johdanto) + "</p></div>" +
+      work() + "</section>";
   }
 
-  function beyond() {
+  function tausta() {
     const osio = data.beyond;
     const kortit = (osio.kohdat || []).map(function (kohta, indeksi) {
       const viive = Math.min(indeksi, 3) * 60;
       return '<li class="liike" style="--viive:' + viive + 'ms"><p class="silma">' + esc(kohta.silma) + "</p><h3>" + esc(kohta.otsikko) +
         "</h3><p>" + esc(kohta.teksti) + "</p></li>";
     }).join("");
-    return osioPaa("beyond", osio.numero, osio.silma, osio.otsikko, osio.johdanto) +
-      '<ul class="nelikko">' + kortit + "</ul>" +
-      '<p class="huom">' + esc(osio.huom) + "</p></section>";
+    const huom = osio.huom ? '<p class="huom">' + esc(osio.huom) + "</p>" : "";
+    return osioAlku("tausta", osio.silma, osio.otsikko) + ankkuri("story") +
+      (osio.johdanto ? '<p class="proosa-johdanto">' + esc(osio.johdanto) + "</p>" : "") +
+      '<ul class="nelikko">' + kortit + "</ul>" + huom + "</section>";
   }
 
-  function contact() {
+  function yhteys() {
     const osio = data.contact;
     const osoite = data.yhteys.sahkoposti;
     return (
-      '<section class="yhteys liike" id="contact" tabindex="-1">' +
-      "<div><p class=\"silma\">" + esc(osio.numero) + " / " + esc(osio.silma) + "</p>" +
+      '<section class="yhteys liike" id="yhteys" tabindex="-1">' +
+      ankkuri("contact") +
+      "<div><p class=\"silma\">" + esc(osio.silma) + "</p>" +
       "<h2>" + esc(osio.otsikko1) + "<br>" + esc(osio.otsikko2) + "</h2>" +
       "<p>" + esc(osio.johdanto) + "</p></div>" +
       '<div class="yhteys-oikea">' +
@@ -362,8 +388,8 @@
       return '<a href="#' + esc(kohta.id) + '">' + esc(kohta.teksti) + "</a>";
     }).join("");
     if (puhutaan) {
-      puhutaan.textContent = data.puhutaan + " ↗";
-      puhutaan.setAttribute("href", "#contact");
+      puhutaan.textContent = data.puhutaan;
+      puhutaan.setAttribute("href", "#yhteys");
     }
   }
 
@@ -642,7 +668,7 @@
     suljeDialogi(false);
     data = juuri.kielet[kieli];
     paivitaKieli();
-    main.innerHTML = hero() + mindset() + work() + business() + experience() + beyond() + contact();
+    main.innerHTML = hero() + johtaminen() + myynti() + teknologia() + kokemus() + tausta() + yhteys();
     rakennaNav();
     rakennaFooter();
     sidoAvaukset();

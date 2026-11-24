@@ -320,7 +320,42 @@ h1 {
 .todiste-rivi, .todiste-ala { margin: 6px 0 0; color: var(--himmea); font-size: 14px; }
 .todiste-rivi { color: var(--teksti); font-weight: 500; }
 
-.osio, .yhteys, .hero { scroll-margin-top: 96px; }
+.osio, .yhteys, .hero, .ankkuri { scroll-margin-top: 96px; }
+.ankkuri { display: block; height: 0; overflow: hidden; }
+.osio > h2 {
+  margin: 0 0 28px;
+  max-width: 18em;
+  font-family: var(--serif);
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+.proosa p, .proosa-johdanto, .demo-otsikko p, .esimerkit > p {
+  max-width: 40rem;
+  margin: 0 0 1rem;
+  color: var(--himmea);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.luku-huom {
+  max-width: 40rem;
+  margin: 8px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--viiva);
+  color: var(--teksti);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+.demo-otsikko { margin: 56px 0 20px; }
+.demo-otsikko h3, .esimerkit h3 {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.esimerkit { margin-top: 72px; }
 .osio { padding-top: 96px; padding-bottom: 32px; }
 
 .osio-paa {
