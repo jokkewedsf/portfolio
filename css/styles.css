@@ -868,14 +868,15 @@ body.dialogi-auki { overflow: hidden; }
   align-items: center;
   gap: 6px;
   width: max-content;
-  max-width: min(16rem, calc(100vw - 40px));
+  max-width: min(16rem, calc(100dvw - 28px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
   padding: 10px 8px 10px 14px;
   border: 1px solid var(--viiva);
   background: var(--kortti);
   color: var(--teksti);
+  box-sizing: border-box;
 }
 .ai-tervehdys[hidden], .ai-widget.on-auki .ai-tervehdys { display: none; }
-.ai-tervehdys-teksti { margin: 0; font-size: 14px; }
+.ai-tervehdys-teksti { margin: 0; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
 .ai-tervehdys-sulje { width: 32px; height: 32px; font-size: 18px; }
 .ai-paneeli {
   position: absolute;
@@ -883,9 +884,13 @@ body.dialogi-auki { overflow: hidden; }
   bottom: calc(100% + 12px);
   display: flex;
   flex-direction: column;
-  width: min(24rem, calc(100vw - 32px));
-  height: min(34rem, calc(100dvh - 8rem));
+  box-sizing: border-box;
+  width: min(24rem, calc(100dvw - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+  height: min(34rem, calc(100dvh - 7.5rem - env(safe-area-inset-bottom, 0px)));
+  max-height: calc(100dvh - 16px - 56px - 16px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  min-height: 0;
   padding: 14px;
+  overflow: hidden;
   border: 1px solid var(--viiva);
   background: var(--tumma);
   color: var(--teksti);
@@ -903,11 +908,14 @@ body.dialogi-auki { overflow: hidden; }
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
   align-items: center;
+  flex: 0 0 auto;
 }
 .ai-jr { display: none; }
 .ai-nimi { margin: 0; font-family: var(--serif); font-size: 28px; font-weight: 400; }
 .ai-tila, .ai-merkinta, .ai-tietosuoja, .ai-laskuri { margin: 4px 0 0; color: var(--himmea); font-size: 13px; }
-.ai-merkinta { color: var(--teksti); }
+.ai-merkinta, .ai-tietosuoja { overflow-wrap: anywhere; }
+.ai-merkinta { flex: 0 1 auto; min-height: 0; color: var(--teksti); }
+.ai-tietosuoja { flex: 0 0 auto; }
 .ai-sulje {
   position: relative;
   z-index: 5;
@@ -923,53 +931,93 @@ body.dialogi-auki { overflow: hidden; }
 .ai-paneeli[data-tila="kaynti"] .ai-odotus { display: none; }
 .ai-odotus { margin-top: 16px; }
 .ai-odotus-teksti { margin: 0 0 12px; font-family: var(--serif); font-size: 28px; color: var(--teksti); }
-.ai-kaynti { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; margin-top: 12px; }
-.ai-ehdotukset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.ai-kaynti { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; margin-top: 12px; overflow: hidden; }
+.ai-ehdotukset {
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 0;
+  max-height: 7.5rem;
+  margin: 0 0 12px;
+  overflow: auto;
+}
 .ai-ehdotus {
+  max-width: 100%;
   min-height: 40px;
+  height: auto;
   padding: 8px 12px;
   border: 1px solid var(--viiva-vahva);
   border-radius: 999px;
   background: transparent;
   color: var(--teksti);
   font: inherit;
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: anywhere;
   cursor: pointer;
 }
-.ai-loki { display: flex; flex: 1 1 auto; flex-direction: column; gap: 12px; min-height: 0; margin: 0 0 12px; overflow: auto; }
+.ai-loki {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 0 12px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
 .ai-loki:empty { display: flex; }
-.ai-viesti { max-width: 100%; }
+.ai-viesti { max-width: 100%; min-width: 0; }
 .ai-oma { align-self: flex-end; text-align: right; }
 .ai-kuka { margin: 0; color: var(--aksentti); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
-.ai-sisalto, .ai-huomio { margin: 4px 0 0; overflow-wrap: anywhere; }
+.ai-sisalto, .ai-huomio { margin: 4px 0 0; min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+.ai-lomake { flex: 0 0 auto; min-width: 0; }
 .ai-rivi { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: end; }
 .ai-lomake textarea {
   width: 100%;
+  min-width: 0;
   min-height: 48px;
+  max-height: 6rem;
   padding: 10px 12px;
   border: 1px solid var(--viiva);
   background: var(--tausta);
   color: var(--teksti);
   font: inherit;
   font-size: 16px;
-  resize: vertical;
+  line-height: 1.4;
+  resize: none;
+  overflow: auto;
 }
 .ai-laheta { min-height: 48px; flex: 0 0 auto; }
 .ai-pisteet { display: inline-flex; gap: 4px; }
 .ai-pisteet i { width: 6px; height: 6px; border-radius: 50%; background: var(--aksentti); }
 
-@media (max-width: 480px) {
+@media (max-width: 720px), (max-height: 520px) {
   body.ai-auki { overflow: hidden; }
   .ai-widget.on-auki .ai-avain { visibility: hidden; pointer-events: none; }
   .ai-widget.on-auki .ai-paneeli {
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: auto;
     height: auto;
+    max-height: none;
     border: 0;
+    border-radius: 0;
     transform: none;
+    padding:
+      calc(env(safe-area-inset-top, 0px) + 12px)
+      calc(env(safe-area-inset-right, 0px) + 14px)
+      calc(env(safe-area-inset-bottom, 0px) + 12px)
+      calc(env(safe-area-inset-left, 0px) + 14px);
   }
-  .ai-widget.on-auki .ai-paa { padding-top: calc(env(safe-area-inset-top, 0px) + 6px); }
-  .ai-tietosuoja { padding-bottom: env(safe-area-inset-bottom); }
+  .ai-ehdotukset { max-height: 5.25rem; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

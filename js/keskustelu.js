@@ -131,28 +131,35 @@
   }
 
   function mobiili() {
-    return window.matchMedia("(max-width: 480px)").matches;
+    return window.matchMedia("(max-width: 720px), (max-height: 520px)").matches;
   }
 
   function nollaaSovitus() {
+    if (!paneeli) return;
     paneeli.style.top = "";
-    paneeli.style.height = "";
+    paneeli.style.right = "";
     paneeli.style.bottom = "";
+    paneeli.style.left = "";
+    paneeli.style.width = "";
+    paneeli.style.height = "";
   }
 
   function sovitaNakyma() {
     if (!paneeli) return;
-    document.body.classList.toggle("ai-auki", auki && mobiili());
-    if (auki) paneeli.setAttribute("aria-modal", mobiili() ? "true" : "false");
-    if (!auki || !mobiili() || !window.visualViewport) {
+    const koko = auki && mobiili();
+    document.body.classList.toggle("ai-auki", koko);
+    if (auki) paneeli.setAttribute("aria-modal", koko ? "true" : "false");
+    if (!koko || !window.visualViewport) {
       nollaaSovitus();
       return;
     }
     const nakyma = window.visualViewport;
-    const peitto = Math.max(0, Math.round(window.innerHeight - nakyma.height - nakyma.offsetTop));
-    paneeli.style.top = "0px";
-    paneeli.style.height = "auto";
-    paneeli.style.bottom = peitto + "px";
+    paneeli.style.left = Math.max(0, Math.round(nakyma.offsetLeft)) + "px";
+    paneeli.style.top = Math.max(0, Math.round(nakyma.offsetTop)) + "px";
+    paneeli.style.right = "auto";
+    paneeli.style.bottom = "auto";
+    paneeli.style.width = Math.max(0, Math.round(nakyma.width)) + "px";
+    paneeli.style.height = Math.max(0, Math.round(nakyma.height)) + "px";
   }
 
   function kohteet() {
